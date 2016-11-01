@@ -1,4 +1,4 @@
-package climate.shared;
+package ch.uzh.ifi.climate.shared;
 
 import java.util.Date;
 

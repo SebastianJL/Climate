@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <class-diagram version="1.1.10" icons="false" always-add-relationships="false" generalizations="true" 
   realizations="true" associations="true" dependencies="false" nesting-relationships="true" router="MANHATTAN">  
-  <class id="1" language="java" name="climate.shared.World" project="Climate" 
-    file="/Climate/src/climate/shared/World.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="1" language="java" name="ch.uzh.ifi.climate.shared.World" project="Climate" 
+    file="/Climate/src/ch/uzh/ifi/climate/shared/World.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="141" y="87"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -10,8 +10,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="2" language="java" name="climate.shared.City" project="Climate" 
-    file="/Climate/src/climate/shared/City.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="2" language="java" name="ch.uzh.ifi.climate.shared.City" project="Climate" 
+    file="/Climate/src/ch/uzh/ifi/climate/shared/City.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="400" y="293"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -19,8 +19,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="3" language="java" name="climate.shared.TemperatureMeasurement" project="Climate" 
-    file="/Climate/src/climate/shared/TemperatureMeasurement.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="3" language="java" name="ch.uzh.ifi.climate.shared.TemperatureMeasurement" project="Climate" 
+    file="/Climate/src/ch/uzh/ifi/climate/shared/TemperatureMeasurement.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="837" y="211"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -28,8 +28,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="climate.shared.Country" project="Climate" 
-    file="/Climate/src/climate/shared/Country.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="4" language="java" name="ch.uzh.ifi.climate.shared.Country" project="Climate" 
+    file="/Climate/src/ch/uzh/ifi/climate/shared/Country.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="406" y="88"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -37,8 +37,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="5" language="java" name="climate.shared.Coordinates" project="Climate" 
-    file="/Climate/src/climate/shared/Coordinates.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="5" language="java" name="ch.uzh.ifi.climate.shared.Coordinates" project="Climate" 
+    file="/Climate/src/ch/uzh/ifi/climate/shared/Coordinates.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="171" y="500"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -46,8 +46,8 @@
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="climate.shared.Temperature" project="Climate" 
-    file="/Climate/src/climate/shared/Temperature.java" binary="false" corner="BOTTOM_RIGHT">    
+  <class id="6" language="java" name="ch.uzh.ifi.climate.shared.Temperature" project="Climate" 
+    file="/Climate/src/ch/uzh/ifi/climate/shared/Temperature.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="-1" width="-1" x="824" y="486"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
@@ -70,70 +70,70 @@
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="10">    
-    <end type="SOURCE" refId="4" navigable="false" variant="ASSOCIATION">      
-      <attribute id="11" name="cities">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="12" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="2" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="13">    
-    <end type="SOURCE" refId="1" navigable="false" variant="ASSOCIATION">      
-      <attribute id="14" name="countries">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </attribute>      
-      <multiplicity id="15" minimum="0" maximum="2147483647">        
-        <position height="0" width="0" x="0" y="0"/>      
-      </multiplicity>    
-    </end>    
-    <end type="TARGET" refId="4" navigable="true" variant="ASSOCIATION"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="16">    
     <end type="SOURCE" refId="3" navigable="false" variant="ASSOCIATION">      
-      <attribute id="17" name="temperature">        
+      <attribute id="11" name="temperature">        
         <position height="16" width="66" x="846" y="379"/>      
       </attribute>      
-      <multiplicity id="18" minimum="0" maximum="1">        
+      <multiplicity id="12" minimum="0" maximum="1">        
         <position height="14" width="23" x="780" y="400"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="6" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="19">    
-    <end type="SOURCE" refId="2" navigable="true" variant="ASSOCIATION">      
-      <attribute id="20" name="averageTemperatures">        
+  <association id="13">    
+    <end type="SOURCE" refId="4" navigable="false" variant="ASSOCIATION">      
+      <attribute id="14" name="cities">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="21" minimum="0" maximum="2147483647">        
+      <multiplicity id="15" minimum="0" maximum="2147483647">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <end type="TARGET" refId="2" navigable="true" variant="ASSOCIATION"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="16">    
+    <end type="SOURCE" refId="2" navigable="true" variant="ASSOCIATION">      
+      <attribute id="17" name="averageTemperatures">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="18" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
     <end type="TARGET" refId="3" navigable="true" variant="ASSOCIATION">      
-      <attribute id="22" name="city">        
+      <attribute id="19" name="city">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </attribute>      
+      <multiplicity id="20" minimum="0" maximum="1">        
+        <position height="0" width="0" x="0" y="0"/>      
+      </multiplicity>    
+    </end>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="21">    
+    <end type="SOURCE" refId="2" navigable="false" variant="ASSOCIATION">      
+      <attribute id="22" name="coordinates">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
       <multiplicity id="23" minimum="0" maximum="1">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
+    <end type="TARGET" refId="5" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <association id="24">    
-    <end type="SOURCE" refId="2" navigable="false" variant="ASSOCIATION">      
-      <attribute id="25" name="coordinates">        
+    <end type="SOURCE" refId="1" navigable="false" variant="ASSOCIATION">      
+      <attribute id="25" name="countries">        
         <position height="0" width="0" x="0" y="0"/>      
       </attribute>      
-      <multiplicity id="26" minimum="0" maximum="1">        
+      <multiplicity id="26" minimum="0" maximum="2147483647">        
         <position height="0" width="0" x="0" y="0"/>      
       </multiplicity>    
     </end>    
-    <end type="TARGET" refId="5" navigable="true" variant="ASSOCIATION"/>    
+    <end type="TARGET" refId="4" navigable="true" variant="ASSOCIATION"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 

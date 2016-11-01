@@ -1,7 +1,7 @@
 /**
  * 
  */
-package climate.shared;
+package ch.uzh.ifi.climate.shared;
 
 /**
  * @author johannes
