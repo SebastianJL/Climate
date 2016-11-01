@@ -1,7 +1,5 @@
 package climate.shared;
 
-import climate.exceptions.NotImplementedException;
-
 public class Temperature {
 	private float temperatureInKelvin;
 	

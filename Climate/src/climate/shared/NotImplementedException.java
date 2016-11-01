@@ -1,7 +1,7 @@
 /**
  * 
  */
-package climate.exceptions;
+package climate.shared;
 
 /**
  * @author johannes
