@@ -1,4 +1,4 @@
-package climate.containers;
+package climate.shared;
 
 public class Coordinates {
 	private float longitude;

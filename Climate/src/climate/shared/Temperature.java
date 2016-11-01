@@ -1,4 +1,4 @@
-package climate.containers;
+package climate.shared;
 
 import climate.exceptions.NotImplementedException;
 

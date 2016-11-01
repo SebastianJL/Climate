@@ -1,4 +1,4 @@
-package climate.containers;
+package climate.shared;
 
 import java.util.ArrayList;
 import java.util.Date;
