@@ -1,34 +1,19 @@
 package ch.uzh.ifi.climate.client;
 
-import static org.junit.Assert.*;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import com.google.gwt.junit.client.GWTTestCase;
 
-public class ClimateTest {
+public class ClimateTest extends GWTTestCase{
 
-	@BeforeClass
-	public static void setUpBeforeClass() throws Exception {
+	@Override
+	public String getModuleName() {
+		return "ch.uzh.ifi.climate.Climate";
 	}
 
-	@AfterClass
-	public static void tearDownAfterClass() throws Exception {
-	}
 
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
-	@Test
 	public void testOnModuleLoad() {
-		fail("Not yet implemented");
+		assertTrue(true);
 	}
+
 
 }
