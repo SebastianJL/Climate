@@ -1,5 +1,13 @@
 package ch.uzh.ifi.climate.shared;
 
+
+/**
+ * @author		Johannes Lade
+ * @history 	2016-08-11 JL First version
+ * @version 	2016-08-11 JL 0.1.0
+ * @responsibilities
+ * 				This class manages a single temperature value and its transofmation between units.
+ */
 public class Temperature {
 	private float temperatureInKelvin;
 	
