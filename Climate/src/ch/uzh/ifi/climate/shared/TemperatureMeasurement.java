@@ -6,12 +6,14 @@ public class TemperatureMeasurement{
 	private Temperature temperature;
 	private Temperature uncertainty;
 	private Date date;
-	private City city;
+	private String city;
+	private String country;
 	
-	public TemperatureMeasurement(Temperature temperature, Temperature uncertainty, Date date, City city) {
+	public TemperatureMeasurement(Temperature temperature, Temperature uncertainty, Date date, String city, String country) {
 		this.temperature = temperature;
 		this.uncertainty = uncertainty;
 		this.date = date;
 		this.city = city;
+		this.country = country;
 	}
 }
