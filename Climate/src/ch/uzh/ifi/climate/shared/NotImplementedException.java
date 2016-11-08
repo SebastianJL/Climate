@@ -4,8 +4,12 @@
 package ch.uzh.ifi.climate.shared;
 
 /**
- * @author johannes
- *
+ * This exception class can be used to draft functions allowing them to throw an NotImplemented exception.
+ * @author		Johannes Lade
+ * @history 	2016-08-11 JL First version
+ * @version 	2016-08-11 JL 0.1.0
+ * @responsibilities
+ * 				None
  */
 public class NotImplementedException extends Exception {
 
