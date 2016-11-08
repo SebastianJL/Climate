@@ -2,6 +2,7 @@ package ch.uzh.ifi.climate.shared;
 
 
 /**
+ * This class manages a single temperature value and its transofmation between units.
  * @author		Johannes Lade
  * @history 	2016-08-11 JL First version
  * @version 	2016-08-11 JL 0.1.0
