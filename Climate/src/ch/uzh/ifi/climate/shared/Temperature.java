@@ -1,5 +1,6 @@
 package ch.uzh.ifi.climate.shared;
 
+import com.google.gwt.user.client.rpc.IsSerializable;
 
 /**
  * This class manages a single temperature value and its transofmation between units.
@@ -9,7 +10,7 @@ package ch.uzh.ifi.climate.shared;
  * @responsibilities
  * 				This class manages a single temperature value and its transofmation between units.
  */
-public class Temperature {
+public class Temperature implements IsSerializable{
 	private float temperatureInKelvin;
 	
 	

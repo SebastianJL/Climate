@@ -1,5 +1,6 @@
 package ch.uzh.ifi.climate.shared;
 
+import com.google.gwt.user.client.rpc.IsSerializable;
 
 /**
  * This class manages a coordinate pair (longitude+latitude)
@@ -9,7 +10,7 @@ package ch.uzh.ifi.climate.shared;
  * @responsibilities
  * 				This class manages a coordinate pair (longitude+latitude)
  */
-public class Coordinates {
+public class Coordinates implements IsSerializable{
 	private float longitude;
 	private float latitude;
 
