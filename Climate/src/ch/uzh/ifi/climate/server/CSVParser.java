@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -14,7 +15,7 @@ import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
 
 public class CSVParser{
 
-	public static ArrayList<TemperatureMeasurement> parseCSV(String csvFileName){
+	public static ArrayList<TemperatureMeasurement> parseCSV(String csvFileName) throws ParseException{
 		
 		ArrayList<TemperatureMeasurement> dataStorage = new ArrayList<TemperatureMeasurement>();
 		
@@ -31,10 +32,18 @@ public class CSVParser{
                 
 				if(Measurement[0].equals("dt") != true){
 					SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-					float temperature = Float.parseFloat(Measurement[1]);
-					float uncertainty = Float.parseFloat(Measurement[2]);
+			    	Date date =  df.parse(Measurement[0]);
+					
+					float averageTemperature = Float.parseFloat(Measurement[1]);
+					Temperature temperature = Temperature.createFromCelsius(averageTemperature);
+					
+					float uncertaintyTemp = Float.parseFloat(Measurement[2]);
+					Temperature uncertainty = Temperature.createFromCelsius(uncertaintyTemp);
+					
 					String city = Measurement[3];
+					
 					String country = Measurement[4];
+					
 					float latitude = Float.parseFloat(Measurement[5].substring(0, Measurement[5].length()-1));
 					float longitude = Float.parseFloat(Measurement[6].substring(0, Measurement[6].length()-1));
 					if(Measurement[5].charAt(Measurement[5].length()-1) == 'S'){
@@ -44,22 +53,9 @@ public class CSVParser{
 						longitude = -longitude;
 					}
 					Coordinates coordinates = new Coordinates(latitude, longitude);
-					//TemperatureMeasurement(Temperature temperature, Temperature uncertainty, Date date, String city, String country, Coordinates coordinates); 
-					/*float test = Float.parseFloat(Measurement[1]);
-					System.out.println(test);
-					String x = Measurement[5].substring(0, Measurement[5].length()-1);
-					float test2 = Float.parseFloat(x);
-					System.out.println(test2);*/
+					
+					dataStorage.add(new TemperatureMeasurement(temperature, uncertainty, date, city, country, coordinates)); 
 				}
-				/*System.out.println(	"Date = " + Measurement[0] + 
-									", AverageTemperature = " + Measurement[1] + 
-									", Uncertainty = " + Measurement[2] + 
-									", City = " + Measurement[3] + 
-									", Country = " + Measurement[4] +
-									", Latitude = " + Measurement[5] + 
-									", Longitude = " + Measurement[6]);*/
-				//System.out.print(Measurement[5].charAt(Measurement[5].length()-1) + "  ");
-				//System.out.println(Measurement[6].charAt(Measurement[6].length()-1));
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

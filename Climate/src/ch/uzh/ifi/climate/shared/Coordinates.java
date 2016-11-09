@@ -15,6 +15,8 @@ public class Coordinates implements IsSerializable{
 	private float latitude;
 	private float longitude;
 
+	//latitude positive is north, negative is south
+	//longitude positive is east, negative is west
 	public Coordinates(float latitude, float longitude) {
 		this.latitude = latitude;
 		this.longitude = longitude;
