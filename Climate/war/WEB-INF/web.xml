@@ -12,7 +12,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
   <!-- Servlets -->
   <servlet>
   	<servlet-name>QueryServiceImpl</servlet-name>
-  	<servlet-class>ch.uzh.ifi.server.QueryServiceImpl</servlet-class>
+  	<servlet-class>ch.uzh.ifi.climate.server.QueryServiceImpl</servlet-class>
   </servlet>
   
   <servlet-mapping>
