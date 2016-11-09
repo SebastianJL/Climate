@@ -4,8 +4,12 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
+import ch.uzh.ifi.climate.shared.Coordinates;
+import ch.uzh.ifi.climate.shared.Temperature;
 import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
 
 public class CSVParser{
@@ -13,6 +17,7 @@ public class CSVParser{
 	public static ArrayList<TemperatureMeasurement> parseCSV(String csvFileName){
 		
 		ArrayList<TemperatureMeasurement> dataStorage = new ArrayList<TemperatureMeasurement>();
+		
 		BufferedReader br = null;
 		String line = "";
 		String cvsSplitBy = ",";
@@ -25,6 +30,21 @@ public class CSVParser{
 				String[] Measurement = line.split(cvsSplitBy);
                 
 				if(Measurement[0].equals("dt") != true){
+					SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+					float temperature = Float.parseFloat(Measurement[1]);
+					float uncertainty = Float.parseFloat(Measurement[2]);
+					String city = Measurement[3];
+					String country = Measurement[4];
+					float latitude = Float.parseFloat(Measurement[5].substring(0, Measurement[5].length()-1));
+					float longitude = Float.parseFloat(Measurement[6].substring(0, Measurement[6].length()-1));
+					if(Measurement[5].charAt(Measurement[5].length()-1) == 'S'){
+						latitude = -latitude;
+					}
+					if(Measurement[6].charAt(Measurement[6].length()-1) == 'W'){
+						longitude = -longitude;
+					}
+					Coordinates coordinates = new Coordinates(latitude, longitude);
+					//TemperatureMeasurement(Temperature temperature, Temperature uncertainty, Date date, String city, String country, Coordinates coordinates); 
 					/*float test = Float.parseFloat(Measurement[1]);
 					System.out.println(test);
 					String x = Measurement[5].substring(0, Measurement[5].length()-1);

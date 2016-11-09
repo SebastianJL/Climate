@@ -10,13 +10,13 @@ import com.google.gwt.user.client.rpc.IsSerializable;
  * @responsibilities
  * 				This class manages a coordinate pair (longitude+latitude)
  */
+
 public class Coordinates implements IsSerializable{
-	private float longitude;
 	private float latitude;
+	private float longitude;
 
-
-	public Coordinates(float longitude, float latitude) {
-		this.longitude = longitude;
+	public Coordinates(float latitude, float longitude) {
 		this.latitude = latitude;
+		this.longitude = longitude;
 	}
 }
