@@ -14,8 +14,17 @@ public class Temperature implements IsSerializable{
 	private float temperatureInKelvin;
 	
 	
-	public Temperature(float temperatureInKelvin) {
+	private Temperature(float temperatureInKelvin) {
 		this.temperatureInKelvin = temperatureInKelvin;
+	}
+	
+	public static Temperature createFromKelvin(float temperatureInKelvin) {
+		return new Temperature(temperatureInKelvin);
+	}
+	
+	public static Temperature createFromCelsius(float temperatureInCelcius) {
+		float temperatureInKelvin = temperatureInCelcius + 273.15f;
+		return new Temperature(temperatureInKelvin);
 	}
 	
 	
@@ -24,10 +33,9 @@ public class Temperature implements IsSerializable{
 	 * @post -
 	 * @param -
 	 * @return float Temperature in units of Kelvin
-	 * @throws NotImplementedException 
 	 */
-	public float kelvin() throws NotImplementedException {
-		throw new NotImplementedException();
+	public float kelvin() {
+		return this.temperatureInKelvin;
 	}
 	
 	
@@ -36,10 +44,9 @@ public class Temperature implements IsSerializable{
 	 * @post -
 	 * @param -
 	 * @return float Temperature in units of Celsius
-	 * @throws NotImplementedException 
 	 */
-	public float celsius() throws NotImplementedException {
-		throw new NotImplementedException();
+	public float celsius(){
+		return this.temperatureInKelvin - 273.15f;
 	}
 	
 	
@@ -48,9 +55,8 @@ public class Temperature implements IsSerializable{
 	 * @post -
 	 * @param -
 	 * @return float Temperature in units of Fahrenheit
-	 * @throws NotImplementedException 
 	 */
-	public float fahrenheit() throws NotImplementedException {
-		throw new NotImplementedException();
+	public float fahrenheit(){
+		return (this.temperatureInKelvin + 459.67f) * 5/9;
 	}
 }
