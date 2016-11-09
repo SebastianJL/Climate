@@ -8,7 +8,7 @@ import com.google.gwt.user.client.rpc.IsSerializable;
  * @history 	2016-08-11 JL First version
  * @version 	2016-08-11 JL 0.1.0
  * @responsibilities
- * 				This class manages a single temperature value and its transofmation between units.
+ * 				This class manages a single temperature value and its transformation between units.
  */
 public class Temperature implements IsSerializable{
 	private float temperatureInKelvin;
@@ -18,6 +18,9 @@ public class Temperature implements IsSerializable{
 		this.temperatureInKelvin = temperatureInKelvin;
 	}
 	
+	public Temperature(float temperatureValue, char unit){
+		
+	}
 	
 	/**
 	 * @pre -
