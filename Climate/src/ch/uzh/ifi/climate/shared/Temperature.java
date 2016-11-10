@@ -57,6 +57,6 @@ public class Temperature implements IsSerializable{
 	 * @return float Temperature in units of Fahrenheit
 	 */
 	public float fahrenheit(){
-		return (this.temperatureInKelvin + 459.67f) * 5/9;
+		return (this.temperatureInKelvin * 9/5) - 459.67f;
 	}
 }
