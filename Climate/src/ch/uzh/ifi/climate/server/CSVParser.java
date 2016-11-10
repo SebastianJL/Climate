@@ -14,10 +14,10 @@ import ch.uzh.ifi.climate.shared.Temperature;
 import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
 
 public class CSVParser{
+	
+	private ArrayList<TemperatureMeasurement> Data = new ArrayList<TemperatureMeasurement>();
 
-	public static ArrayList<TemperatureMeasurement> parseCSV(String csvFileName) throws ParseException{
-		
-		ArrayList<TemperatureMeasurement> dataStorage = new ArrayList<TemperatureMeasurement>();
+	public ArrayList<TemperatureMeasurement> parseCSV(String csvFileName) throws ParseException{
 		
 		BufferedReader br = null;
 		String line = "";
@@ -54,7 +54,7 @@ public class CSVParser{
 					}
 					Coordinates coordinates = new Coordinates(latitude, longitude);
 					
-					dataStorage.add(new TemperatureMeasurement(temperature, uncertainty, date, city, country, coordinates)); 
+					this.Data.add(new TemperatureMeasurement(temperature, uncertainty, date, city, country, coordinates)); 
 				}
 			}
 		} catch (FileNotFoundException e) {
@@ -70,6 +70,10 @@ public class CSVParser{
 				}
 			}
 		}
-		return dataStorage;
+		return this.Data;
+	}
+	
+	public ArrayList<TemperatureMeasurement> getData(){
+		return this.Data;
 	}
 }
