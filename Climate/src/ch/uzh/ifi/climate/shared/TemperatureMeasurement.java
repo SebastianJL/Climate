@@ -31,4 +31,12 @@ public class TemperatureMeasurement implements IsSerializable{
 		this.country = country;
 		this.coordinates = coordinates;
 	}
+	
+	public String getCity(){
+		return this.city;
+	}
+	
+	public Date getDate(){
+		return this.date;
+	}
 }

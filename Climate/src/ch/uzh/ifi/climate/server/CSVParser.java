@@ -17,7 +17,7 @@ public class CSVParser{
 	
 	private ArrayList<TemperatureMeasurement> Data = new ArrayList<TemperatureMeasurement>();
 
-	public ArrayList<TemperatureMeasurement> parseCSV(String csvFileName) throws ParseException{
+	public ArrayList<TemperatureMeasurement> parseCSV(String csvFileName){
 		
 		BufferedReader br = null;
 		String line = "";
@@ -61,6 +61,9 @@ public class CSVParser{
 			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} finally {
 			if (br != null) {
 				try {
@@ -70,7 +73,7 @@ public class CSVParser{
 				}
 			}
 		}
-		return this.Data;
+		return Data;
 	}
 	
 	public ArrayList<TemperatureMeasurement> getData(){
