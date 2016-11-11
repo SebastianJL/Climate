@@ -1,0 +1,35 @@
+/** Add css rules here for your application. */
+
+
+/* Formatting specific to the Climate application */
+body {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+}
+
+/* filter list header row */
+.watchFilterHeader {
+  background-color: #2062B8;
+  color: white;
+  font-style: italic;
+}
+
+/* filter list flextable */
+.watchFilter {
+  border: 1px solid silver;
+  padding: 2px;
+  margin-bottom:6px;
+}
+
+/* filter columns */
+.watchFilterColumn {
+  text-align: right;
+  width:8em;
+}
+
+/* Add filter panel */
+.addPanel {
+  margin: 10px 0px 15px 0px;
+}
