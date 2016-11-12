@@ -33,3 +33,14 @@ body {
 .addPanel {
   margin: 10px 0px 15px 0px;
 }
+
+/* Center the content of fhe application*/
+.centered-wrapper {
+    position: relative;
+    text-align: center;
+}
+
+.centered-content {
+    display: inline-block;
+    vertical-align: middle;
+}
