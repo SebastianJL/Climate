@@ -12,55 +12,61 @@ import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
 public class QueryServiceImpl extends RemoteServiceServlet implements QueryService {
 	
 	private String CSVFileName = "/Climate/src/ch/uzh/ifi/climate/data/GlobalLandTemperaturesByMajorCity_v1.csv";
-	CSVParser parser = new CSVParser();
-	ArrayList<TemperatureMeasurement> data = parser.parseCSV(CSVFileName);
+	private CSVParser parser = new CSVParser();
+	private ArrayList<TemperatureMeasurement> data = parser.parseCSV(CSVFileName);
+	private ArrayList<TemperatureMeasurement> filteredData = new ArrayList<TemperatureMeasurement>();
 	
 	@Override
 	public ArrayList<TemperatureMeasurement> temperatureMeasurements(String city, Date sdate, Date edate) {
-		ArrayList<TemperatureMeasurement> filteredData = new ArrayList<TemperatureMeasurement>();
 		//Filtering
 		for(TemperatureMeasurement Measurement:this.data){
 			if(	Measurement.getCity().equals(city) && 
 				Measurement.getDate().getTime()>=sdate.getTime() && 
-				Measurement.getDate().getTime()<=edate.getTime()){
-					filteredData.add(Measurement);
+				Measurement.getDate().getTime()<=edate.getTime() &&
+				!filteredData.contains(Measurement)){
+					this.filteredData.add(Measurement);
 			}
 		}
-		return filteredData;
+		return this.filteredData;
 	}
 	
 	public ArrayList<TemperatureMeasurement> temperatureMeasurements(String city) {
-		ArrayList<TemperatureMeasurement> filteredData = new ArrayList<TemperatureMeasurement>();
 		//Filtering
 		for(TemperatureMeasurement Measurement:this.data){
-			if(Measurement.getCity().equals(city)){
-					filteredData.add(Measurement);
+			if(	Measurement.getCity().equals(city) &&
+				!filteredData.contains(Measurement)){
+					this.filteredData.add(Measurement);
 			}
 		}
-		return filteredData;
+		return this.filteredData;
 	}
 	
 	public ArrayList<TemperatureMeasurement> temperatureMeasurementsCountry(String country, Date sdate, Date edate) {
-		ArrayList<TemperatureMeasurement> filteredData = new ArrayList<TemperatureMeasurement>();
 		//Filtering
 		for(TemperatureMeasurement Measurement:this.data){
 			if(	Measurement.getCountry().equals(country) && 
 				Measurement.getDate().getTime()>=sdate.getTime() && 
-				Measurement.getDate().getTime()<=edate.getTime()){
-					filteredData.add(Measurement);
+				Measurement.getDate().getTime()<=edate.getTime() &&
+				!filteredData.contains(Measurement)){
+					this.filteredData.add(Measurement);
 			}
 		}
-		return filteredData;
+		return this.filteredData;
 	}
 	
 	public ArrayList<TemperatureMeasurement> temperatureMeasurementsCountry(String country) {
-		ArrayList<TemperatureMeasurement> filteredData = new ArrayList<TemperatureMeasurement>();
 		//Filtering
 		for(TemperatureMeasurement Measurement:this.data){
-			if(Measurement.getCountry().equals(country)){
-					filteredData.add(Measurement);
+			if(	Measurement.getCountry().equals(country) &&
+					!filteredData.contains(Measurement)){
+					this.filteredData.add(Measurement);
 			}
 		}
-		return filteredData;
+		return this.filteredData;
+	}
+	
+	public ArrayList<TemperatureMeasurement> clearMeasurements(){
+		this.filteredData.clear();
+		return this.filteredData;
 	}
 }
