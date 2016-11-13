@@ -24,7 +24,10 @@ import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SuggestBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import com.google.gwt.user.datepicker.client.DateBox;
+
+import ch.uzh.ifi.climate.server.QueryServiceImpl;
+import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
+
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.i18n.client.TimeZone;
 
@@ -46,6 +49,7 @@ public class Climate implements EntryPoint {
 	@Override
 	public void onModuleLoad() {
 		
+
 		// Create table for filters.
 		filterFlexTable.setText(0, 0, "City");
 		filterFlexTable.setText(0, 1, "Start Date");
@@ -176,8 +180,6 @@ public class Climate implements EntryPoint {
 	      final String city = newSuggestBoxCity.getText().trim().substring(0, 1).toUpperCase() + newSuggestBoxCity.getText().trim().substring(1);;	//this includes automatic capitalization
 	      final int syear = integerBoxStartYear.getValue();
 	      final int eyear = integerBoxEndYear.getValue();
-	      final String smonth = startMonth.getSelectedValue();
-	      final String emonth = endMonth.getSelectedValue();    
 	      
 	      // Determine Start Date
 	      String sD = startMonth.getSelectedIndex()+1 + "/1/" + syear;
@@ -250,7 +252,18 @@ public class Climate implements EntryPoint {
 	        }
 	      });
 	      
-	      filterFlexTable.setWidget(row, 3, removeStockButton);	      
+	   // Add a button to get data for this filter setup
+	   Button getDataButton = new Button("Go");
+	   getDataButton.addStyleDependentName("launch search");
+	   getDataButton.addClickHandler(new ClickHandler() {
+	       public void onClick(ClickEvent event) 
+	       {
+	   		  //QueryServiceImpl filter = new QueryServiceImpl();
+	    	  //ArrayList<TemperatureMeasurement> filteredData = filter.temperatureMeasurements(city, sdate, edate);
+	       }
+	      });	        
+	        
+	      filterFlexTable.setWidget(row, 3, removeStockButton);	     
+	      filterFlexTable.setWidget(row, 4, getDataButton);
 	  }
-	  
 }
