@@ -11,7 +11,7 @@ body {
 
 /* filter list header row */
 .watchFilterHeader {
-  background-color: #2062B8;
+  background-color: #2062B8
   color: white;
   font-style: italic;
 }
@@ -25,16 +25,17 @@ body {
 
 /* filter columns */
 .watchFilterColumn {
-  text-align: right;
+  text-align: center;
   width:8em;
 }
+
 
 /* Add filter panel */
 .addPanel {
   margin: 10px 0px 15px 0px;
 }
 
-/* Center the content of fhe application*/
+/* Center the content of the application*/
 .centered-wrapper {
     position: relative;
     text-align: center;
