@@ -43,4 +43,16 @@ public class TemperatureMeasurement implements IsSerializable{
 	public String getCountry(){
 		return this.country;
 	}
+	
+	public Coordinates getCoordinates(){
+		return this.coordinates;
+	}
+	
+	public Temperature getTemperature(){
+		return this.temperature;
+	}
+	
+	public Temperature getUncertainty(){
+		return this.uncertainty;
+	}
 }
