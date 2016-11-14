@@ -14,6 +14,7 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 	private CSVParser parser = new CSVParser();
 	private ArrayList<TemperatureMeasurement> data = parser.parseCSV(CSVFileName);
 	private ArrayList<TemperatureMeasurement> filteredData = new ArrayList<TemperatureMeasurement>();
+	private ArrayList<TemperatureMeasurement> sliderData = new ArrayList<TemperatureMeasurement>();
 	
 	/**
 	 * Filters data with respect to city, startDate, endDate
@@ -92,6 +93,29 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 		return this.filteredData;
 	}
 	
+	public ArrayList<TemperatureMeasurement> temperatureMeasurementsCityCountry(String country, String city, Date sdate, Date edate){
+		for(TemperatureMeasurement Measurement:this.data){
+			if(	Measurement.getCity().equals(city) &&
+				Measurement.getCountry().equals(country) &&
+				Measurement.getDate().getTime() >= sdate.getTime() &&
+				Measurement.getDate().getTime() <= edate.getTime()){
+					this.filteredData.add(Measurement);
+			}
+		}
+		return this.filteredData;
+	}
+	
+	public ArrayList<TemperatureMeasurement> temperatureMeasurementsCityCountry(String country, String city){
+		for(TemperatureMeasurement Measurement:this.data){
+			if(	Measurement.getCity().equals(city) &&
+				Measurement.getCountry().equals(country) &&
+				!filteredData.contains(Measurement)){
+					this.filteredData.add(Measurement);
+			}
+		}
+		return this.filteredData;
+	}
+	
 	/**
 	 * Clears the ArrayList filteredData which is used to send the data to the client
 	 * @pre 	filteredData != null
@@ -131,5 +155,36 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 			}
 		}
 		return countries;
+	}
+	
+	public ArrayList<TemperatureMeasurement> temperatureMeasurementsOfAllCitiesAtDate(ArrayList<String> cities, Date date){
+		sliderData.clear();
+		for(TemperatureMeasurement Measurement:this.data){
+			for(String city:cities){
+				if(	Measurement.getCity().equals(city) &&
+					Measurement.getDate().getTime() == date.getTime()){
+						this.sliderData.add(Measurement);
+				}
+			}
+		}
+		return this.sliderData;
+	}
+	
+	public ArrayList<TemperatureMeasurement> removeCity(String city){
+		for(TemperatureMeasurement Measurement:this.data){
+			if(Measurement.getCity().equals(city)){
+				this.filteredData.remove(Measurement);
+			}
+		}
+		return this.filteredData;
+	}
+	
+	public ArrayList<TemperatureMeasurement> removeCountry(String country){
+		for(TemperatureMeasurement Measurement:this.data){
+			if(Measurement.getCountry().equals(country)){
+				this.filteredData.remove(Measurement);
+			}
+		}
+		return this.filteredData;
 	}
 }
