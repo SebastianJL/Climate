@@ -63,29 +63,29 @@ public class Climate implements EntryPoint {
 		// Add styles to elements in the filter table.
 		filterFlexTable.setCellPadding(6);
 		
-//		// Add city names to the suggestBox
-//		if(querySvc == null)
-//		{
-//			querySvc = GWT.create(QueryService.class);
-//		}
-//		
-//		AsyncCallback<ArrayList<String>> callback = new AsyncCallback<ArrayList<String>>(){
-//
-//			@Override
-//			public void onFailure(Throwable caught) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//
-//			@Override
-//			public void onSuccess(ArrayList<String> result) {
-//
-//				addCityNames(result);
-//				
-//			}
-//			
-//		};
-//		querySvc.getCities(callback);
+		// Add city names to the suggestBox
+		if(querySvc == null)
+		{
+			querySvc = GWT.create(QueryService.class);
+		}
+		
+		AsyncCallback<ArrayList<String>> callback = new AsyncCallback<ArrayList<String>>(){
+
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onSuccess(ArrayList<String> result) {
+
+				addCityNames(result);
+				
+			}
+			
+		};
+		querySvc.getCities(callback);
 		newSuggestBoxCity = new SuggestBox(cityNames);
 		
 		
@@ -329,8 +329,22 @@ public class Climate implements EntryPoint {
 	 * @param -
 	 * @return -
 	 */
-	protected void refreshTable() {
-	
+	protected void refreshMeasurementTable() {
+		AsyncCallback<ArrayList<TemperatureMeasurement>> callback = new AsyncCallback<ArrayList<TemperatureMeasurement>>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onSuccess(ArrayList<TemperatureMeasurement> result) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+		};
 		
 	}
 
