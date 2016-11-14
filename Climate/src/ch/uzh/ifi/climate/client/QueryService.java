@@ -3,6 +3,7 @@ package ch.uzh.ifi.climate.client;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 

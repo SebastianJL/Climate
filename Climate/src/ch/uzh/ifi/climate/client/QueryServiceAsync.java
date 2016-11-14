@@ -11,6 +11,7 @@ public interface QueryServiceAsync {
 
 	void temperatureMeasurements(String city, Date sdate, Date edate,
 			AsyncCallback<ArrayList<TemperatureMeasurement>> callback);
+
 	
 	void temperatureMeasurements(String city, AsyncCallback<ArrayList<TemperatureMeasurement>> callback);
 	
