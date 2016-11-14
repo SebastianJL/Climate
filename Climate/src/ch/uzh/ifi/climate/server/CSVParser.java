@@ -16,9 +16,20 @@ import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
 public class CSVParser{
 	
 	private ArrayList<TemperatureMeasurement> Data = new ArrayList<TemperatureMeasurement>();
-
+	
+	/**
+	 * Reads the csv file and creates all necessary objects which are afterwards stored in the ArrayList Data
+	 * @pre		csvFileName != null && Data != null
+	 * @param 	csvFileName is the name of the file that should be read
+	 * @post	data from the csv file is stored in the returned ArrayList
+	 * @return	ArrayList that contains all the measurements from the csv file
+	 * @throws	FileNotFoundException if the file with name csvFileName is not found
+	 * @throws	IOException If an IO error occurs
+	 * @throws	ParseException If a parse error occurs (for the parsed Date and float types)
+	 */
 	public ArrayList<TemperatureMeasurement> parseCSV(String csvFileName){
 		
+		//initialization
 		BufferedReader br = null;
 		String line = "";
 		String cvsSplitBy = ",";
@@ -27,9 +38,10 @@ public class CSVParser{
 			br = new BufferedReader(new FileReader(csvFileName));
 			while ((line = br.readLine()) != null) {
 				
-                // use comma as separator
+                //use comma as separator
 				String[] Measurement = line.split(cvsSplitBy);
                 
+				//creates temperatureMeasurement objects beginning at the second line of the file
 				if(Measurement[0].equals("dt") != true){
 					SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 			    	Date date =  df.parse(Measurement[0]);
@@ -44,6 +56,7 @@ public class CSVParser{
 					
 					String country = Measurement[4];
 					
+					//unifies coordinates (south = -north and west = -east)
 					float latitude = Float.parseFloat(Measurement[5].substring(0, Measurement[5].length()-1));
 					float longitude = Float.parseFloat(Measurement[6].substring(0, Measurement[6].length()-1));
 					if(Measurement[5].charAt(Measurement[5].length()-1) == 'S'){
@@ -54,6 +67,7 @@ public class CSVParser{
 					}
 					Coordinates coordinates = new Coordinates(latitude, longitude);
 					
+					//creates measurements and adds them to the ArrayList which will be returned at the end
 					this.Data.add(new TemperatureMeasurement(temperature, uncertainty, date, city, country, coordinates)); 
 				}
 			}
@@ -74,9 +88,5 @@ public class CSVParser{
 			}
 		}
 		return Data;
-	}
-	
-	public ArrayList<TemperatureMeasurement> getData(){
-		return this.Data;
 	}
 }
