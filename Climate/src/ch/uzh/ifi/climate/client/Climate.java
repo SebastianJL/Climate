@@ -137,6 +137,19 @@ public class Climate implements EntryPoint {
 	    // Move cursor focus to the city filter box.
 	    newSuggestBoxCity.setFocus(true);
 	    
+	    // Listen for keyboard events on cityBox and accept only letters
+	   	newSuggestBoxCity.addKeyPressHandler(new KeyPressHandler() {
+		@Override
+		public void onKeyPress(KeyPressEvent event) {
+			 if (Character.isDigit(event.getCharCode())){
+				 event.getNativeEvent().preventDefault();
+		        }
+			
+		}
+	    });
+	    
+	    
+	    
 	    // Listen for mouse events on the Add button.
 	    addFilterButton.addClickHandler(new ClickHandler() {
 	      public void onClick(ClickEvent event) {
