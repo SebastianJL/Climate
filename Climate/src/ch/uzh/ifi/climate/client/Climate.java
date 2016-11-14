@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.core.client.GWT;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyCodes;
@@ -34,6 +35,7 @@ import com.google.gwt.i18n.client.TimeZone;
 public class Climate implements EntryPoint {
 	private VerticalPanel mainPanel = new VerticalPanel();
 	private FlexTable filterFlexTable = new FlexTable();
+	private FlexTable measurementFlexTable = new FlexTable();
 	private HorizontalPanel addPanel = new HorizontalPanel();
 	private SuggestBox newSuggestBoxCity = new SuggestBox();
 	private IntegerBox integerBoxStartYear = new IntegerBox();
@@ -43,7 +45,8 @@ public class Climate implements EntryPoint {
 	private Button addFilterButton = new Button("Add");
 	private ArrayList<String> cities = new ArrayList<String>();
 	private ArrayList<Date> sdates = new ArrayList<Date>(); 
-	private ArrayList<Date> edates = new ArrayList<Date>(); 
+	private ArrayList<Date> edates = new ArrayList<Date>();
+	private QueryServiceAsync querySvc = GWT.create(QueryService.class);
 	
 	
 	@Override
@@ -89,12 +92,12 @@ public class Climate implements EntryPoint {
 		endMonth.addItem("December");
 		
 		// Add styles to elements in the filter list table.
-		filterFlexTable.getRowFormatter().addStyleName(0, "watchFilterHeader");
-		filterFlexTable.addStyleName("watchFilter");
-		filterFlexTable.getCellFormatter().addStyleName(0, 0, "watchFilterColumn");
-		filterFlexTable.getCellFormatter().addStyleName(0, 1, "watchFilterColumn");
-		filterFlexTable.getCellFormatter().addStyleName(0, 2, "watchFilterColumn");
-		filterFlexTable.getCellFormatter().addStyleName(0, 3, "watchFilterColumn");
+		filterFlexTable.addStyleName("filterTable");
+		filterFlexTable.getRowFormatter().addStyleName(0, "filterTableHeader");
+		filterFlexTable.getCellFormatter().addStyleName(0, 0, "filterTableColumn");
+		filterFlexTable.getCellFormatter().addStyleName(0, 1, "filterTableColumn");
+		filterFlexTable.getCellFormatter().addStyleName(0, 2, "filterTableColumn");
+		filterFlexTable.getCellFormatter().addStyleName(0, 3, "filterTableColumn");
 		
 		
 		// Assemble Add filter panel.
@@ -105,10 +108,27 @@ public class Climate implements EntryPoint {
 	    addPanel.add(endMonth);
 	    addPanel.add(addFilterButton);
 	    addPanel.addStyleName("addPanel");
-
+	    
+	    // Create table for mesurement data.
+ 		measurementFlexTable.setText(0, 0, "Date");
+ 		measurementFlexTable.setText(0, 1, "Average Temperature");
+ 		measurementFlexTable.setText(0, 2, "Average Temperature Uncertainty");
+ 		measurementFlexTable.setText(0, 3, "City");
+ 		measurementFlexTable.setText(0, 4, "Country");
+ 		measurementFlexTable.setText(0, 5, "Latitude");
+ 		measurementFlexTable.setText(0, 6, "Longitude");
+ 		
+ 		// Add styles to elements in the measurement table.
+ 		measurementFlexTable.addStyleName("filterTable");
+ 		measurementFlexTable.getRowFormatter().addStyleName(0, "filterTableHeader");
+ 		for (int i=0; i<7; i++) {
+ 			measurementFlexTable.getCellFormatter().addStyleName(0, i, "filterTableColumn");
+ 		}
+ 		
 	    // Assemble Main panel.
 	    mainPanel.add(filterFlexTable);
 	    mainPanel.add(addPanel);
+	    mainPanel.add(measurementFlexTable);
 		
 	    
 		// Associate the Main panel with the HTML host page.
@@ -256,14 +276,26 @@ public class Climate implements EntryPoint {
 	   Button getDataButton = new Button("Go");
 	   getDataButton.addStyleDependentName("launch search");
 	   getDataButton.addClickHandler(new ClickHandler() {
-	       public void onClick(ClickEvent event) 
-	       {
-	   		  //QueryServiceImpl filter = new QueryServiceImpl();
-	    	  //ArrayList<TemperatureMeasurement> filteredData = filter.temperatureMeasurements(city, sdate, edate);
+	       public void onClick(ClickEvent event) {
+	    	   refreshTable();
 	       }
 	      });	        
 	        
 	      filterFlexTable.setWidget(row, 3, removeStockButton);	     
 	      filterFlexTable.setWidget(row, 4, getDataButton);
 	  }
+	
+	
+	/**
+	 * Refreshed the flex Table containing the measurements
+	 * @pre -
+	 * @post -
+	 * @param -
+	 * @return float Temperature in units of Kelvin
+	 */
+	protected void refreshTable() {
+	
+		
+	}
+	
 }

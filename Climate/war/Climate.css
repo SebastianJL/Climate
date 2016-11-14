@@ -9,22 +9,22 @@ body {
     margin: 0;
 }
 
-/* filter list header row */
-.watchFilterHeader {
+/* filter table header row */
+.filterTableHeader {
   background-color: #2062B8
   color: white;
   font-style: italic;
 }
 
-/* filter list flextable */
-.watchFilter {
+/* filter table */
+.filterTable {
   border: 1px solid silver;
   padding: 2px;
   margin-bottom:6px;
 }
 
-/* filter columns */
-.watchFilterColumn {
+/* filter table columns */
+.filterTableColumn {
   text-align: center;
   width:8em;
 }
