@@ -16,6 +16,7 @@ import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -197,7 +198,7 @@ public class Climate implements EntryPoint {
 	   * presses enter in one of the suggestBoxes.
 	   */
 	  private void addFilter() {
-	      final String city = newSuggestBoxCity.getText().trim().substring(0, 1).toUpperCase() + newSuggestBoxCity.getText().trim().substring(1);;	//this includes automatic capitalization
+		  final String city = newSuggestBoxCity.getText().trim().substring(0, 1).toUpperCase() + newSuggestBoxCity.getText().trim().substring(1);;	//this includes automatic capitalization
 	      final int syear = integerBoxStartYear.getValue();
 	      final int eyear = integerBoxEndYear.getValue();
 	      
@@ -272,30 +273,61 @@ public class Climate implements EntryPoint {
 	        }
 	      });
 	      
-	   // Add a button to get data for this filter setup
+       // Add a button to get data for this filter setup
 	   Button getDataButton = new Button("Go");
 	   getDataButton.addStyleDependentName("launch search");
 	   getDataButton.addClickHandler(new ClickHandler() {
-	       public void onClick(ClickEvent event) {
-	    	   refreshTable();
+		   public void onClick(ClickEvent event) {
+//			   refreshTable("Zürich");
 	       }
-	      });	        
+	   });	        
 	        
-	      filterFlexTable.setWidget(row, 3, removeStockButton);	     
-	      filterFlexTable.setWidget(row, 4, getDataButton);
+      filterFlexTable.setWidget(row, 3, removeStockButton);	     
+      filterFlexTable.setWidget(row, 4, getDataButton);
 	  }
 	
 	
 	/**
-	 * Refreshed the flex Table containing the measurements
+	 * Refreshes the flex Table containing the measurements
 	 * @pre -
 	 * @post -
 	 * @param -
 	 * @return float Temperature in units of Kelvin
 	 */
-	protected void refreshTable() {
-	
+	protected void refreshTable(String city, Date sdate, Date edate) {
+		// Initialize the service proxy.
+		if (querySvc == null) {
+			querySvc = GWT.create(QueryService.class);
+		}
+		
+		AsyncCallback<ArrayList<TemperatureMeasurement>> callback = new AsyncCallback<ArrayList<TemperatureMeasurement>>() {
+
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub	
+			}
+
+			@Override
+			public void onSuccess(ArrayList<TemperatureMeasurement> result) {
+				updateTable(result);
+				
+			}
+		};
+		querySvc.temperatureMeasurements(city, sdate, edate, callback);
+	}
+
+	protected void updateTable(ArrayList<TemperatureMeasurement> result) {
+		TemperatureMeasurement tempmesh = result.get(0);	
+		measurementFlexTable.setText(1, 0, "bla");
+//		for (TemperatureMeasurement temp : result) {
+//			updateTable(temp);
+//		}
 		
 	}
+
+//	private void updateTable(TemperatureMeasurement temp) {
+//		measurementFlexTable.
+//		
+//	}
 	
 }
