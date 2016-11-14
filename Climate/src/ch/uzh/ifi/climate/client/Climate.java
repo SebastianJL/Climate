@@ -16,6 +16,7 @@ import com.google.gwt.event.dom.client.KeyDownHandler;
 import com.google.gwt.event.dom.client.KeyPressEvent;
 import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -48,7 +49,7 @@ public class Climate implements EntryPoint {
 	private ArrayList<Date> sdates = new ArrayList<Date>(); 
 	private ArrayList<Date> edates = new ArrayList<Date>();
 	private QueryServiceAsync querySvc = GWT.create(QueryService.class);
-	
+	MultiWordSuggestOracle cityNames = new MultiWordSuggestOracle();
 	
 	@Override
 	public void onModuleLoad() {
@@ -63,9 +64,30 @@ public class Climate implements EntryPoint {
 		filterFlexTable.setCellPadding(6);
 		
 		// Add city names to the suggestBox
-		MultiWordSuggestOracle cityNames = new MultiWordSuggestOracle();
-		cityNames.add("Test");
+		if(querySvc == null)
+		{
+			querySvc = GWT.create(QueryService.class);
+		}
+		
+		AsyncCallback<ArrayList<String>> callback = new AsyncCallback<ArrayList<String>>(){
+
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onSuccess(ArrayList<String> result) {
+
+				addCityNames(result);
+				
+			}
+			
+		};
+		querySvc.getCities(callback);
 		newSuggestBoxCity = new SuggestBox(cityNames);
+		
 		
 		// Add months to Month selection dropdown menu
 		startMonth.setVisibleItemCount(1);
@@ -309,11 +331,22 @@ public class Climate implements EntryPoint {
 	 * @pre -
 	 * @post -
 	 * @param -
-	 * @return float Temperature in units of Kelvin
+	 * @return -
 	 */
 	protected void refreshTable() {
 	
 		
+	}
+
+	/**
+	 * Adds all city names in the given ArrayList to the suggestion box
+	 * @pre -
+	 * @post -
+	 * @param ArrayList<String> names: the list of names to add
+	 * @return -
+	 */
+	protected void addCityNames(ArrayList<String> names){
+		cityNames.addAll(names);
 	}
 	
 }
