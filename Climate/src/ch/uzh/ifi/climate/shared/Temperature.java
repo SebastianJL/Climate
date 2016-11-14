@@ -27,6 +27,9 @@ public class Temperature implements IsSerializable{
 		return new Temperature(temperatureInKelvin);
 	}
 	
+	public float getTemperatureInKelvin(){
+		return this.temperatureInKelvin;
+	}
 	
 	/**
 	 * @pre -
