@@ -93,6 +93,12 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 		return this.filteredData;
 	}
 	
+	/**Filters data dependent on city and country between sdate and edate
+	 * @pre		filteredData != null && data != null && country != null && city != null && sdate != null && edate != null
+	 * @param	defines data for city in country between sdate and edate
+	 * @post	filteredData contains data for a specific city in a specific country between startDate and EndDate
+	 * @return	ArrayList filteredData containing the above defined measurements
+	 */
 	public ArrayList<TemperatureMeasurement> temperatureMeasurementsCityCountry(String country, String city, Date sdate, Date edate){
 		for(TemperatureMeasurement Measurement:this.data){
 			if(	Measurement.getCity().equals(city) &&
@@ -105,6 +111,12 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 		return this.filteredData;
 	}
 	
+	/**Filters data dependent on city and country
+	 * @pre		filteredData != null && data != null && country != null && city != null
+	 * @param	defines data for city in country
+	 * @post	filteredData contains data for a specific city in a specific country
+	 * @return	ArrayList filteredData containing the above defined measurements
+	 */
 	public ArrayList<TemperatureMeasurement> temperatureMeasurementsCityCountry(String country, String city){
 		for(TemperatureMeasurement Measurement:this.data){
 			if(	Measurement.getCity().equals(city) &&
@@ -157,6 +169,13 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 		return countries;
 	}
 	
+	/**Filters data for one city at a specific time
+	 * @pre 	data != null && filteredData != null && cities != null && date != null
+	 * @param	cities contains all cities for which the data should be extracted
+	 * 			date is the date for all the measurements
+	 * @post	the asked data is stored in an ArrayList
+	 * @return	ArrayList sliderData contains all measurements for all cities at a specific time (and nothing else)
+	 */
 	public ArrayList<TemperatureMeasurement> temperatureMeasurementsOfAllCitiesAtDate(ArrayList<String> cities, Date date){
 		sliderData.clear();
 		for(TemperatureMeasurement Measurement:this.data){
@@ -170,6 +189,12 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 		return this.sliderData;
 	}
 	
+	/**Removes all measurements of one specific city
+	 * @pre		data != null && filteredData != null && city != null
+	 * @param	city for which the measurements should be removed
+	 * @post	filteredData does not contain measurements of the city anymore
+	 * @return	ArrayList filteredData not containing measurements of the city anymore
+	 */
 	public ArrayList<TemperatureMeasurement> removeCity(String city){
 		for(TemperatureMeasurement Measurement:this.data){
 			if(Measurement.getCity().equals(city)){
@@ -179,6 +204,12 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 		return this.filteredData;
 	}
 	
+	/**Removes all measurements of one specific county
+	 * @pre		data != null && filteredData != null && country != null
+	 * @param	country for which the measurements should be removed
+	 * @post	filteredData does not contain measurements of the country anymore
+	 * @return	ArrayList filteredData not containing measurements of the country anymore
+	 */
 	public ArrayList<TemperatureMeasurement> removeCountry(String country){
 		for(TemperatureMeasurement Measurement:this.data){
 			if(Measurement.getCountry().equals(country)){
