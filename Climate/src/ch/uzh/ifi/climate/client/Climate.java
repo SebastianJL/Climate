@@ -137,7 +137,7 @@ public class Climate implements EntryPoint {
 	    addPanel.add(addFilterButton);
 	    addPanel.addStyleName("addPanel");
 	    
-	    // Create table for mesurement data.
+	    // Create table for measurement data.
  		measurementFlexTable.setText(0, 0, "Date");
  		measurementFlexTable.setText(0, 1, "Average Temperature");
  		measurementFlexTable.setText(0, 2, "Average Temperature Uncertainty");
@@ -314,6 +314,10 @@ public class Climate implements EntryPoint {
 	   getDataButton.addStyleDependentName("launch search");
 	   getDataButton.addClickHandler(new ClickHandler() {
 	       public void onClick(ClickEvent event) {
+	 	       int getIndex = cities.indexOf(city);
+	 	       String cityGet = cities.get(getIndex);
+	 	       Date sdateGet = sdates.get(getIndex);
+	 	       Date edateGet = edates.get(getIndex);
 	    	   refreshMeasurementTable();
 	       }
 	      });	        
