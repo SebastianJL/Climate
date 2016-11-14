@@ -22,6 +22,7 @@ import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.IntegerBox;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
+import com.google.gwt.user.client.ui.MultiWordSuggestOracle;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SuggestBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -51,7 +52,6 @@ public class Climate implements EntryPoint {
 	
 	@Override
 	public void onModuleLoad() {
-		
 
 		// Create table for filters.
 		filterFlexTable.setText(0, 0, "City");
@@ -61,6 +61,11 @@ public class Climate implements EntryPoint {
 		
 		// Add styles to elements in the filter table.
 		filterFlexTable.setCellPadding(6);
+		
+		// Add city names to the suggestBox
+		MultiWordSuggestOracle cityNames = new MultiWordSuggestOracle();
+		cityNames.add("Test");
+		newSuggestBoxCity = new SuggestBox(cityNames);
 		
 		// Add months to Month selection dropdown menu
 		startMonth.setVisibleItemCount(1);
