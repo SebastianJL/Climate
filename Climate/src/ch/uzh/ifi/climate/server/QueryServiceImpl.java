@@ -10,7 +10,7 @@ import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
 
 public class QueryServiceImpl extends RemoteServiceServlet implements QueryService {
 	
-	private String CSVFileName = "/Climate/src/ch/uzh/ifi/climate/data/GlobalLandTemperaturesByMajorCity_v1.csv";
+	private String CSVFileName = "GlobalLandTemperaturesByMajorCity_v1.csv";
 	private CSVParser parser = new CSVParser();
 	private ArrayList<TemperatureMeasurement> data = parser.parseCSV(CSVFileName);
 	private ArrayList<TemperatureMeasurement> filteredData = new ArrayList<TemperatureMeasurement>();

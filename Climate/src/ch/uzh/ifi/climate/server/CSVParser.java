@@ -1,6 +1,7 @@
 package ch.uzh.ifi.climate.server;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -30,6 +31,8 @@ public class CSVParser{
 	public ArrayList<TemperatureMeasurement> parseCSV(String csvFileName){
 		
 		//initialization
+		/*File file = new File(csvFileName);
+		file.setReadable(true);*/
 		BufferedReader br = null;
 		String line = "";
 		String cvsSplitBy = ",";
