@@ -50,6 +50,7 @@ public class Climate implements EntryPoint {
 	private ArrayList<Date> edates = new ArrayList<Date>();
 	private QueryServiceAsync querySvc = GWT.create(QueryService.class);
 	MultiWordSuggestOracle cityNames = new MultiWordSuggestOracle();
+	private ArrayList<TemperatureMeasurement> TemperatureMeasurements = new ArrayList<TemperatureMeasurement>();
 	
 	@Override
 	public void onModuleLoad() {
@@ -313,7 +314,7 @@ public class Climate implements EntryPoint {
 	   getDataButton.addStyleDependentName("launch search");
 	   getDataButton.addClickHandler(new ClickHandler() {
 	       public void onClick(ClickEvent event) {
-	    	   refreshTable();
+	    	   refreshMeasurementTable();
 	       }
 	      });	        
 	        
@@ -340,11 +341,26 @@ public class Climate implements EntryPoint {
 
 			@Override
 			public void onSuccess(ArrayList<TemperatureMeasurement> result) {
-				// TODO Auto-generated method stub
+				updateMeasurementTable(result);
 				
 			}
 			
 		};
+		
+	}
+	
+	
+	protected void updateMeasurementTable(ArrayList<TemperatureMeasurement> temperatureMeasurements) {
+		for (TemperatureMeasurement temperatureMeasurement : temperatureMeasurements) {
+			updateMeasurementTable(temperatureMeasurement);
+		}
+		
+	}
+	
+	
+
+	private void updateMeasurementTable(TemperatureMeasurement temperatureMeasurement) {
+		// TODO Auto-generated method stub
 		
 	}
 
