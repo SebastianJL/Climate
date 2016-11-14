@@ -268,11 +268,7 @@ public class Climate implements EntryPoint {
 	      
 	      // Test whether filter inputs are incorrect
 	       if (eyear < syear || (eyear == syear && startMonth.getSelectedIndex() > endMonth.getSelectedIndex())) {
-	        	Window.alert("The start time has to be earlier than the end time.");
-	        	return;
-	        }
-	       if (eyear > 2016 || syear > 2016) {	//TODO change this so it automatically gets the current year
-	        	Window.alert("The dates must not be in the future.");
+	        	Window.alert("Start date needs to be before end date");
 	        	return;
 	        }
 
