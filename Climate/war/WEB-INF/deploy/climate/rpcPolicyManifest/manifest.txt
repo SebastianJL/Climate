@@ -1,0 +1,3 @@
+# Module climate
+# RPC service class, partial path of RPC policy file
+ch.uzh.ifi.climate.client.QueryService, C383ED4BACC305A19902674A039B19D5.gwt.rpc
