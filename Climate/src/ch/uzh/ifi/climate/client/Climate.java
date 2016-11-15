@@ -335,8 +335,11 @@ public class Climate implements EntryPoint {
 	 * @return -
 	 */
 	protected void refreshMeasurementTable() {
+		if (querySvc == null) {
+	    	querySvc = GWT.create(QueryService.class);
+	    }
 		AsyncCallback<ArrayList<TemperatureMeasurement>> callback = new AsyncCallback<ArrayList<TemperatureMeasurement>>() {
-
+			
 			@Override
 			public void onFailure(Throwable caught) {
 				// TODO Auto-generated method stub
@@ -349,8 +352,11 @@ public class Climate implements EntryPoint {
 				
 			}
 			
-		};
-		
+		};	 	       
+	    String city = cities.get(cities.size()-1);
+	    Date sdate = sdates.get(sdates.size()-1);
+	    Date edate = edates.get(edates.size()-1);
+		querySvc.temperatureMeasurements(city, sdate, edate, callback);
 	}
 	
 	
@@ -364,8 +370,24 @@ public class Climate implements EntryPoint {
 	
 
 	private void updateMeasurementTable(TemperatureMeasurement temperatureMeasurement) {
-		// TODO Auto-generated method stub
+		final int measurementNumberOfColumns = 7;
+		int row = measurementFlexTable.getRowCount();
+		Float avgTemperature = new Float(temperatureMeasurement.getTemperature().getTemperatureInKelvin());
+		Float uncertainty = new Float(temperatureMeasurement.getUncertainty().getTemperatureInKelvin());
+		Float latitude = new Float(temperatureMeasurement.getCoordinates().getLatitude());
+		Float longitude = new Float(temperatureMeasurement.getCoordinates().getLongitude());
 		
+		measurementFlexTable.setText(row, 0, DateTimeFormat.getFormat("dd/MM/yyyy").format(temperatureMeasurement.getDate()));
+	    measurementFlexTable.setText(row, 1, avgTemperature.toString());
+	    measurementFlexTable.setText(row, 2, uncertainty.toString());
+	    measurementFlexTable.setText(row, 3, temperatureMeasurement.getCity());
+	    measurementFlexTable.setText(row, 4, temperatureMeasurement.getCountry());
+		measurementFlexTable.setText(row, 5, latitude.toString());
+		measurementFlexTable.setText(row, 6, longitude.toString());
+		
+		for(int i = 0; i < measurementNumberOfColumns; i++){
+			measurementFlexTable.getCellFormatter().addStyleName(row, i, "watchFilterColumn");
+		}
 	}
 
 	/**

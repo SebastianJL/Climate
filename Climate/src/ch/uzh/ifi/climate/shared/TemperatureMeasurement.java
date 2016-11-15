@@ -1,9 +1,7 @@
 package ch.uzh.ifi.climate.shared;
 
+import java.io.Serializable;
 import java.util.Date;
-
-import com.google.gwt.user.client.rpc.IsSerializable;
-
 
 /**
  * This class manages a temperature measurement (temperature+uncertainty) together with its
@@ -15,7 +13,7 @@ import com.google.gwt.user.client.rpc.IsSerializable;
  * 				This class manages a temperature measurement (temperature+uncertainty)
  * 				together with its metadata (date, location, etc).
  */
-public class TemperatureMeasurement implements IsSerializable{
+public class TemperatureMeasurement implements Serializable{
 	private Temperature temperature;
 	private Temperature uncertainty;
 	private Date date;

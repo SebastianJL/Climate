@@ -8,6 +8,16 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import ch.uzh.ifi.climate.client.QueryService;
 import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
 
+/**
+ * This class manages the filtering of the data.
+ * @author		Pascal Siemon
+ * @history 	2016-08-11 JL First version
+ * @version 	2016-08-11 JL 0.1.0
+ * @responsibilities
+ * 				Splitting the data in useful subsets which have a size that can be
+ * 				sent to the client in a acceptable time.
+ */
+
 public class QueryServiceImpl extends RemoteServiceServlet implements QueryService {
 	
 	private String CSVFileName = "GlobalLandTemperaturesByMajorCity_v1.csv";
