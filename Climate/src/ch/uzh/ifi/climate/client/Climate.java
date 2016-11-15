@@ -318,7 +318,7 @@ public class Climate implements EntryPoint {
 	 	       String cityGet = cities.get(getIndex);
 	 	       Date sdateGet = sdates.get(getIndex);
 	 	       Date edateGet = edates.get(getIndex);
-	    	   refreshMeasurementTable();
+	    	   refreshMeasurementTable(cityGet, sdateGet, edateGet);
 	       }
 	      });	        
 	        
@@ -334,9 +334,9 @@ public class Climate implements EntryPoint {
 	 * @param -
 	 * @return -
 	 */
-	protected void refreshMeasurementTable() {
+	protected void refreshMeasurementTable(String city, Date sdate, Date edate) {
 		AsyncCallback<ArrayList<TemperatureMeasurement>> callback = new AsyncCallback<ArrayList<TemperatureMeasurement>>() {
-
+			
 			@Override
 			public void onFailure(Throwable caught) {
 				// TODO Auto-generated method stub
@@ -350,7 +350,7 @@ public class Climate implements EntryPoint {
 			}
 			
 		};
-		
+		querySvc.temperatureMeasurements(city, sdate, edate, callback);
 	}
 	
 	
@@ -364,8 +364,24 @@ public class Climate implements EntryPoint {
 	
 
 	private void updateMeasurementTable(TemperatureMeasurement temperatureMeasurement) {
-		// TODO Auto-generated method stub
+		final int measurementNumberOfColumns = 7;
+		int row = measurementFlexTable.getRowCount();
+		/*Float avgTemperature = new Float(temperatureMeasurement.getTemperature().getTemperatureInKelvin());
+		Float uncertainty = new Float(temperatureMeasurement.getUncertainty().getTemperatureInKelvin());
+		Float latitude = new Float(temperatureMeasurement.getCoordinates().getLatitude());
+		Float longitude = new Float(temperatureMeasurement.getCoordinates().getLongitude());
 		
+		measurementFlexTable.setText(row, 0, DateTimeFormat.getFormat("dd/MM/yyyy").format(temperatureMeasurement.getDate()));
+	    measurementFlexTable.setText(row, 1, avgTemperature.toString());
+	    measurementFlexTable.setText(row, 2, uncertainty.toString());*/
+	    measurementFlexTable.setText(row, 3, temperatureMeasurement.getCity());
+	    measurementFlexTable.setText(row, 4, temperatureMeasurement.getCountry());
+		/*measurementFlexTable.setText(row, 5, latitude.toString());
+		measurementFlexTable.setText(row, 6, longitude.toString());*/
+		
+		for(int i = 0; i < measurementNumberOfColumns; i++){
+			measurementFlexTable.getCellFormatter().addStyleName(row, i, "watchFilterColumn");
+		}
 	}
 
 	/**
