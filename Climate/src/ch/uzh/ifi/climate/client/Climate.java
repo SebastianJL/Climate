@@ -282,9 +282,11 @@ public class Climate implements EntryPoint {
 	      
 	      // Add the filter to the table.
 	      int row = filterFlexTable.getRowCount();
-	      cities.add(city);
-	      sdates.add(sdate);
-	      edates.add(edate);
+	      if(!cities.contains(city)){
+	    	  cities.add(city);
+		      sdates.add(sdate);
+		      edates.add(edate);
+	      }
 	      filterFlexTable.setText(row, 0, city);
 	      filterFlexTable.setText(row, 1,DateTimeFormat.getFormat("dd/MM/yyyy").format(sdate));
 	      filterFlexTable.setText(row, 2,DateTimeFormat.getFormat("dd/MM/yyyy").format(edate));
@@ -302,6 +304,11 @@ public class Climate implements EntryPoint {
 	      removeStockButton.addClickHandler(new ClickHandler() {
 	        public void onClick(ClickEvent event) {
 	          int removedIndex = cities.indexOf(city);
+	 	      int measurementRowCount = measurementFlexTable.getRowCount()-1;
+		 	  for(int i = 1; i < measurementRowCount; ){
+		 		  measurementFlexTable.removeRow(i);
+		      }
+	          removeFromMeasurementTable(cities.get(removedIndex));
 	          cities.remove(removedIndex);
 	          sdates.remove(removedIndex);
 	          edates.remove(removedIndex);
@@ -315,10 +322,14 @@ public class Climate implements EntryPoint {
 	   getDataButton.addClickHandler(new ClickHandler() {
 	       public void onClick(ClickEvent event) {
 	 	       int getIndex = cities.indexOf(city);
+	 	       int measurementRowCount = measurementFlexTable.getRowCount()-1;
+		 	   for(int i = 1; i < measurementRowCount; ){
+		       	  measurementFlexTable.removeRow(i);
+		       }
 	 	       String cityGet = cities.get(getIndex);
 	 	       Date sdateGet = sdates.get(getIndex);
 	 	       Date edateGet = edates.get(getIndex);
-	    	   refreshMeasurementTable();
+	    	   refreshMeasurementTable(cityGet, sdateGet, edateGet);
 	       }
 	      });	        
 	        
@@ -334,7 +345,7 @@ public class Climate implements EntryPoint {
 	 * @param -
 	 * @return -
 	 */
-	protected void refreshMeasurementTable() {
+	protected void refreshMeasurementTable(String city, Date sdate, Date edate) {
 		if (querySvc == null) {
 	    	querySvc = GWT.create(QueryService.class);
 	    }
@@ -353,9 +364,6 @@ public class Climate implements EntryPoint {
 			}
 			
 		};	 	       
-	    String city = cities.get(cities.size()-1);
-	    Date sdate = sdates.get(sdates.size()-1);
-	    Date edate = edates.get(edates.size()-1);
 		querySvc.temperatureMeasurements(city, sdate, edate, callback);
 	}
 	
@@ -364,10 +372,7 @@ public class Climate implements EntryPoint {
 		for (TemperatureMeasurement temperatureMeasurement : temperatureMeasurements) {
 			updateMeasurementTable(temperatureMeasurement);
 		}
-		
 	}
-	
-	
 
 	private void updateMeasurementTable(TemperatureMeasurement temperatureMeasurement) {
 		final int measurementNumberOfColumns = 7;
@@ -388,6 +393,26 @@ public class Climate implements EntryPoint {
 		for(int i = 0; i < measurementNumberOfColumns; i++){
 			measurementFlexTable.getCellFormatter().addStyleName(row, i, "watchFilterColumn");
 		}
+	}
+	
+	protected void removeFromMeasurementTable(String city){
+		if (querySvc == null) {
+	    	querySvc = GWT.create(QueryService.class);
+	    }
+		AsyncCallback<ArrayList<TemperatureMeasurement>> callback = new AsyncCallback<ArrayList<TemperatureMeasurement>>() {
+			
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onSuccess(ArrayList<TemperatureMeasurement> result) {
+				updateMeasurementTable(result);
+			}
+		};
+		querySvc.removeCity(city, callback);
 	}
 
 	/**

@@ -11,8 +11,12 @@ import java.io.Serializable;
  * 				This class manages a single temperature value and its transformation between units.
  */
 public class Temperature implements Serializable{
+	
 	private float temperatureInKelvin;
 	
+	public Temperature(){
+		
+	}
 	
 	private Temperature(float temperatureInKelvin) {
 		this.temperatureInKelvin = temperatureInKelvin;
