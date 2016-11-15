@@ -14,6 +14,16 @@ import ch.uzh.ifi.climate.shared.Coordinates;
 import ch.uzh.ifi.climate.shared.Temperature;
 import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
 
+/**
+ * This class handles the parsing of the CSV file.
+ * @author		Pascal Siemon
+ * @history 	2016-08-11 JL First version
+ * @version 	2016-08-11 JL 0.1.0
+ * @responsibilities
+ * 				Read the CSV file and create objects for every measurement which have values
+ * 				that can be properly used afterwards.
+ */
+
 public class CSVParser{
 	
 	private ArrayList<TemperatureMeasurement> Data = new ArrayList<TemperatureMeasurement>();
@@ -31,8 +41,6 @@ public class CSVParser{
 	public ArrayList<TemperatureMeasurement> parseCSV(String csvFileName){
 		
 		//initialization
-		/*File file = new File(csvFileName);
-		file.setReadable(true);*/
 		BufferedReader br = null;
 		String line = "";
 		String cvsSplitBy = ",";
@@ -48,26 +56,19 @@ public class CSVParser{
 				if(Measurement[0].equals("dt") != true){
 					SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 			    	Date date =  df.parse(Measurement[0]);
-					
 					float averageTemperature = Float.parseFloat(Measurement[1]);
-					Temperature temperature = Temperature.createFromCelsius(averageTemperature);
-					
 					float uncertaintyTemp = Float.parseFloat(Measurement[2]);
-					Temperature uncertainty = Temperature.createFromCelsius(uncertaintyTemp);
-					
 					String city = Measurement[3];
-					
 					String country = Measurement[4];
+					Temperature temperature = Temperature.createFromCelsius(averageTemperature);
+					Temperature uncertainty = Temperature.createFromCelsius(uncertaintyTemp);
 					
 					//unifies coordinates (south = -north and west = -east)
 					float latitude = Float.parseFloat(Measurement[5].substring(0, Measurement[5].length()-1));
 					float longitude = Float.parseFloat(Measurement[6].substring(0, Measurement[6].length()-1));
-					if(Measurement[5].charAt(Measurement[5].length()-1) == 'S'){
-						latitude = -latitude;
-					}
-					if(Measurement[6].charAt(Measurement[6].length()-1) == 'W'){
-						longitude = -longitude;
-					}
+					if(Measurement[5].charAt(Measurement[5].length()-1) == 'S') latitude = -latitude;
+					if(Measurement[6].charAt(Measurement[6].length()-1) == 'W') longitude = -longitude;
+					
 					Coordinates coordinates = new Coordinates(latitude, longitude);
 					
 					//creates measurements and adds them to the ArrayList which will be returned at the end

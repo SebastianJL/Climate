@@ -13,11 +13,16 @@ import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
 @RemoteServiceRelativePath("query")
 public interface QueryService extends RemoteService {
 	
-	public ArrayList<TemperatureMeasurement> temperatureMeasurements(String city, Date sdate, Date edate);
-	public ArrayList<TemperatureMeasurement> temperatureMeasurements(String city);
-	public ArrayList<TemperatureMeasurement> temperatureMeasurementsCountry(String country, Date sdate, Date edate);
-	public ArrayList<TemperatureMeasurement> temperatureMeasurementsCountry(String country);
-	public ArrayList<TemperatureMeasurement> clearMeasurements();
-	public ArrayList<String> getCities();
-	public ArrayList<String> getCountries();
+	ArrayList<TemperatureMeasurement> temperatureMeasurements(String city, Date sdate, Date edate);
+	ArrayList<TemperatureMeasurement> temperatureMeasurements(String city);
+	ArrayList<TemperatureMeasurement> temperatureMeasurementsCountry(String country, Date sdate, Date edate);
+	ArrayList<TemperatureMeasurement> temperatureMeasurementsCountry(String country);
+	ArrayList<TemperatureMeasurement> temperatureMeasurementsCityCountry(String country, String city);
+	ArrayList<TemperatureMeasurement> temperatureMeasurementsCityCountry(String country, String city, Date sdate, Date edate);
+	ArrayList<TemperatureMeasurement> clearMeasurements();
+	ArrayList<String> getCities();
+	ArrayList<String> getCountries();
+	ArrayList<TemperatureMeasurement> temperatureMeasurementsOfAllCitiesAtDate(ArrayList<String> cities, Date date);
+	ArrayList<TemperatureMeasurement> removeCity(String city);
+	ArrayList<TemperatureMeasurement> removeCountry(String country);
 }
