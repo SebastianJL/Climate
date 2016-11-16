@@ -61,7 +61,7 @@ public class CSVParser{
 					String city = Measurement[3];
 					String country = Measurement[4];
 					Temperature temperature = Temperature.createFromCelsius(averageTemperature);
-					Temperature uncertainty = Temperature.createFromCelsius(uncertaintyTemp);
+					Temperature uncertainty = Temperature.createFromKelvin(uncertaintyTemp);
 					
 					//unifies coordinates (south = -north and west = -east)
 					float latitude = Float.parseFloat(Measurement[5].substring(0, Measurement[5].length()-1));

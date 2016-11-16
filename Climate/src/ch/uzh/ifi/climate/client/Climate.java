@@ -36,7 +36,8 @@ import com.google.gwt.i18n.client.TimeZone;
 
 public class Climate implements EntryPoint {
 	private VerticalPanel mainPanel = new VerticalPanel();
-	private FlexTable filterFlexTable = new FlexTable();
+	private FilterTable filterTable = new FilterTable();
+	//private FlexTable filterTable.getFilterTable() = new FlexTable();
 	private FlexTable measurementFlexTable = new FlexTable();
 	private HorizontalPanel addPanel = new HorizontalPanel();
 	private SuggestBox newSuggestBoxCity = new SuggestBox();
@@ -54,15 +55,8 @@ public class Climate implements EntryPoint {
 	
 	@Override
 	public void onModuleLoad() {
-
-		// Create table for filters.
-		filterFlexTable.setText(0, 0, "City");
-		filterFlexTable.setText(0, 1, "Start Date");
-		filterFlexTable.setText(0, 2, "End Date");
-		filterFlexTable.setText(0, 3, "Remove");
 		
-		// Add styles to elements in the filter table.
-		filterFlexTable.setCellPadding(6);
+		filterTable.setUpFilterTable();
 		
 		// Add city names to the suggestBox
 		if(querySvc == null)
@@ -117,16 +111,7 @@ public class Climate implements EntryPoint {
 		endMonth.addItem("September");
 		endMonth.addItem("October");
 		endMonth.addItem("November");	
-		endMonth.addItem("December");
-		
-		// Add styles to elements in the filter list table.
-		filterFlexTable.addStyleName("filterTable");
-		filterFlexTable.getRowFormatter().addStyleName(0, "filterTableHeader");
-		filterFlexTable.getCellFormatter().addStyleName(0, 0, "filterTableColumn");
-		filterFlexTable.getCellFormatter().addStyleName(0, 1, "filterTableColumn");
-		filterFlexTable.getCellFormatter().addStyleName(0, 2, "filterTableColumn");
-		filterFlexTable.getCellFormatter().addStyleName(0, 3, "filterTableColumn");
-		
+		endMonth.addItem("December");		
 		
 		// Assemble Add filter panel.
 	    addPanel.add(newSuggestBoxCity);
@@ -154,7 +139,7 @@ public class Climate implements EntryPoint {
  		}
  		
 	    // Assemble Main panel.
-	    mainPanel.add(filterFlexTable);
+	    mainPanel.add(filterTable.getFilterTable());
 	    mainPanel.add(addPanel);
 	    mainPanel.add(measurementFlexTable);
 		
@@ -249,14 +234,6 @@ public class Climate implements EntryPoint {
 	      String eD = endMonth.getSelectedIndex()+1 + "/1/" + eyear;
 	      final Date edate = new Date(eD);
 	      
-	      
-	      /*	This solution stops the add button from working, reason unknown
-	      String d = "10/10/2011"; 
-	      DateTimeFormat fmt = DateTimeFormat.getFormat("dd,MM,yyyy"); 
-	      final Date sdate = fmt.parse(d);
-	      */
-
-	      
 	      newSuggestBoxCity.setFocus(true);
 
 	      // Don't add the filter if it's already in the table.
@@ -280,28 +257,30 @@ public class Climate implements EntryPoint {
 	      endMonth.setSelectedIndex(0);
 	      
 	      
-	      // Add the filter to the table.
-	      int row = filterFlexTable.getRowCount();
 	      if(!cities.contains(city)){
 	    	  cities.add(city);
 		      sdates.add(sdate);
 		      edates.add(edate);
 	      }
-	      filterFlexTable.setText(row, 0, city);
-	      filterFlexTable.setText(row, 1,DateTimeFormat.getFormat("dd/MM/yyyy").format(sdate));
-	      filterFlexTable.setText(row, 2,DateTimeFormat.getFormat("dd/MM/yyyy").format(edate));
-	      filterFlexTable.setWidget(row, 3, new Label());
+	      
+	      // Add the filter to the table.
+	      int row = filterTable.getFilterTable().getRowCount();
+	      
+	      filterTable.getFilterTable().setText(row, 0, city);
+	      filterTable.getFilterTable().setText(row, 1,DateTimeFormat.getFormat("dd/MM/yyyy").format(sdate));
+	      filterTable.getFilterTable().setText(row, 2,DateTimeFormat.getFormat("dd/MM/yyyy").format(edate));
+	      filterTable.getFilterTable().setWidget(row, 3, new Label());
 	      
 
-	      filterFlexTable.getCellFormatter().addStyleName(row, 0, "watchFilterColumn");
-	      filterFlexTable.getCellFormatter().addStyleName(row, 1, "watchFilterColumn");
-	      filterFlexTable.getCellFormatter().addStyleName(row, 2, "watchFilterColumn");
-	      filterFlexTable.getCellFormatter().addStyleName(row, 3, "watchFilterColumn");
+	      filterTable.getFilterTable().getCellFormatter().addStyleName(row, 0, "filterTableColumn");
+	      filterTable.getFilterTable().getCellFormatter().addStyleName(row, 1, "filterTableColumn");
+	      filterTable.getFilterTable().getCellFormatter().addStyleName(row, 2, "filterTableColumn");
+	      filterTable.getFilterTable().getCellFormatter().addStyleName(row, 3, "filterTableColumn");
 	      
 	      // Add a button to remove this filter from the table.
-	      Button removeStockButton = new Button("x");
-	      removeStockButton.addStyleDependentName("remove");
-	      removeStockButton.addClickHandler(new ClickHandler() {
+	      Button removeFilterButton = new Button("x");
+	      removeFilterButton.addStyleDependentName("remove");
+	      removeFilterButton.addClickHandler(new ClickHandler() {
 	        public void onClick(ClickEvent event) {
 	          int removedIndex = cities.indexOf(city);
 	 	      int measurementRowCount = measurementFlexTable.getRowCount()-1;
@@ -312,7 +291,7 @@ public class Climate implements EntryPoint {
 	          cities.remove(removedIndex);
 	          sdates.remove(removedIndex);
 	          edates.remove(removedIndex);
-	          filterFlexTable.removeRow(removedIndex + 1);
+	          filterTable.getFilterTable().removeRow(removedIndex + 1);
 	        }
 	      });
 	      
@@ -333,8 +312,8 @@ public class Climate implements EntryPoint {
 	       }
 	      });	        
 	        
-	      filterFlexTable.setWidget(row, 3, removeStockButton);	     
-	      filterFlexTable.setWidget(row, 4, getDataButton);
+	      filterTable.getFilterTable().setWidget(row, 3, removeFilterButton);	     
+	      filterTable.getFilterTable().setWidget(row, 4, getDataButton);
 	  }
 	
 	
@@ -377,10 +356,11 @@ public class Climate implements EntryPoint {
 	private void updateMeasurementTable(TemperatureMeasurement temperatureMeasurement) {
 		final int measurementNumberOfColumns = 7;
 		int row = measurementFlexTable.getRowCount();
-		Float avgTemperature = new Float(temperatureMeasurement.getTemperature().getTemperatureInKelvin());
-		Float uncertainty = new Float(temperatureMeasurement.getUncertainty().getTemperatureInKelvin());
-		Float latitude = new Float(temperatureMeasurement.getCoordinates().getLatitude());
-		Float longitude = new Float(temperatureMeasurement.getCoordinates().getLongitude());
+		
+		Float avgTemperature = new Float(Math.round(temperatureMeasurement.getTemperature().celsius()*100)/100f);
+		Float uncertainty = new Float(Math.round(temperatureMeasurement.getUncertainty().getTemperatureInKelvin()*100)/100f);
+		Float latitude = new Float(Math.round(temperatureMeasurement.getCoordinates().getLatitude()*100)/100f);
+		Float longitude = new Float(Math.round(temperatureMeasurement.getCoordinates().getLongitude()*100)/100f);
 		
 		measurementFlexTable.setText(row, 0, DateTimeFormat.getFormat("dd/MM/yyyy").format(temperatureMeasurement.getDate()));
 	    measurementFlexTable.setText(row, 1, avgTemperature.toString());
@@ -391,7 +371,7 @@ public class Climate implements EntryPoint {
 		measurementFlexTable.setText(row, 6, longitude.toString());
 		
 		for(int i = 0; i < measurementNumberOfColumns; i++){
-			measurementFlexTable.getCellFormatter().addStyleName(row, i, "watchFilterColumn");
+			measurementFlexTable.getCellFormatter().addStyleName(row, i, "filterTableColumn");
 		}
 	}
 	
