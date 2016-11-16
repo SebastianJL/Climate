@@ -263,24 +263,10 @@ public class Climate implements EntryPoint {
 		      edates.add(edate);
 	      }
 	      
-	      // Add the filter to the table.
-	      int row = filterTable.getFilterTable().getRowCount();
-	      
-	      filterTable.getFilterTable().setText(row, 0, city);
-	      filterTable.getFilterTable().setText(row, 1,DateTimeFormat.getFormat("dd/MM/yyyy").format(sdate));
-	      filterTable.getFilterTable().setText(row, 2,DateTimeFormat.getFormat("dd/MM/yyyy").format(edate));
-	      filterTable.getFilterTable().setWidget(row, 3, new Label());
-	      
-
-	      filterTable.getFilterTable().getCellFormatter().addStyleName(row, 0, "filterTableColumn");
-	      filterTable.getFilterTable().getCellFormatter().addStyleName(row, 1, "filterTableColumn");
-	      filterTable.getFilterTable().getCellFormatter().addStyleName(row, 2, "filterTableColumn");
-	      filterTable.getFilterTable().getCellFormatter().addStyleName(row, 3, "filterTableColumn");
+	      filterTable.addFilterToTable(city, sdate, edate);
 	      
 	      // Add a button to remove this filter from the table.
-	      Button removeFilterButton = new Button("x");
-	      removeFilterButton.addStyleDependentName("remove");
-	      removeFilterButton.addClickHandler(new ClickHandler() {
+	      filterTable.getCurrentRow(cities.indexOf(city)).getRemoveButton().addClickHandler(new ClickHandler() {
 	        public void onClick(ClickEvent event) {
 	          int removedIndex = cities.indexOf(city);
 	 	      int measurementRowCount = measurementFlexTable.getRowCount()-1;
@@ -296,9 +282,7 @@ public class Climate implements EntryPoint {
 	      });
 	      
 	   // Add a button to get data for this filter setup
-	   Button getDataButton = new Button("Go");
-	   getDataButton.addStyleDependentName("launch search");
-	   getDataButton.addClickHandler(new ClickHandler() {
+	   filterTable.getCurrentRow(cities.indexOf(city)).getGetDataButton().addClickHandler(new ClickHandler() {
 	       public void onClick(ClickEvent event) {
 	 	       int getIndex = cities.indexOf(city);
 	 	       int measurementRowCount = measurementFlexTable.getRowCount()-1;
@@ -311,9 +295,6 @@ public class Climate implements EntryPoint {
 	    	   refreshMeasurementTable(cityGet, sdateGet, edateGet);
 	       }
 	      });	        
-	        
-	      filterTable.getFilterTable().setWidget(row, 3, removeFilterButton);	     
-	      filterTable.getFilterTable().setWidget(row, 4, getDataButton);
 	  }
 	
 	
