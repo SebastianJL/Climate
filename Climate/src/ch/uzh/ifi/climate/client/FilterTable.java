@@ -6,7 +6,6 @@ import java.util.Date;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.Widget;
 
 public class FilterTable {
 	private FlexTable filterFlexTable = new FlexTable();
@@ -56,6 +55,14 @@ public class FilterTable {
 	      filterFlexTable.getCellFormatter().addStyleName(row, 3, "filterTableColumn");
 	      currentFilterRow.getRemoveButton().addStyleDependentName("remove");
 		  currentFilterRow.getGetDataButton().addStyleDependentName("launch search");	      
+	}
+	
+	public void removeFilterFromTable(String city){
+		for(FilterRow filterRow : filterRows){
+			if(filterRow.getCity().equals(city)){
+				filterRows.remove(filterRow);
+			}
+		}
 	}
 	
 	public FilterRow getCurrentRow(int index){
