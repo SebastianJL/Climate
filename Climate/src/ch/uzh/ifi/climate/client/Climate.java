@@ -238,26 +238,14 @@ public class Climate implements EntryPoint {
 		// Add a button to remove this filter from the table.
 		filterTable.getCurrentRow(cities.indexOf(city)).getRemoveButton().addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
-	    		int removedIndex = cities.indexOf(city);
-	    		measurementTable.clearMeasurementTable();
-	    		removeFromMeasurementTable(cities.get(removedIndex));
-	    		filterTable.removeFilterFromTable(cities.get(removedIndex));
-	    		cities.remove(removedIndex);
-	    		sdates.remove(removedIndex);
-	    		edates.remove(removedIndex);
-	    		filterTable.getFilterTable().removeRow(removedIndex + 1);
+				removeData(cities.get(cities.indexOf(city)));
 			}
 		});
 	      
 	    // Add a button to get data for this filter setup
 	    filterTable.getCurrentRow(cities.indexOf(city)).getGetDataButton().addClickHandler(new ClickHandler() {
 	    	public void onClick(ClickEvent event) {
-	    		int getIndex = cities.indexOf(city);
-	    		measurementTable.clearMeasurementTable();
-	    		String cityGet = cities.get(getIndex);
-	    		Date sdateGet = sdates.get(getIndex);
-	    		Date edateGet = edates.get(getIndex);
-	    		refreshMeasurementTable(cityGet, sdateGet, edateGet);
+	    		addData(city, sdate, edate);
 	    	}
 	    });	        
 	}
@@ -327,4 +315,24 @@ public class Climate implements EntryPoint {
 	protected void addCityNames(ArrayList<String> names){
 		cityNames.addAll(names);
 	}	
+	
+	public void addData(String city, Date sdate, Date edate){
+		int getIndex = cities.indexOf(city);
+		String cityGet = cities.get(getIndex);
+		Date sdateGet = sdates.get(getIndex);
+		Date edateGet = edates.get(getIndex);
+		refreshMeasurementTable(cityGet, sdateGet, edateGet);
+		measurementTable.clearMeasurementTable();
+	}
+	
+	public void removeData(String city){
+		int removedIndex = cities.indexOf(city);
+		removeFromMeasurementTable(city);
+		filterTable.removeFilterFromTable(city);
+		cities.remove(removedIndex);
+		sdates.remove(removedIndex);
+		edates.remove(removedIndex);
+		filterTable.getFilterTable().removeRow(removedIndex + 1);
+		measurementTable.clearMeasurementTable();
+	}
 }
