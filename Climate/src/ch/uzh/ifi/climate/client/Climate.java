@@ -45,9 +45,6 @@ public class Climate implements EntryPoint {
 	private ListBox startMonth = new ListBox();
 	private ListBox endMonth = new ListBox();
 	private Button addFilterButton = new Button("Add");
-	private ArrayList<String> cities = new ArrayList<String>();
-	private ArrayList<Date> sdates = new ArrayList<Date>(); 
-	private ArrayList<Date> edates = new ArrayList<Date>();
 	private QueryServiceAsync querySvc = GWT.create(QueryService.class);
 	MultiWordSuggestOracle cityNames = new MultiWordSuggestOracle();
 
@@ -208,7 +205,7 @@ public class Climate implements EntryPoint {
 		newSuggestBoxCity.setFocus(true);
 
 		// Don't add the filter if it's already in the table.
-		for(String s : cities){
+		for(String s : filterTable.getCurrentCities()){
 			if (s.toUpperCase().equals(city.toUpperCase())){
 				Window.alert("This city is already selected.");
 				return; 
@@ -226,25 +223,23 @@ public class Climate implements EntryPoint {
 		integerBoxEndYear.setValue(null);
 		startMonth.setSelectedIndex(0);
 		endMonth.setSelectedIndex(0);
-	      
-		if(!cities.contains(city)){
-			cities.add(city);
-			sdates.add(sdate);
-			edates.add(edate);
+	    
+		if(!filterTable.getCurrentCities().contains(city)){
+			filterTable.addFilterToTable(city, sdate, edate);
 		}
-	      
-		filterTable.addFilterToTable(city, sdate, edate);
-	      
+ 
 		// Add a button to remove this filter from the table.
-		filterTable.getCurrentRow(cities.indexOf(city)).getRemoveButton().addClickHandler(new ClickHandler() {
+		filterTable.getCurrentRow(city).getRemoveButton().addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
-				removeData(cities.get(cities.indexOf(city)));
+				removeData(filterTable.getCurrentRow(city).getCity());
 			}
 		});
 	      
 	    // Add a button to get data for this filter setup
-	    filterTable.getCurrentRow(cities.indexOf(city)).getGetDataButton().addClickHandler(new ClickHandler() {
+	    filterTable.getCurrentRow(city).getGetDataButton().addClickHandler(new ClickHandler() {
 	    	public void onClick(ClickEvent event) {
+	    		//FilterRow currentRow = filterTable.getCurrentRow(city);
+	    		//addData(currentRow);
 	    		addData(city, sdate, edate);
 	    	}
 	    });	        
@@ -317,22 +312,15 @@ public class Climate implements EntryPoint {
 	}	
 	
 	public void addData(String city, Date sdate, Date edate){
-		int getIndex = cities.indexOf(city);
-		String cityGet = cities.get(getIndex);
-		Date sdateGet = sdates.get(getIndex);
-		Date edateGet = edates.get(getIndex);
-		refreshMeasurementTable(cityGet, sdateGet, edateGet);
+		FilterRow currentRow = filterTable.getCurrentRow(city);
+		refreshMeasurementTable(currentRow.getCity(),currentRow.getStartDate(),currentRow.getEndDate());
 		measurementTable.clearMeasurementTable();
 	}
 	
 	public void removeData(String city){
-		int removedIndex = cities.indexOf(city);
+		FilterRow currentRow = filterTable.getCurrentRow(city);
 		removeFromMeasurementTable(city);
 		filterTable.removeFilterFromTable(city);
-		cities.remove(removedIndex);
-		sdates.remove(removedIndex);
-		edates.remove(removedIndex);
-		filterTable.getFilterTable().removeRow(removedIndex + 1);
 		measurementTable.clearMeasurementTable();
 	}
 }

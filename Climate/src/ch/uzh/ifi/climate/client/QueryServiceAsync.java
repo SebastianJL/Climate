@@ -20,8 +20,7 @@ public interface QueryServiceAsync {
 	void temperatureMeasurementsCityCountry(String country, String city, Date sdate, Date edate,
 			AsyncCallback<ArrayList<TemperatureMeasurement>> callback);
 	void clearMeasurements(AsyncCallback<ArrayList<TemperatureMeasurement>> callback);
-	void temperatureMeasurementsOfAllCitiesAtDate(ArrayList<String> cities, Date date, 
-			AsyncCallback<ArrayList<TemperatureMeasurement>> callback);
+	void temperatureMeasurementsOfAllCitiesAtDate(Date date, AsyncCallback<ArrayList<TemperatureMeasurement>> callback);
 	void getCities(AsyncCallback<ArrayList<String>> callback);
 	void getCountries(AsyncCallback<ArrayList<String>> callback);
 	void removeCity(String city, AsyncCallback<ArrayList<TemperatureMeasurement>> callback);

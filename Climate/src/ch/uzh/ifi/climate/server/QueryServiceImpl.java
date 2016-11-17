@@ -186,7 +186,8 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 	 * @post	the asked data is stored in an ArrayList
 	 * @return	ArrayList sliderData contains all measurements for all cities at a specific time (and nothing else)
 	 */
-	public ArrayList<TemperatureMeasurement> temperatureMeasurementsOfAllCitiesAtDate(ArrayList<String> cities, Date date){
+	public ArrayList<TemperatureMeasurement> temperatureMeasurementsOfAllCitiesAtDate(Date date){
+		ArrayList<String> cities = getCities();
 		sliderData.clear();
 		for(TemperatureMeasurement Measurement:this.data){
 			for(String city:cities){

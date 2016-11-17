@@ -60,12 +60,27 @@ public class FilterTable {
 	public void removeFilterFromTable(String city){
 		for(FilterRow filterRow : filterRows){
 			if(filterRow.getCity().equals(city)){
+				filterFlexTable.removeRow(filterRows.indexOf(filterRow)+1);
 				filterRows.remove(filterRow);
 			}
 		}
 	}
 	
-	public FilterRow getCurrentRow(int index){
-		return this.filterRows.get(index);
+	public FilterRow getCurrentRow(String city){
+		FilterRow currentFilterRow = null;
+		for(FilterRow filterRow:filterRows){
+			if(filterRow.getCity().equals(city)){
+				currentFilterRow = filterRow;
+			}
+		}
+		return currentFilterRow;
+	}
+	
+	public ArrayList<String> getCurrentCities(){
+		ArrayList<String> cities = new ArrayList<String>();
+		for(FilterRow filterRow : filterRows){
+			cities.add(filterRow.getCity());
+		}
+		return cities;
 	}
 }

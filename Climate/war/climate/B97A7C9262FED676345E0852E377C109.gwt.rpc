@@ -1,0 +1,18 @@
+@FinalFields, false
+ch.uzh.ifi.climate.client.QueryService, false, false, false, false, _, 2528843622
+ch.uzh.ifi.climate.shared.Coordinates, true, true, false, false, ch.uzh.ifi.climate.shared.Coordinates/3277927727, 3277927727
+ch.uzh.ifi.climate.shared.Temperature, true, true, false, false, ch.uzh.ifi.climate.shared.Temperature/1458015397, 1458015397
+ch.uzh.ifi.climate.shared.TemperatureMeasurement, true, true, false, false, ch.uzh.ifi.climate.shared.TemperatureMeasurement/4006292931, 4006292931
+com.google.gwt.i18n.shared.impl.DateRecord, true, true, true, true, com.google.gwt.i18n.shared.impl.DateRecord/3173882066, 3173882066
+com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException, true, true, true, true, com.google.gwt.user.client.rpc.IncompatibleRemoteServiceException/3936916533, 3936916533
+com.google.gwt.user.client.rpc.RpcTokenException, true, true, false, false, com.google.gwt.user.client.rpc.RpcTokenException/2345075298, 2345075298
+com.google.gwt.user.client.rpc.XsrfToken, false, false, true, true, com.google.gwt.user.client.rpc.XsrfToken/4254043109, 4254043109
+java.lang.Exception, true, false, true, false, java.lang.Exception/1920171873, 1920171873
+java.lang.RuntimeException, true, false, true, false, java.lang.RuntimeException/515124647, 515124647
+java.lang.String, true, true, true, true, java.lang.String/2004016611, 2004016611
+java.lang.Throwable, true, false, true, false, java.lang.Throwable/2953622131, 2953622131
+java.sql.Date, true, true, true, true, java.sql.Date/730999118, 730999118
+java.sql.Time, true, true, true, true, java.sql.Time/1816797103, 1816797103
+java.sql.Timestamp, true, true, true, true, java.sql.Timestamp/3040052672, 3040052672
+java.util.ArrayList, true, true, false, false, java.util.ArrayList/4159755760, 4159755760
+java.util.Date, true, true, true, true, java.util.Date/3385151746, 3385151746
