@@ -123,7 +123,7 @@ public class Climate implements EntryPoint {
 	    
 	    // Move cursor focus to the city filter box.
 	    newSuggestBoxCity.setFocus(true);
-	    
+
 	    // Listen for keyboard events on cityBox and accept only letters
 	   	newSuggestBoxCity.addKeyPressHandler(new KeyPressHandler() {
 	   		@Override
@@ -160,7 +160,11 @@ public class Climate implements EntryPoint {
 				}
 			}
 	    });
-	    	
+	   	
+	   	// Add placeHolders to the text boxes	
+	    newSuggestBoxCity.getElement().setAttribute("placeHolder","Enter City");
+	    integerBoxStartYear.getElement().setAttribute("placeHolder", "Enter StartYear");
+	    integerBoxEndYear.getElement().setAttribute("placeholder", "Enter EndYear");
 	   	
 	    // Listen for keyboard events in the suggest box for cities.
 	    integerBoxEndYear.addKeyDownHandler(new KeyDownHandler() {
@@ -191,7 +195,7 @@ public class Climate implements EntryPoint {
 	   * presses enter in one of the suggestBoxes.
 	   */
 	private void addFilter() {
-		final String city = newSuggestBoxCity.getText().trim().substring(0, 1).toUpperCase() + newSuggestBoxCity.getText().trim().substring(1);;	//this includes automatic capitalization
+		final String city = newSuggestBoxCity.getText().trim().substring(0, 1).toUpperCase() + newSuggestBoxCity.getText().trim().substring(1);	//this includes automatic capitalization
 		final int syear = integerBoxStartYear.getValue();
 		final int eyear = integerBoxEndYear.getValue();
 	      
@@ -318,7 +322,6 @@ public class Climate implements EntryPoint {
 	}
 	
 	public void removeData(String city){
-		FilterRow currentRow = filterTable.getCurrentRow(city);
 		removeFromMeasurementTable(city);
 		filterTable.removeFilterFromTable(city);
 		measurementTable.clearMeasurementTable();
