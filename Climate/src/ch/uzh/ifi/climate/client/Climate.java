@@ -18,7 +18,6 @@ import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.IntegerBox;
 import com.google.gwt.user.client.ui.Label;
@@ -47,10 +46,12 @@ public class Climate implements EntryPoint {
 	private Button addFilterButton = new Button("Add");
 	private QueryServiceAsync querySvc = GWT.create(QueryService.class);
 	MultiWordSuggestOracle cityNames = new MultiWordSuggestOracle();
+	private String[] months = {"January","February","March","April","May","June",
+	                           "July","August","September","October","November","December"};
 
 	@Override
 	public void onModuleLoad() {
-		
+	
 		filterTable.setUpFilterTable();
 		measurementTable.setUpMeasurementTable();
 		
@@ -74,34 +75,13 @@ public class Climate implements EntryPoint {
 		querySvc.getCities(callback);
 		newSuggestBoxCity = new SuggestBox(cityNames);
 		
-		// Add months to Month selection dropdown menu
+		// Add months to Month selection dropDown menu
 		startMonth.setVisibleItemCount(1);
-		startMonth.addItem("January");
-		startMonth.addItem("February");	
-		startMonth.addItem("March");
-		startMonth.addItem("April");
-		startMonth.addItem("May");	
-		startMonth.addItem("June");
-		startMonth.addItem("July");
-		startMonth.addItem("August");	
-		startMonth.addItem("September");
-		startMonth.addItem("October");
-		startMonth.addItem("November");	
-		startMonth.addItem("December");
-		
 		endMonth.setVisibleItemCount(1);
-		endMonth.addItem("January");
-		endMonth.addItem("February");	
-		endMonth.addItem("March");
-		endMonth.addItem("April");
-		endMonth.addItem("May");	
-		endMonth.addItem("June");
-		endMonth.addItem("July");
-		endMonth.addItem("August");	
-		endMonth.addItem("September");
-		endMonth.addItem("October");
-		endMonth.addItem("November");	
-		endMonth.addItem("December");		
+		for(int i = 0; i<months.length; i++){
+			startMonth.addItem(months[i]);
+			endMonth.addItem(months[i]);
+		}
 		
 		// Assemble Add filter panel.
 	    addPanel.add(newSuggestBoxCity);
@@ -147,16 +127,20 @@ public class Climate implements EntryPoint {
 	   	integerBoxStartYear.addKeyPressHandler(new KeyPressHandler() {
 	   		@Override
 	   		public void onKeyPress(KeyPressEvent event) {
-	   			if (!Character.isDigit(event.getCharCode()) && event.getNativeEvent().getKeyCode() != KeyCodes.KEY_TAB && event.getNativeEvent().getKeyCode() != KeyCodes.KEY_BACKSPACE) {
-	   				((IntegerBox) event.getSource()).cancelKey();
+	   			if (!Character.isDigit(event.getCharCode()) && 
+	   				event.getNativeEvent().getKeyCode() != KeyCodes.KEY_TAB && 
+	   				event.getNativeEvent().getKeyCode() != KeyCodes.KEY_BACKSPACE){
+	   					((IntegerBox) event.getSource()).cancelKey();
 	   			}
 			}
 	    });
 	   	integerBoxEndYear.addKeyPressHandler(new KeyPressHandler() {
 	   		@Override
 			public void onKeyPress(KeyPressEvent event) {
-				if (!Character.isDigit(event.getCharCode()) && event.getNativeEvent().getKeyCode() != KeyCodes.KEY_TAB && event.getNativeEvent().getKeyCode() != KeyCodes.KEY_BACKSPACE) {
-					((IntegerBox) event.getSource()).cancelKey();
+				if (!Character.isDigit(event.getCharCode()) && 
+					event.getNativeEvent().getKeyCode() != KeyCodes.KEY_TAB && 
+					event.getNativeEvent().getKeyCode() != KeyCodes.KEY_BACKSPACE) {
+						((IntegerBox) event.getSource()).cancelKey();
 				}
 			}
 	    });
@@ -173,7 +157,7 @@ public class Climate implements EntryPoint {
 	    			addFilter();
 	    		}
 	    	}
-	    });
+	    });	   
 	    integerBoxStartYear.addKeyDownHandler(new KeyDownHandler() {
 	    	public void onKeyDown(KeyDownEvent event) {
 	    		if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
@@ -196,15 +180,25 @@ public class Climate implements EntryPoint {
 	   */
 	private void addFilter() {
 		final String city = newSuggestBoxCity.getText().trim().substring(0, 1).toUpperCase() + newSuggestBoxCity.getText().trim().substring(1);	//this includes automatic capitalization
-		final int syear = integerBoxStartYear.getValue();
-		final int eyear = integerBoxEndYear.getValue();
-	      
+	    final Integer syear = null;//integerBoxStartYear.getValue();
+	    final Integer eyear = null;//integerBoxEndYear.getValue();
+	    final Date sdate;
+	    final Date edate;
+		
 		// Determine Start Date
-		String sD = startMonth.getSelectedIndex()+1 + "/1/" + syear;
-		final Date sdate = new Date(sD);
+	    if(syear != null){
+			String sD = startMonth.getSelectedIndex()+1 + "/1/" + syear;
+			sdate = new Date(sD);
+	    }else{
+	    	sdate = null;
+	    }
 		// Determine End Date
-		String eD = endMonth.getSelectedIndex()+1 + "/1/" + eyear;
-		final Date edate = new Date(eD);
+	    if(eyear != null){
+			String eD = endMonth.getSelectedIndex()+1 + "/1/" + eyear;
+			edate = new Date(eD);
+	    }else{
+	    	edate = null;
+	    }
 	      
 		newSuggestBoxCity.setFocus(true);
 
@@ -222,7 +216,7 @@ public class Climate implements EntryPoint {
 			return;
 		}
 
-		newSuggestBoxCity.setText("");
+		newSuggestBoxCity.setText(null);
 		integerBoxStartYear.setValue(null);
 		integerBoxEndYear.setValue(null);
 		startMonth.setSelectedIndex(0);
@@ -242,8 +236,6 @@ public class Climate implements EntryPoint {
 	    // Add a button to get data for this filter setup
 	    filterTable.getCurrentRow(city).getGetDataButton().addClickHandler(new ClickHandler() {
 	    	public void onClick(ClickEvent event) {
-	    		//FilterRow currentRow = filterTable.getCurrentRow(city);
-	    		//addData(currentRow);
 	    		addData(city, sdate, edate);
 	    	}
 	    });	        
