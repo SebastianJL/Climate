@@ -2,7 +2,6 @@ package ch.uzh.ifi.climate.client;
 
 import java.util.Date;
 
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 
 public class FilterRow {

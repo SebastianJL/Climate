@@ -218,14 +218,14 @@ public class Climate implements EntryPoint {
 			}
 		}
 		
-		newSuggestBoxCity.setText(null);
-		integerBoxStartYear.setValue(null);
-		integerBoxEndYear.setValue(null);
-		startMonth.setSelectedIndex(0);
-		endMonth.setSelectedIndex(0);
-		
-		if(!filterTable.getCurrentCities().contains(city)){
-			filterTable.addFilterToTable(city, sdate, edate);
+		if(	!filterTable.getCurrentCities().contains(city) && 
+			(sdate != null && edate != null || sdate == null && edate == null)){
+				filterTable.addFilterToTable(city, sdate, edate);
+				newSuggestBoxCity.setText(null);
+				integerBoxStartYear.setValue(null);
+				integerBoxEndYear.setValue(null);
+				startMonth.setSelectedIndex(0);
+				endMonth.setSelectedIndex(0);
 		}
  
 		// Add a button to remove this filter from the table.
