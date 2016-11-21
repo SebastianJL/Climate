@@ -97,7 +97,6 @@ public class Climate implements EntryPoint {
 	    mainPanel.add(addPanel);
 		mainPanel.add(measurementTable.getMeasurementTable());
 		
-	    
 		// Associate the Main panel with the HTML host page.
 	    RootPanel.get("filterList").add(mainPanel);
 	    
@@ -180,8 +179,8 @@ public class Climate implements EntryPoint {
 	   */
 	private void addFilter() {
 		final String city = newSuggestBoxCity.getText().trim().substring(0, 1).toUpperCase() + newSuggestBoxCity.getText().trim().substring(1);	//this includes automatic capitalization
-	    final Integer syear = null;//integerBoxStartYear.getValue();
-	    final Integer eyear = null;//integerBoxEndYear.getValue();
+	    final Integer syear = integerBoxStartYear.getValue();
+	    final Integer eyear = integerBoxEndYear.getValue();
 	    final Date sdate;
 	    final Date edate;
 		
@@ -199,7 +198,7 @@ public class Climate implements EntryPoint {
 	    }else{
 	    	edate = null;
 	    }
-	      
+	    
 		newSuggestBoxCity.setFocus(true);
 
 		// Don't add the filter if it's already in the table.
@@ -209,19 +208,22 @@ public class Climate implements EntryPoint {
 				return; 
 			}
 		}
-	      
+	    
 		// Test whether filter inputs are incorrect
-		if (eyear < syear || (eyear == syear && startMonth.getSelectedIndex() > endMonth.getSelectedIndex())){
-			Window.alert("Start date needs to be before end date");
-			return;
+		if(sdate != null && edate != null){
+			if (eyear.intValue() < syear.intValue() || 
+				(eyear.equals(syear) && startMonth.getSelectedIndex() > endMonth.getSelectedIndex())){
+					Window.alert("Start date needs to be before end date");
+					return;
+			}
 		}
-
+		
 		newSuggestBoxCity.setText(null);
 		integerBoxStartYear.setValue(null);
 		integerBoxEndYear.setValue(null);
 		startMonth.setSelectedIndex(0);
 		endMonth.setSelectedIndex(0);
-	    
+		
 		if(!filterTable.getCurrentCities().contains(city)){
 			filterTable.addFilterToTable(city, sdate, edate);
 		}
@@ -263,8 +265,13 @@ public class Climate implements EntryPoint {
 			public void onSuccess(ArrayList<TemperatureMeasurement> result) {
 				updateMeasurementTable(result);	
 			}
-		};	 	       
-		querySvc.temperatureMeasurements(city, sdate, edate, callback);
+		};
+		if(sdate != null && edate != null){
+			querySvc.temperatureMeasurements(city, sdate, edate, callback);
+		}
+		if(sdate == null && edate == null){
+			querySvc.temperatureMeasurements(city, callback);
+		}
 	}
 	
 	

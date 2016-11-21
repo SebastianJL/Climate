@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import com.google.gwt.i18n.client.DateTimeFormat;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
@@ -38,14 +39,14 @@ public class FilterTable {
     // Add the filter to the table.
 	public void addFilterToTable(String city, Date sdate, Date edate){
 	      int row = filterFlexTable.getRowCount();
+	      
+	      if(sdate != null && edate != null){
 	      FilterRow currentFilterRow = new FilterRow(city, sdate, edate);
 	      
 	      filterRows.add(currentFilterRow);
-	      
 	      filterFlexTable.setText(row, 0, city);
 	      filterFlexTable.setText(row, 1,DateTimeFormat.getFormat("dd/MM/yyyy").format(sdate));
 	      filterFlexTable.setText(row, 2,DateTimeFormat.getFormat("dd/MM/yyyy").format(edate));
-	      filterFlexTable.setWidget(row, 3, new Label());
 	      filterFlexTable.setWidget(row, 3, currentFilterRow.getRemoveButton());	     
 	      filterFlexTable.setWidget(row, 4, currentFilterRow.getGetDataButton());
 
@@ -54,7 +55,24 @@ public class FilterTable {
 	      filterFlexTable.getCellFormatter().addStyleName(row, 2, "filterTableColumn");
 	      filterFlexTable.getCellFormatter().addStyleName(row, 3, "filterTableColumn");
 	      currentFilterRow.getRemoveButton().addStyleDependentName("remove");
-		  currentFilterRow.getGetDataButton().addStyleDependentName("launch search");	      
+		  currentFilterRow.getGetDataButton().addStyleDependentName("launch search");	 
+	      }
+	      if(sdate == null & edate == null){
+	    	  FilterRow currentFilterRow = new FilterRow(city);
+		      filterRows.add(currentFilterRow);
+		      filterFlexTable.setText(row, 0, city);
+		      filterFlexTable.setText(row, 1,"not determined");
+		      filterFlexTable.setText(row, 2,"not determined");
+		      filterFlexTable.setWidget(row, 3, currentFilterRow.getRemoveButton());	     
+		      filterFlexTable.setWidget(row, 4, currentFilterRow.getGetDataButton());
+
+		      filterFlexTable.getCellFormatter().addStyleName(row, 0, "filterTableColumn");
+		      filterFlexTable.getCellFormatter().addStyleName(row, 1, "filterTableColumn");
+		      filterFlexTable.getCellFormatter().addStyleName(row, 2, "filterTableColumn");
+		      filterFlexTable.getCellFormatter().addStyleName(row, 3, "filterTableColumn");
+		      currentFilterRow.getRemoveButton().addStyleDependentName("remove");
+			  currentFilterRow.getGetDataButton().addStyleDependentName("launch search");	
+	      }
 	}
 	
 	public void removeFilterFromTable(String city){

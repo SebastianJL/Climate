@@ -2,6 +2,7 @@ package ch.uzh.ifi.climate.client;
 
 import java.util.Date;
 
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.Button;
 
 public class FilterRow {
@@ -15,6 +16,12 @@ public class FilterRow {
 		this.city = city;
 		this.sdate = sdate;
 		this.edate = edate;
+		this.removeFilterButton = new Button("x");
+		this.getDataButton = new Button("Go");
+	}
+	
+	public FilterRow(String city){
+		this.city = city;
 		this.removeFilterButton = new Button("x");
 		this.getDataButton = new Button("Go");
 	}
