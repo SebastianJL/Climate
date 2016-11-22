@@ -1,18 +1,22 @@
 package ch.uzh.ifi.climate.shared;
 
-import com.google.gwt.user.client.rpc.IsSerializable;
+import java.io.Serializable;
 
 /**
- * This class manages a single temperature value and its transofmation between units.
+ * This class manages a single temperature value and its transformation between units.
  * @author		Johannes Lade
  * @history 	2016-08-11 JL First version
  * @version 	2016-08-11 JL 0.1.0
  * @responsibilities
- * 				This class manages a single temperature value and its transofmation between units.
+ * 				This class manages a single temperature value and its transformation between units.
  */
-public class Temperature implements IsSerializable{
+public class Temperature implements Serializable{
+	
 	private float temperatureInKelvin;
 	
+	public Temperature(){
+		
+	}
 	
 	private Temperature(float temperatureInKelvin) {
 		this.temperatureInKelvin = temperatureInKelvin;

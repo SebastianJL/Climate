@@ -18,7 +18,6 @@ import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.IntegerBox;
 import com.google.gwt.user.client.ui.Label;
@@ -36,33 +35,27 @@ import com.google.gwt.i18n.client.TimeZone;
 
 public class Climate implements EntryPoint {
 	private VerticalPanel mainPanel = new VerticalPanel();
-	private FlexTable filterFlexTable = new FlexTable();
-	private FlexTable measurementFlexTable = new FlexTable();
+	private FilterTable filterTable = new FilterTable();
+	private MeasurementTable measurementTable = new MeasurementTable();
 	private HorizontalPanel addPanel = new HorizontalPanel();
 	private SuggestBox newSuggestBoxCity = new SuggestBox();
+	private SuggestBox newSuggestBoxCountry = new SuggestBox();
 	private IntegerBox integerBoxStartYear = new IntegerBox();
 	private IntegerBox integerBoxEndYear = new IntegerBox();
 	private ListBox startMonth = new ListBox();
 	private ListBox endMonth = new ListBox();
 	private Button addFilterButton = new Button("Add");
-	private ArrayList<String> cities = new ArrayList<String>();
-	private ArrayList<Date> sdates = new ArrayList<Date>(); 
-	private ArrayList<Date> edates = new ArrayList<Date>();
 	private QueryServiceAsync querySvc = GWT.create(QueryService.class);
 	MultiWordSuggestOracle cityNames = new MultiWordSuggestOracle();
-	private ArrayList<TemperatureMeasurement> TemperatureMeasurements = new ArrayList<TemperatureMeasurement>();
-	
+	MultiWordSuggestOracle countryNames = new MultiWordSuggestOracle();
+	private final String[] MONTHS = {"January","February","March","April","May","June",
+	                           "July","August","September","October","November","December"};
+
 	@Override
 	public void onModuleLoad() {
-
-		// Create table for filters.
-		filterFlexTable.setText(0, 0, "City");
-		filterFlexTable.setText(0, 1, "Start Date");
-		filterFlexTable.setText(0, 2, "End Date");
-		filterFlexTable.setText(0, 3, "Remove");
-		
-		// Add styles to elements in the filter table.
-		filterFlexTable.setCellPadding(6);
+	
+		filterTable.setUpFilterTable();
+		measurementTable.setUpMeasurementTable();
 		
 		// Add city names to the suggestBox
 		if(querySvc == null)
@@ -71,64 +64,44 @@ public class Climate implements EntryPoint {
 		}
 		
 		AsyncCallback<ArrayList<String>> callback = new AsyncCallback<ArrayList<String>>(){
-
 			@Override
 			public void onFailure(Throwable caught) {
 				// TODO Auto-generated method stub
-				
 			}
 
 			@Override
 			public void onSuccess(ArrayList<String> result) {
-
 				addCityNames(result);
-				
-			}
-			
+			}	
 		};
 		querySvc.getCities(callback);
 		newSuggestBoxCity = new SuggestBox(cityNames);
 		
+		AsyncCallback<ArrayList<String>> callbackCountry = new AsyncCallback<ArrayList<String>>(){
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub	
+			}
+
+			@Override
+			public void onSuccess(ArrayList<String> result) {
+				addCountryNames(result);
+			}
+			
+		};
+		querySvc.getCountries(callbackCountry);
+		newSuggestBoxCountry = new SuggestBox(countryNames);
 		
-		// Add months to Month selection dropdown menu
+		// Add months to Month selection dropDown menu
 		startMonth.setVisibleItemCount(1);
-		startMonth.addItem("January");
-		startMonth.addItem("February");	
-		startMonth.addItem("March");
-		startMonth.addItem("April");
-		startMonth.addItem("May");	
-		startMonth.addItem("June");
-		startMonth.addItem("July");
-		startMonth.addItem("August");	
-		startMonth.addItem("September");
-		startMonth.addItem("October");
-		startMonth.addItem("November");	
-		startMonth.addItem("December");
-		
 		endMonth.setVisibleItemCount(1);
-		endMonth.addItem("January");
-		endMonth.addItem("February");	
-		endMonth.addItem("March");
-		endMonth.addItem("April");
-		endMonth.addItem("May");	
-		endMonth.addItem("June");
-		endMonth.addItem("July");
-		endMonth.addItem("August");	
-		endMonth.addItem("September");
-		endMonth.addItem("October");
-		endMonth.addItem("November");	
-		endMonth.addItem("December");
-		
-		// Add styles to elements in the filter list table.
-		filterFlexTable.addStyleName("filterTable");
-		filterFlexTable.getRowFormatter().addStyleName(0, "filterTableHeader");
-		filterFlexTable.getCellFormatter().addStyleName(0, 0, "filterTableColumn");
-		filterFlexTable.getCellFormatter().addStyleName(0, 1, "filterTableColumn");
-		filterFlexTable.getCellFormatter().addStyleName(0, 2, "filterTableColumn");
-		filterFlexTable.getCellFormatter().addStyleName(0, 3, "filterTableColumn");
-		
+		for(int i = 0; i<MONTHS.length; i++){
+			startMonth.addItem(MONTHS[i]);
+			endMonth.addItem(MONTHS[i]);
+		}
 		
 		// Assemble Add filter panel.
+		addPanel.add(newSuggestBoxCountry);
 	    addPanel.add(newSuggestBoxCity);
 	    addPanel.add(integerBoxStartYear);
 	    addPanel.add(startMonth);
@@ -136,191 +109,184 @@ public class Climate implements EntryPoint {
 	    addPanel.add(endMonth);
 	    addPanel.add(addFilterButton);
 	    addPanel.addStyleName("addPanel");
-	    
-	    // Create table for mesurement data.
- 		measurementFlexTable.setText(0, 0, "Date");
- 		measurementFlexTable.setText(0, 1, "Average Temperature");
- 		measurementFlexTable.setText(0, 2, "Average Temperature Uncertainty");
- 		measurementFlexTable.setText(0, 3, "City");
- 		measurementFlexTable.setText(0, 4, "Country");
- 		measurementFlexTable.setText(0, 5, "Latitude");
- 		measurementFlexTable.setText(0, 6, "Longitude");
- 		
- 		// Add styles to elements in the measurement table.
- 		measurementFlexTable.addStyleName("filterTable");
- 		measurementFlexTable.getRowFormatter().addStyleName(0, "filterTableHeader");
- 		for (int i=0; i<7; i++) {
- 			measurementFlexTable.getCellFormatter().addStyleName(0, i, "filterTableColumn");
- 		}
  		
 	    // Assemble Main panel.
-	    mainPanel.add(filterFlexTable);
+	    mainPanel.add(filterTable.getFilterTable());
 	    mainPanel.add(addPanel);
-	    mainPanel.add(measurementFlexTable);
+		mainPanel.add(measurementTable.getMeasurementTable());
 		
-	    
 		// Associate the Main panel with the HTML host page.
 	    RootPanel.get("filterList").add(mainPanel);
 	    
 	    // Move cursor focus to the city filter box.
-	    newSuggestBoxCity.setFocus(true);
-	    
-	    // Listen for keyboard events on cityBox and accept only letters
+	    newSuggestBoxCountry.setFocus(true);
+
+	    // Listen for keyboard events on cityBox and countryBox and accept only letters
 	   	newSuggestBoxCity.addKeyPressHandler(new KeyPressHandler() {
-		@Override
-		public void onKeyPress(KeyPressEvent event) {
-			 if (Character.isDigit(event.getCharCode())){
-				 event.getNativeEvent().preventDefault();
-		        }
-			
-		}
+	   		@Override
+	   		public void onKeyPress(KeyPressEvent event) {
+	   			if (Character.isDigit(event.getCharCode())){
+	   				event.getNativeEvent().preventDefault();
+	   			}
+	   		}
 	    });
-	    
-	    
+	   	newSuggestBoxCountry.addKeyPressHandler(new KeyPressHandler(){
+	   		@Override
+	   		public void onKeyPress(KeyPressEvent event){
+		   		if(Character.isDigit(event.getCharCode())){
+		   			event.getNativeEvent().preventDefault();
+		   		}
+	   		}
+	   	});
+	       
 	    
 	    // Listen for mouse events on the Add button.
 	    addFilterButton.addClickHandler(new ClickHandler() {
-	      public void onClick(ClickEvent event) {
-	        addFilter();
-	      }
+	    	public void onClick(ClickEvent event) {
+	    		addFilter();
+	    	}
 	    });
 	    
 	    
 	    // Listen for keyboard events on startYear and endYear boxes, and accept only numbers/backspace
 	   	integerBoxStartYear.addKeyPressHandler(new KeyPressHandler() {
-		@Override
-		public void onKeyPress(KeyPressEvent event) {
-			 if (!Character.isDigit(event.getCharCode()) && event.getNativeEvent().getKeyCode() != KeyCodes.KEY_TAB && event.getNativeEvent().getKeyCode() != KeyCodes.KEY_BACKSPACE) {
-		          ((IntegerBox) event.getSource()).cancelKey();
-		        }
-			
-		}
+	   		@Override
+	   		public void onKeyPress(KeyPressEvent event) {
+	   			if (!Character.isDigit(event.getCharCode()) && 
+	   				event.getNativeEvent().getKeyCode() != KeyCodes.KEY_TAB && 
+	   				event.getNativeEvent().getKeyCode() != KeyCodes.KEY_BACKSPACE){
+	   					((IntegerBox) event.getSource()).cancelKey();
+	   			}
+			}
+	    });
+	   	integerBoxEndYear.addKeyPressHandler(new KeyPressHandler() {
+	   		@Override
+			public void onKeyPress(KeyPressEvent event) {
+				if (!Character.isDigit(event.getCharCode()) && 
+					event.getNativeEvent().getKeyCode() != KeyCodes.KEY_TAB && 
+					event.getNativeEvent().getKeyCode() != KeyCodes.KEY_BACKSPACE) {
+						((IntegerBox) event.getSource()).cancelKey();
+				}
+			}
 	    });
 	   	
-	   	integerBoxEndYear.addKeyPressHandler(new KeyPressHandler() {
-		@Override
-		public void onKeyPress(KeyPressEvent event) {
-			 if (!Character.isDigit(event.getCharCode()) && event.getNativeEvent().getKeyCode() != KeyCodes.KEY_TAB && event.getNativeEvent().getKeyCode() != KeyCodes.KEY_BACKSPACE) {
-		          ((IntegerBox) event.getSource()).cancelKey();
-		        }
-			
-		}
-	    });
-	    	
+	   	// Add placeHolders to the text boxes	
+	   	newSuggestBoxCountry.getElement().setAttribute("placeHolder", "Enter Country");
+	    newSuggestBoxCity.getElement().setAttribute("placeHolder","Enter City");
+	    integerBoxStartYear.getElement().setAttribute("placeHolder", "Enter StartYear");
+	    integerBoxEndYear.getElement().setAttribute("placeholder", "Enter EndYear");
 	   	
 	    // Listen for keyboard events in the suggest box for cities.
 	    integerBoxEndYear.addKeyDownHandler(new KeyDownHandler() {
-	      public void onKeyDown(KeyDownEvent event) {
-	        if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
-	          addFilter();
-	        }
-	      }
-	    });
+	    	public void onKeyDown(KeyDownEvent event) {
+	    		if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+	    			addFilter();
+	    		}
+	    	}
+	    });	   
 	    integerBoxStartYear.addKeyDownHandler(new KeyDownHandler() {
-		      public void onKeyDown(KeyDownEvent event) {
-		        if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
-		          addFilter();
+	    	public void onKeyDown(KeyDownEvent event) {
+	    		if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+	    			addFilter();
 		        }
-		      }
-		    });
+	    	}
+		});
 	    newSuggestBoxCity.addKeyDownHandler(new KeyDownHandler() {
-		      public void onKeyDown(KeyDownEvent event) {
-		        if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
-		          addFilter();
+	    	public void onKeyDown(KeyDownEvent event) {
+	    		if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
+	    			addFilter();
 		        }
-		      }
-		    });
-
+	    	}
+	    });
+	    newSuggestBoxCountry.addKeyDownHandler(new KeyDownHandler(){
+	    	public void onKeyDown(KeyDownEvent event){
+	    		if(event.getNativeKeyCode() == KeyCodes.KEY_ENTER){
+	    			addFilter();
+	    		}
+	    	}
+	    });
 	}
 	
 	/**
 	   * Add filter to FlexTable. Executed when the user clicks the addFilterButton or
 	   * presses enter in one of the suggestBoxes.
 	   */
-	  private void addFilter() {
-	      final String city = newSuggestBoxCity.getText().trim().substring(0, 1).toUpperCase() + newSuggestBoxCity.getText().trim().substring(1);;	//this includes automatic capitalization
-	      final int syear = integerBoxStartYear.getValue();
-	      final int eyear = integerBoxEndYear.getValue();
-	      
-	      // Determine Start Date
-	      String sD = startMonth.getSelectedIndex()+1 + "/1/" + syear;
-	      final Date sdate = new Date(sD);
-	      // Determine End Date
-	      String eD = endMonth.getSelectedIndex()+1 + "/1/" + eyear;
-	      final Date edate = new Date(eD);
-	      
-	      
-	      /*	This solution stops the add button from working, reason unknown
-	      String d = "10/10/2011"; 
-	      DateTimeFormat fmt = DateTimeFormat.getFormat("dd,MM,yyyy"); 
-	      final Date sdate = fmt.parse(d);
-	      */
+	private void addFilter() {
+		//Get values from boxes and do capitalization for Strings
+		final String country = newSuggestBoxCountry.getText().trim().substring(0, 1).toUpperCase() + newSuggestBoxCountry.getText().trim().substring(1);
+		final String city = newSuggestBoxCity.getText().trim().substring(0, 1).toUpperCase() + newSuggestBoxCity.getText().trim().substring(1);
+	    final Integer syear = integerBoxStartYear.getValue();
+	    final Integer eyear = integerBoxEndYear.getValue();
+	    final Date sdate;
+	    final Date edate;
+		
+		// Determine Start Date
+	    if(syear != null){
+			String sD = startMonth.getSelectedIndex()+1 + "/1/" + syear;
+			sdate = new Date(sD);
+	    }else{
+	    	sdate = null;
+	    }
+		// Determine End Date
+	    if(eyear != null){
+			String eD = endMonth.getSelectedIndex()+1 + "/1/" + eyear;
+			edate = new Date(eD);
+	    }else{
+	    	edate = null;
+	    }
+	    
+		newSuggestBoxCountry.setFocus(true);
 
+		// Don't add the filter if it's already in the table.
+		for(String s : filterTable.getCurrentCities()){
+			if (s.toUpperCase().equals(city.toUpperCase())){
+				Window.alert("This city is already selected.");
+				return; 
+			}
+		}
+	    
+		// Test whether filter inputs are incorrect
+		if(sdate != null && edate != null){
+			if (eyear.intValue() < syear.intValue() || 
+				(eyear.equals(syear) && startMonth.getSelectedIndex() > endMonth.getSelectedIndex())){
+					Window.alert("Start date needs to be before end date");
+					return;
+			}
+		}
+		
+		if(sdate != null && edate != null || sdate == null && edate == null){
+				filterTable.addFilterToTable(country, city, sdate, edate);
+				newSuggestBoxCountry.setText(null);
+				newSuggestBoxCity.setText(null);
+				integerBoxStartYear.setValue(null);
+				integerBoxEndYear.setValue(null);
+				startMonth.setSelectedIndex(0);
+				endMonth.setSelectedIndex(0);
+		}
+ 
+		// Add a button to remove this filter from the table.
+		filterTable.getCurrentRow(city).getRemoveButton().addClickHandler(new ClickHandler() {
+			public void onClick(ClickEvent event) {
+				if(city != ""){
+					removeData(filterTable.getCurrentRow(city).getCity());
+				}
+			}
+		});
+		filterTable.getCurrentRowCountry(country).getRemoveButton().addClickHandler(new ClickHandler(){
+			public void onClick(ClickEvent event){
+				if(country != "" && city == ""){
+					removeDataCountry(filterTable.getCurrentRowCountry(country).getCountry());
+				}
+			}
+		});
 	      
-	      newSuggestBoxCity.setFocus(true);
-
-	      // Don't add the filter if it's already in the table.
-	      for (String s : cities) 
-	    	  if (s.toUpperCase().equals(city.toUpperCase()))
-	      {
-		        Window.alert("This city is already selected.");
-		        return; 
-	      }
-	      
-	      // Test whether filter inputs are incorrect
-	       if (eyear < syear || (eyear == syear && startMonth.getSelectedIndex() > endMonth.getSelectedIndex())) {
-	        	Window.alert("Start date needs to be before end date");
-	        	return;
-	        }
-
-	      newSuggestBoxCity.setText("");
-	      integerBoxStartYear.setValue(null);
-	      integerBoxEndYear.setValue(null);
-	      startMonth.setSelectedIndex(0);
-	      endMonth.setSelectedIndex(0);
-	      
-	      
-	      // Add the filter to the table.
-	      int row = filterFlexTable.getRowCount();
-	      cities.add(city);
-	      sdates.add(sdate);
-	      edates.add(edate);
-	      filterFlexTable.setText(row, 0, city);
-	      filterFlexTable.setText(row, 1,DateTimeFormat.getFormat("dd/MM/yyyy").format(sdate));
-	      filterFlexTable.setText(row, 2,DateTimeFormat.getFormat("dd/MM/yyyy").format(edate));
-	      filterFlexTable.setWidget(row, 3, new Label());
-	      
-
-	      filterFlexTable.getCellFormatter().addStyleName(row, 0, "watchFilterColumn");
-	      filterFlexTable.getCellFormatter().addStyleName(row, 1, "watchFilterColumn");
-	      filterFlexTable.getCellFormatter().addStyleName(row, 2, "watchFilterColumn");
-	      filterFlexTable.getCellFormatter().addStyleName(row, 3, "watchFilterColumn");
-	      
-	      // Add a button to remove this filter from the table.
-	      Button removeStockButton = new Button("x");
-	      removeStockButton.addStyleDependentName("remove");
-	      removeStockButton.addClickHandler(new ClickHandler() {
-	        public void onClick(ClickEvent event) {
-	          int removedIndex = cities.indexOf(city);
-	          cities.remove(removedIndex);
-	          sdates.remove(removedIndex);
-	          edates.remove(removedIndex);
-	          filterFlexTable.removeRow(removedIndex + 1);
-	        }
-	      });
-	      
-	   // Add a button to get data for this filter setup
-	   Button getDataButton = new Button("Go");
-	   getDataButton.addStyleDependentName("launch search");
-	   getDataButton.addClickHandler(new ClickHandler() {
-	       public void onClick(ClickEvent event) {
-	    	   refreshMeasurementTable();
-	       }
-	      });	        
-	        
-	      filterFlexTable.setWidget(row, 3, removeStockButton);	     
-	      filterFlexTable.setWidget(row, 4, getDataButton);
-	  }
+	    // Add a button to get data for this filter setup
+	    filterTable.getCurrentRow(city).getGetDataButton().addClickHandler(new ClickHandler() {
+	    	public void onClick(ClickEvent event) {
+	    		addData(city, sdate, edate);
+	    	}
+	    });	        
+	}
 	
 	
 	/**
@@ -330,23 +296,43 @@ public class Climate implements EntryPoint {
 	 * @param -
 	 * @return -
 	 */
-	protected void refreshMeasurementTable() {
+	protected void refreshMeasurementTable(String country, String city, Date sdate, Date edate) {
+		if (querySvc == null) {
+	    	querySvc = GWT.create(QueryService.class);
+	    }
 		AsyncCallback<ArrayList<TemperatureMeasurement>> callback = new AsyncCallback<ArrayList<TemperatureMeasurement>>() {
-
 			@Override
 			public void onFailure(Throwable caught) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub	
 			}
 
 			@Override
 			public void onSuccess(ArrayList<TemperatureMeasurement> result) {
-				updateMeasurementTable(result);
-				
+				updateMeasurementTable(result);	
 			}
-			
 		};
-		
+		if(sdate != null && edate != null){
+			if(country == "" && city != ""){
+				querySvc.temperatureMeasurements(city, sdate, edate, callback);
+			}
+			if(country != "" && city == ""){
+				querySvc.temperatureMeasurementsCountry(country, sdate, edate, callback);
+			}
+			if(country != "" && city != ""){
+				querySvc.temperatureMeasurementsCityCountry(country, city, sdate, edate, callback);
+			}
+		}
+		if(sdate == null && edate == null){
+			if(country == "" && city != ""){
+				querySvc.temperatureMeasurements(city, callback);
+			}
+			if(country != "" && city == ""){
+				querySvc.temperatureMeasurementsCountry(country, callback);
+			}
+			if(country != "" && city != ""){
+				querySvc.temperatureMeasurementsCityCountry(country, city, callback);
+			}
+		}
 	}
 	
 	
@@ -354,14 +340,46 @@ public class Climate implements EntryPoint {
 		for (TemperatureMeasurement temperatureMeasurement : temperatureMeasurements) {
 			updateMeasurementTable(temperatureMeasurement);
 		}
-		
 	}
-	
-	
 
 	private void updateMeasurementTable(TemperatureMeasurement temperatureMeasurement) {
-		// TODO Auto-generated method stub
-		
+		measurementTable.fillTable(temperatureMeasurement);
+	}
+	
+	protected void removeFromMeasurementTable(String city){
+		if (querySvc == null) {
+	    	querySvc = GWT.create(QueryService.class);
+	    }
+		AsyncCallback<ArrayList<TemperatureMeasurement>> callback = new AsyncCallback<ArrayList<TemperatureMeasurement>>() {
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void onSuccess(ArrayList<TemperatureMeasurement> result) {
+				updateMeasurementTable(result);
+			}
+		};
+		querySvc.removeCity(city, callback);
+	}
+	
+	protected void removeCountryFromMeasurementTable(String country){
+		if(querySvc == null){
+			querySvc = GWT.create(QueryService.class);
+		}
+		AsyncCallback<ArrayList<TemperatureMeasurement>> callback = new AsyncCallback<ArrayList<TemperatureMeasurement>>() {
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub	
+			}
+			
+			@Override
+			public void onSuccess(ArrayList<TemperatureMeasurement> result) {
+				updateMeasurementTable(result);
+			}
+		};
+		querySvc.removeCountry(country, callback);
 	}
 
 	/**
@@ -373,6 +391,27 @@ public class Climate implements EntryPoint {
 	 */
 	protected void addCityNames(ArrayList<String> names){
 		cityNames.addAll(names);
+	}	
+	
+	protected void addCountryNames(ArrayList<String> names){
+		countryNames.addAll(names);
 	}
 	
+	public void addData(String city, Date sdate, Date edate){
+		FilterRow currentRow = filterTable.getCurrentRow(city);
+		refreshMeasurementTable(currentRow.getCountry(),currentRow.getCity(),currentRow.getStartDate(),currentRow.getEndDate());
+		measurementTable.clearMeasurementTable();
+	}
+	
+	public void removeData(String city){
+		removeFromMeasurementTable(city);
+		filterTable.removeFilterFromTable(city);
+		measurementTable.clearMeasurementTable();
+	}
+	
+	public void removeDataCountry(String country){
+		removeCountryFromMeasurementTable(country);
+		filterTable.removeCountryFilterFromTable(country);
+		measurementTable.clearMeasurementTable();
+	}
 }

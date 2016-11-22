@@ -8,12 +8,23 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import ch.uzh.ifi.climate.client.QueryService;
 import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
 
+/**
+ * This class manages the filtering of the data.
+ * @author		Pascal Siemon
+ * @history 	2016-08-11 JL First version
+ * @version 	2016-08-11 JL 0.1.0
+ * @responsibilities
+ * 				Splitting the data in useful subsets which have a size that can be
+ * 				sent to the client in a acceptable time.
+ */
+
 public class QueryServiceImpl extends RemoteServiceServlet implements QueryService {
 	
 	private String CSVFileName = "GlobalLandTemperaturesByMajorCity_v1.csv";
 	private CSVParser parser = new CSVParser();
 	private ArrayList<TemperatureMeasurement> data = parser.parseCSV(CSVFileName);
 	private ArrayList<TemperatureMeasurement> filteredData = new ArrayList<TemperatureMeasurement>();
+	private ArrayList<TemperatureMeasurement> sliderData = new ArrayList<TemperatureMeasurement>();
 	
 	/**
 	 * Filters data with respect to city, startDate, endDate
@@ -92,6 +103,41 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 		return this.filteredData;
 	}
 	
+	/**Filters data dependent on city and country between sdate and edate
+	 * @pre		filteredData != null && data != null && country != null && city != null && sdate != null && edate != null
+	 * @param	defines data for city in country between sdate and edate
+	 * @post	filteredData contains data for a specific city in a specific country between startDate and EndDate
+	 * @return	ArrayList filteredData containing the above defined measurements
+	 */
+	public ArrayList<TemperatureMeasurement> temperatureMeasurementsCityCountry(String country, String city, Date sdate, Date edate){
+		for(TemperatureMeasurement Measurement:this.data){
+			if(	Measurement.getCity().equals(city) &&
+				Measurement.getCountry().equals(country) &&
+				Measurement.getDate().getTime() >= sdate.getTime() &&
+				Measurement.getDate().getTime() <= edate.getTime()){
+					this.filteredData.add(Measurement);
+			}
+		}
+		return this.filteredData;
+	}
+	
+	/**Filters data dependent on city and country
+	 * @pre		filteredData != null && data != null && country != null && city != null
+	 * @param	defines data for city in country
+	 * @post	filteredData contains data for a specific city in a specific country
+	 * @return	ArrayList filteredData containing the above defined measurements
+	 */
+	public ArrayList<TemperatureMeasurement> temperatureMeasurementsCityCountry(String country, String city){
+		for(TemperatureMeasurement Measurement:this.data){
+			if(	Measurement.getCity().equals(city) &&
+				Measurement.getCountry().equals(country) &&
+				!filteredData.contains(Measurement)){
+					this.filteredData.add(Measurement);
+			}
+		}
+		return this.filteredData;
+	}
+	
 	/**
 	 * Clears the ArrayList filteredData which is used to send the data to the client
 	 * @pre 	filteredData != null
@@ -131,5 +177,56 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 			}
 		}
 		return countries;
+	}
+	
+	/**Filters data for one city at a specific time
+	 * @pre 	data != null && filteredData != null && cities != null && date != null
+	 * @param	cities contains all cities for which the data should be extracted
+	 * 			date is the date for all the measurements
+	 * @post	the asked data is stored in an ArrayList
+	 * @return	ArrayList sliderData contains all measurements for all cities at a specific time (and nothing else)
+	 */
+	public ArrayList<TemperatureMeasurement> temperatureMeasurementsOfAllCitiesAtDate(Date date){
+		ArrayList<String> cities = getCities();
+		sliderData.clear();
+		for(TemperatureMeasurement Measurement:this.data){
+			for(String city:cities){
+				if(	Measurement.getCity().equals(city) &&
+					Measurement.getDate().getTime() == date.getTime()){
+						this.sliderData.add(Measurement);
+				}
+			}
+		}
+		return this.sliderData;
+	}
+	
+	/**Removes all measurements of one specific city
+	 * @pre		data != null && filteredData != null && city != null
+	 * @param	city for which the measurements should be removed
+	 * @post	filteredData does not contain measurements of the city anymore
+	 * @return	ArrayList filteredData not containing measurements of the city anymore
+	 */
+	public ArrayList<TemperatureMeasurement> removeCity(String city){
+		for(TemperatureMeasurement Measurement:this.data){
+			if(Measurement.getCity().equals(city)){
+				this.filteredData.remove(Measurement);
+			}
+		}
+		return this.filteredData;
+	}
+	
+	/**Removes all measurements of one specific county
+	 * @pre		data != null && filteredData != null && country != null
+	 * @param	country for which the measurements should be removed
+	 * @post	filteredData does not contain measurements of the country anymore
+	 * @return	ArrayList filteredData not containing measurements of the country anymore
+	 */
+	public ArrayList<TemperatureMeasurement> removeCountry(String country){
+		for(TemperatureMeasurement Measurement:this.data){
+			if(Measurement.getCountry().equals(country)){
+				this.filteredData.remove(Measurement);
+			}
+		}
+		return this.filteredData;
 	}
 }
