@@ -48,7 +48,7 @@ public class Climate implements EntryPoint {
 	private QueryServiceAsync querySvc = GWT.create(QueryService.class);
 	MultiWordSuggestOracle cityNames = new MultiWordSuggestOracle();
 	MultiWordSuggestOracle countryNames = new MultiWordSuggestOracle();
-	private String[] months = {"January","February","March","April","May","June",
+	private final String[] MONTHS = {"January","February","March","April","May","June",
 	                           "July","August","September","October","November","December"};
 
 	@Override
@@ -95,9 +95,9 @@ public class Climate implements EntryPoint {
 		// Add months to Month selection dropDown menu
 		startMonth.setVisibleItemCount(1);
 		endMonth.setVisibleItemCount(1);
-		for(int i = 0; i<months.length; i++){
-			startMonth.addItem(months[i]);
-			endMonth.addItem(months[i]);
+		for(int i = 0; i<MONTHS.length; i++){
+			startMonth.addItem(MONTHS[i]);
+			endMonth.addItem(MONTHS[i]);
 		}
 		
 		// Assemble Add filter panel.

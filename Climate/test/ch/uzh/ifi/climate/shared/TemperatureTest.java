@@ -8,45 +8,51 @@ import com.google.gwt.junit.client.GWTTestCase;
 
 public class TemperatureTest{
 	
-//	@Override
-//	public String getModuleName() {
-//		return "ch.uzh.ifi.climate.Climate";
-//	}
+	private final float KELVIN_1 = 273.15f;
+	private final float KELVIN_2 = 0f;
+	private final float DELTA = 0f;
 
+	
+	@Test
+	public void testTemperature() {
+		Temperature temp = new Temperature();
+		assertNotNull(temp);
+	}
+	
 	@Test
 	public void testCreateFromKelvin() {
-		Temperature temp = Temperature.createFromKelvin(273.15f);
-		assertEquals(273.15f, temp.kelvin(), 0.001);
+		Temperature temp = Temperature.createFromKelvin(KELVIN_1);
+		assertNotNull(temp);
 	}
 
 	@Test
 	public void testCreateFromCelsius() {
-		Temperature temp = Temperature.createFromCelsius(0);
-		assertEquals(273.15f, temp.kelvin(), 0.001);
+		Temperature temp = Temperature.createFromCelsius(KELVIN_1);
+		assertNotNull(temp);
 	}
 
 	@Test
 	public void testKelvin() {
-		Temperature temp1 = Temperature.createFromKelvin(273.15f);
-		Temperature temp2 = Temperature.createFromKelvin(0);
-		assertEquals(273.15f, temp1.kelvin(), 0.001);
-		assertEquals(0, temp2.kelvin(), 0.001);
+		Temperature temp1 = Temperature.createFromKelvin(KELVIN_1);
+		Temperature temp2 = Temperature.createFromKelvin(KELVIN_2);
+		assertEquals(KELVIN_1, temp1.kelvin(), DELTA);
+		assertEquals(KELVIN_2, temp2.kelvin(), DELTA);
 	}
 
 	@Test
 	public void testCelsius() {
-		Temperature temp1 = Temperature.createFromKelvin(273.15f);
-		Temperature temp2 = Temperature.createFromKelvin(0);
-		assertEquals(0, temp1.celsius(), 0.001);
-		assertEquals(-273.15f, temp2.celsius(), 0.001);
+		Temperature temp1 = Temperature.createFromKelvin(KELVIN_1);
+		Temperature temp2 = Temperature.createFromKelvin(KELVIN_2);
+		assertEquals(0, temp1.celsius(), DELTA);
+		assertEquals(-273.15f, temp2.celsius(), DELTA);
 	}
 
 	@Test
 	public void testFahrenheit() {
-		Temperature temp1 = Temperature.createFromKelvin(273.15f);
-		Temperature temp2 = Temperature.createFromKelvin(0);
-		assertEquals(32, temp1.fahrenheit(), 0.001);
-		assertEquals(-459.67, temp2.fahrenheit(), 0.001);
+		Temperature temp1 = Temperature.createFromKelvin(KELVIN_1);
+		Temperature temp2 = Temperature.createFromKelvin(KELVIN_2);
+		assertEquals(32, temp1.fahrenheit(), DELTA+0.0001);
+		assertEquals(-459.67, temp2.fahrenheit(), DELTA+0.0001);
 	}
 
 
