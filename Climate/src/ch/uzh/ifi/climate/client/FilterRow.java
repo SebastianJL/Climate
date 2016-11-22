@@ -5,13 +5,15 @@ import java.util.Date;
 import com.google.gwt.user.client.ui.Button;
 
 public class FilterRow {
+	private String country;
 	private String city;
 	private Date sdate;
 	private Date edate;
     private Button removeFilterButton;
 	private Button getDataButton;
 	
-	public FilterRow(String city, Date sdate, Date edate){
+	public FilterRow(String country, String city, Date sdate, Date edate){
+		this.country = country;
 		this.city = city;
 		this.sdate = sdate;
 		this.edate = edate;
@@ -23,6 +25,10 @@ public class FilterRow {
 		this.city = city;
 		this.removeFilterButton = new Button("x");
 		this.getDataButton = new Button("Go");
+	}
+	
+	public String getCountry(){
+		return this.country;
 	}
 	
 	public String getCity(){

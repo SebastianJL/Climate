@@ -39,6 +39,7 @@ public class Climate implements EntryPoint {
 	private MeasurementTable measurementTable = new MeasurementTable();
 	private HorizontalPanel addPanel = new HorizontalPanel();
 	private SuggestBox newSuggestBoxCity = new SuggestBox();
+	private SuggestBox newSuggestBoxCountry = new SuggestBox();
 	private IntegerBox integerBoxStartYear = new IntegerBox();
 	private IntegerBox integerBoxEndYear = new IntegerBox();
 	private ListBox startMonth = new ListBox();
@@ -46,6 +47,7 @@ public class Climate implements EntryPoint {
 	private Button addFilterButton = new Button("Add");
 	private QueryServiceAsync querySvc = GWT.create(QueryService.class);
 	MultiWordSuggestOracle cityNames = new MultiWordSuggestOracle();
+	MultiWordSuggestOracle countryNames = new MultiWordSuggestOracle();
 	private String[] months = {"January","February","March","April","May","June",
 	                           "July","August","September","October","November","December"};
 
@@ -75,6 +77,21 @@ public class Climate implements EntryPoint {
 		querySvc.getCities(callback);
 		newSuggestBoxCity = new SuggestBox(cityNames);
 		
+		AsyncCallback<ArrayList<String>> callbackCountry = new AsyncCallback<ArrayList<String>>(){
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub	
+			}
+
+			@Override
+			public void onSuccess(ArrayList<String> result) {
+				addCountryNames(result);
+			}
+			
+		};
+		querySvc.getCountries(callbackCountry);
+		newSuggestBoxCountry = new SuggestBox(countryNames);
+		
 		// Add months to Month selection dropDown menu
 		startMonth.setVisibleItemCount(1);
 		endMonth.setVisibleItemCount(1);
@@ -84,6 +101,7 @@ public class Climate implements EntryPoint {
 		}
 		
 		// Assemble Add filter panel.
+		addPanel.add(newSuggestBoxCountry);
 	    addPanel.add(newSuggestBoxCity);
 	    addPanel.add(integerBoxStartYear);
 	    addPanel.add(startMonth);
@@ -101,9 +119,9 @@ public class Climate implements EntryPoint {
 	    RootPanel.get("filterList").add(mainPanel);
 	    
 	    // Move cursor focus to the city filter box.
-	    newSuggestBoxCity.setFocus(true);
+	    newSuggestBoxCountry.setFocus(true);
 
-	    // Listen for keyboard events on cityBox and accept only letters
+	    // Listen for keyboard events on cityBox and countryBox and accept only letters
 	   	newSuggestBoxCity.addKeyPressHandler(new KeyPressHandler() {
 	   		@Override
 	   		public void onKeyPress(KeyPressEvent event) {
@@ -112,6 +130,14 @@ public class Climate implements EntryPoint {
 	   			}
 	   		}
 	    });
+	   	newSuggestBoxCountry.addKeyPressHandler(new KeyPressHandler(){
+	   		@Override
+	   		public void onKeyPress(KeyPressEvent event){
+		   		if(Character.isDigit(event.getCharCode())){
+		   			event.getNativeEvent().preventDefault();
+		   		}
+	   		}
+	   	});
 	       
 	    
 	    // Listen for mouse events on the Add button.
@@ -145,6 +171,7 @@ public class Climate implements EntryPoint {
 	    });
 	   	
 	   	// Add placeHolders to the text boxes	
+	   	newSuggestBoxCountry.getElement().setAttribute("placeHolder", "Enter Country");
 	    newSuggestBoxCity.getElement().setAttribute("placeHolder","Enter City");
 	    integerBoxStartYear.getElement().setAttribute("placeHolder", "Enter StartYear");
 	    integerBoxEndYear.getElement().setAttribute("placeholder", "Enter EndYear");
@@ -171,6 +198,13 @@ public class Climate implements EntryPoint {
 		        }
 	    	}
 	    });
+	    newSuggestBoxCountry.addKeyDownHandler(new KeyDownHandler(){
+	    	public void onKeyDown(KeyDownEvent event){
+	    		if(event.getNativeKeyCode() == KeyCodes.KEY_ENTER){
+	    			addFilter();
+	    		}
+	    	}
+	    });
 	}
 	
 	/**
@@ -178,7 +212,9 @@ public class Climate implements EntryPoint {
 	   * presses enter in one of the suggestBoxes.
 	   */
 	private void addFilter() {
-		final String city = newSuggestBoxCity.getText().trim().substring(0, 1).toUpperCase() + newSuggestBoxCity.getText().trim().substring(1);	//this includes automatic capitalization
+		//Get values from boxes and do capitalization for Strings
+		final String country = newSuggestBoxCountry.getText().trim().substring(0, 1).toUpperCase() + newSuggestBoxCountry.getText().trim().substring(1);
+		final String city = newSuggestBoxCity.getText().trim().substring(0, 1).toUpperCase() + newSuggestBoxCity.getText().trim().substring(1);
 	    final Integer syear = integerBoxStartYear.getValue();
 	    final Integer eyear = integerBoxEndYear.getValue();
 	    final Date sdate;
@@ -199,7 +235,7 @@ public class Climate implements EntryPoint {
 	    	edate = null;
 	    }
 	    
-		newSuggestBoxCity.setFocus(true);
+		newSuggestBoxCountry.setFocus(true);
 
 		// Don't add the filter if it's already in the table.
 		for(String s : filterTable.getCurrentCities()){
@@ -218,9 +254,9 @@ public class Climate implements EntryPoint {
 			}
 		}
 		
-		if(	!filterTable.getCurrentCities().contains(city) && 
-			(sdate != null && edate != null || sdate == null && edate == null)){
-				filterTable.addFilterToTable(city, sdate, edate);
+		if(sdate != null && edate != null || sdate == null && edate == null){
+				filterTable.addFilterToTable(country, city, sdate, edate);
+				newSuggestBoxCountry.setText(null);
 				newSuggestBoxCity.setText(null);
 				integerBoxStartYear.setValue(null);
 				integerBoxEndYear.setValue(null);
@@ -231,7 +267,16 @@ public class Climate implements EntryPoint {
 		// Add a button to remove this filter from the table.
 		filterTable.getCurrentRow(city).getRemoveButton().addClickHandler(new ClickHandler() {
 			public void onClick(ClickEvent event) {
-				removeData(filterTable.getCurrentRow(city).getCity());
+				if(city != ""){
+					removeData(filterTable.getCurrentRow(city).getCity());
+				}
+			}
+		});
+		filterTable.getCurrentRowCountry(country).getRemoveButton().addClickHandler(new ClickHandler(){
+			public void onClick(ClickEvent event){
+				if(country != "" && city == ""){
+					removeDataCountry(filterTable.getCurrentRowCountry(country).getCountry());
+				}
 			}
 		});
 	      
@@ -251,7 +296,7 @@ public class Climate implements EntryPoint {
 	 * @param -
 	 * @return -
 	 */
-	protected void refreshMeasurementTable(String city, Date sdate, Date edate) {
+	protected void refreshMeasurementTable(String country, String city, Date sdate, Date edate) {
 		if (querySvc == null) {
 	    	querySvc = GWT.create(QueryService.class);
 	    }
@@ -267,10 +312,26 @@ public class Climate implements EntryPoint {
 			}
 		};
 		if(sdate != null && edate != null){
-			querySvc.temperatureMeasurements(city, sdate, edate, callback);
+			if(country == "" && city != ""){
+				querySvc.temperatureMeasurements(city, sdate, edate, callback);
+			}
+			if(country != "" && city == ""){
+				querySvc.temperatureMeasurementsCountry(country, sdate, edate, callback);
+			}
+			if(country != "" && city != ""){
+				querySvc.temperatureMeasurementsCityCountry(country, city, sdate, edate, callback);
+			}
 		}
 		if(sdate == null && edate == null){
-			querySvc.temperatureMeasurements(city, callback);
+			if(country == "" && city != ""){
+				querySvc.temperatureMeasurements(city, callback);
+			}
+			if(country != "" && city == ""){
+				querySvc.temperatureMeasurementsCountry(country, callback);
+			}
+			if(country != "" && city != ""){
+				querySvc.temperatureMeasurementsCityCountry(country, city, callback);
+			}
 		}
 	}
 	
@@ -302,6 +363,24 @@ public class Climate implements EntryPoint {
 		};
 		querySvc.removeCity(city, callback);
 	}
+	
+	protected void removeCountryFromMeasurementTable(String country){
+		if(querySvc == null){
+			querySvc = GWT.create(QueryService.class);
+		}
+		AsyncCallback<ArrayList<TemperatureMeasurement>> callback = new AsyncCallback<ArrayList<TemperatureMeasurement>>() {
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub	
+			}
+			
+			@Override
+			public void onSuccess(ArrayList<TemperatureMeasurement> result) {
+				updateMeasurementTable(result);
+			}
+		};
+		querySvc.removeCountry(country, callback);
+	}
 
 	/**
 	 * Adds all city names in the given ArrayList to the suggestion box
@@ -314,15 +393,25 @@ public class Climate implements EntryPoint {
 		cityNames.addAll(names);
 	}	
 	
+	protected void addCountryNames(ArrayList<String> names){
+		countryNames.addAll(names);
+	}
+	
 	public void addData(String city, Date sdate, Date edate){
 		FilterRow currentRow = filterTable.getCurrentRow(city);
-		refreshMeasurementTable(currentRow.getCity(),currentRow.getStartDate(),currentRow.getEndDate());
+		refreshMeasurementTable(currentRow.getCountry(),currentRow.getCity(),currentRow.getStartDate(),currentRow.getEndDate());
 		measurementTable.clearMeasurementTable();
 	}
 	
 	public void removeData(String city){
 		removeFromMeasurementTable(city);
 		filterTable.removeFilterFromTable(city);
+		measurementTable.clearMeasurementTable();
+	}
+	
+	public void removeDataCountry(String country){
+		removeCountryFromMeasurementTable(country);
+		filterTable.removeCountryFilterFromTable(country);
 		measurementTable.clearMeasurementTable();
 	}
 }
