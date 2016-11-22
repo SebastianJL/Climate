@@ -26,6 +26,15 @@ import com.google.gwt.user.client.ui.MultiWordSuggestOracle;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.SuggestBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.core.client.EntryPoint;
+import com.google.gwt.event.logical.shared.SelectionEvent;
+import com.google.gwt.event.logical.shared.SelectionHandler;
+import com.google.gwt.event.logical.shared.ValueChangeEvent;
+import com.google.gwt.event.logical.shared.ValueChangeHandler;
+import com.google.gwt.user.client.History;
+import com.google.gwt.user.client.ui.HTML;
+import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.TabPanel;
 
 import ch.uzh.ifi.climate.server.QueryServiceImpl;
 import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
@@ -50,10 +59,14 @@ public class Climate implements EntryPoint {
 	MultiWordSuggestOracle countryNames = new MultiWordSuggestOracle();
 	private final String[] MONTHS = {"January","February","March","April","May","June",
 	                           "July","August","September","October","November","December"};
+	private final TabPanel tabPanel = new TabPanel();
+    private HTML mapPage = new HTML("<h1>We are on map Page.</h1>");
+    private String tablePageTitle = "Table";
+    private String mapPageTitle = "Map";
 
 	@Override
 	public void onModuleLoad() {
-	
+		
 		filterTable.setUpFilterTable();
 		measurementTable.setUpMeasurementTable();
 		
@@ -115,9 +128,56 @@ public class Climate implements EntryPoint {
 	    mainPanel.add(addPanel);
 		mainPanel.add(measurementTable.getMeasurementTable());
 		
-		// Associate the Main panel with the HTML host page.
-	    RootPanel.get("filterList").add(mainPanel);
+		
+		
+		// Create tabTable for the table view and the map view
+		
+		// Add pages to tabPanel
+	    tabPanel.add(mainPanel,tablePageTitle);
+	    tabPanel.add(mapPage,mapPageTitle);
 	    
+	    // Add tab selection handler
+	      tabPanel.addSelectionHandler(new SelectionHandler<Integer>() {
+	         @Override
+	         public void onSelection(SelectionEvent<Integer> event) {
+	            /* add a token to history containing pageIndex 
+	             History class will change the URL of application
+	             by appending the token to it.
+	            */
+	            History.newItem("pageIndex" + event.getSelectedItem());				
+	         }
+	      });
+
+	      /* Add value change handler to History 
+	       * this method will be called, when browser's 
+	       * Back button or Forward button are clicked 
+	       * and URL of application changes. */
+	      History.addValueChangeHandler(new ValueChangeHandler<String>() {
+	         @Override
+	         public void onValueChange(ValueChangeEvent<String> event) {
+	            String historyToken = event.getValue();
+	            /* parse the history token */
+	            try {
+	               if (historyToken.substring(0, 9).equals("pageIndex")) {
+	                  String tabIndexToken = historyToken.substring(9, 10);
+	                  int tabIndex = Integer.parseInt(tabIndexToken);
+	                  /* select the specified tab panel */
+	                  tabPanel.selectTab(tabIndex);
+	               } else {
+	                  tabPanel.selectTab(0);
+	               }
+	            } catch (IndexOutOfBoundsException e) {
+	               tabPanel.selectTab(0);
+	            }
+	         }
+	      });
+
+	    // Select the first tab by default
+	    tabPanel.selectTab(0);
+
+	    // Add controls to RootPanel
+	    RootPanel.get("tabPanel").add(tabPanel);
+
 	    // Move cursor focus to the city filter box.
 	    newSuggestBoxCountry.setFocus(true);
 
