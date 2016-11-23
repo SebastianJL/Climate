@@ -25,6 +25,10 @@ public class TemperatureMeasurement implements IsSerializable{
 	private Coordinates coordinates;
 	//static final long serialVersionUID;
 	
+	public TemperatureMeasurement(){
+		
+	}
+	
 	public TemperatureMeasurement(Temperature temperature, Temperature uncertainty, Date date, String city, String country, Coordinates coordinates) {
 		this.temperature = temperature;
 		this.uncertainty = uncertainty;

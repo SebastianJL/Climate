@@ -14,6 +14,10 @@ import java.io.Serializable;
 public class Coordinates implements Serializable{
 	private float latitude;
 	private float longitude;
+	
+	public Coordinates(){
+		
+	}
 
 	//latitude positive is north, negative is south
 	//longitude positive is east, negative is west

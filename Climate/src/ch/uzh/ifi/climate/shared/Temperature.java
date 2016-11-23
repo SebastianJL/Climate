@@ -13,6 +13,9 @@ import java.io.Serializable;
 public class Temperature implements Serializable{
 	private float temperatureInKelvin;
 	
+	public Temperature(){
+		
+	}
 	
 	private Temperature(float temperatureInKelvin) {
 		this.temperatureInKelvin = temperatureInKelvin;

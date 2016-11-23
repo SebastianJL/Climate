@@ -251,20 +251,6 @@ public class Climate implements EntryPoint {
 		        }
 	    	}
 		});
-	    newSuggestBoxCity.addKeyDownHandler(new KeyDownHandler() {
-	    	public void onKeyDown(KeyDownEvent event) {
-	    		if (event.getNativeKeyCode() == KeyCodes.KEY_ENTER) {
-	    			addFilter();
-		        }
-	    	}
-	    });
-	    newSuggestBoxCountry.addKeyDownHandler(new KeyDownHandler(){
-	    	public void onKeyDown(KeyDownEvent event){
-	    		if(event.getNativeKeyCode() == KeyCodes.KEY_ENTER){
-	    			addFilter();
-	    		}
-	    	}
-	    });
 	}
 	
 	/**
