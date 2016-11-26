@@ -8,6 +8,7 @@ import java.util.Date;
 
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.event.dom.client.KeyCodes;
@@ -18,13 +19,17 @@ import com.google.gwt.event.dom.client.KeyPressHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.IntegerBox;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.ListBox;
 import com.google.gwt.user.client.ui.MultiWordSuggestOracle;
+import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.google.gwt.user.client.ui.RootPanel;
+import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.SuggestBox;
+import com.google.gwt.user.client.ui.TabLayoutPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.event.logical.shared.SelectionEvent;
@@ -42,69 +47,76 @@ import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.i18n.client.TimeZone;
 
+
+
+
+
 public class Climate implements EntryPoint {
-
-	private final TabPanel tabPanel = new TabPanel();
-	private HTML mapPage = new HTML("<h1>We are on map Page.</h1>");
-	private String tablePageTitle = "Table";
-	private String mapPageTitle = "Map";
-	private TableUI tableUI = new TableUI();
-
+	
+	private final TabPanel tabPanel = new TabPanel(); //1.5, Unit.EM);
+    private String tablePageTitle = "Table";
+    private String mapPageTitle = "Map";
+    private TableUI tableUI = new TableUI();
+    private MapUI mapUI = new MapUI();
+    
+    
 	@Override
 	public void onModuleLoad() {
-
+		
 		// Initialize the userinterfaces for the different views.
-		tableUI.initialize();
-
+//		tableUI.initialize();
+		
 		// Create tabTable for the table view and the map view
-
+		
 		// Add pages to tabPanel
-		VerticalPanel mainPanel = tableUI.getPanel();
-		tabPanel.add(mainPanel, tablePageTitle);
-		tabPanel.add(mapPage, mapPageTitle);
-
-		// Add tab selection handler
-		tabPanel.addSelectionHandler(new SelectionHandler<Integer>() {
-			@Override
-			public void onSelection(SelectionEvent<Integer> event) {
-				/*
-				 * add a token to history containing pageIndex History class
-				 * will change the URL of application by appending the token to
-				 * it.
-				 */
-				History.newItem("pageIndex" + event.getSelectedItem());
-			}
-		});
-
-		/*
-		 * Add value change handler to History this method will be called, when
-		 * browser's Back button or Forward button are clicked and URL of
-		 * application changes.
-		 */
-		History.addValueChangeHandler(new ValueChangeHandler<String>() {
-			@Override
-			public void onValueChange(ValueChangeEvent<String> event) {
-				String historyToken = event.getValue();
-				/* parse the history token */
-				try {
-					if (historyToken.substring(0, 9).equals("pageIndex")) {
-						String tabIndexToken = historyToken.substring(9, 10);
-						int tabIndex = Integer.parseInt(tabIndexToken);
-						/* select the specified tab panel */
-						tabPanel.selectTab(tabIndex);
-					} else {
-						tabPanel.selectTab(0);
-					}
-				} catch (IndexOutOfBoundsException e) {
-					tabPanel.selectTab(0);
-				}
-			}
-		});
+		VerticalPanel tablePanel = new TableUI();
+		final SimplePanel mapPanel = new MapUI();
+		mapPanel.setVisible(true);
+		tabPanel.add(tablePanel, tablePageTitle);
+	    tabPanel.add(mapPanel, mapPageTitle);
 
 		// Select the first tab by default
 		tabPanel.selectTab(0);
-
+		
 		// Add controls to RootPanel
-		RootPanel.get("tabPanel").add(tabPanel);
+//		RootLayoutPanel.get().add(mapPanel);
+	    RootPanel.get("tabPanel").add(tabPanel);
+	    
+	    // Add tab selection handler
+	      tabPanel.addSelectionHandler(new SelectionHandler<Integer>() {
+	         @Override
+	         public void onSelection(SelectionEvent<Integer> event) {
+	            /* add a token to history containing pageIndex 
+	             History class will change the URL of application
+	             by appending the token to it.
+	            */
+	            History.newItem("pageIndex" + event.getSelectedItem());				
+	         }
+	      });
+
+	      /* Add value change handler to History 
+	       * this method will be called, when browser's 
+	       * Back button or Forward button are clicked 
+	       * and URL of application changes. */
+	      History.addValueChangeHandler(new ValueChangeHandler<String>() {
+	         @Override
+	         public void onValueChange(ValueChangeEvent<String> event) {
+	            String historyToken = event.getValue();
+	            /* parse the history token */
+	            try {
+	               if (historyToken.substring(0, 9).equals("pageIndex")) {
+	                  String tabIndexToken = historyToken.substring(9, 10);
+	                  int tabIndex = Integer.parseInt(tabIndexToken);
+	                  /* select the specified tab panel */
+	                  tabPanel.selectTab(tabIndex);
+	               } else {
+	                  tabPanel.selectTab(0);
+	               }
+	            } catch (IndexOutOfBoundsException e) {
+	               tabPanel.selectTab(0);
+	            }
+	         }
+	      });
+
 	}
 }
