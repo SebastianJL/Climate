@@ -48,74 +48,70 @@ import sun.nio.cs.ext.MacArabic;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.i18n.client.TimeZone;
 
-
-
-
-
 public class Climate implements EntryPoint {
 
 	private final String TABLE_PAGE_TITLE = "Table";
 	private final String MAP_PAGE_TITLE = "Map";
-	
+
 	private TabPanel tabPanel;
-    private TablePanel tablePanel;
-    private MapPanel mapPanel;
-    
-    
+	private TablePanel tablePanel;
+	private MapPanel mapPanel;
+
 	@Override
 	public void onModuleLoad() {
-		
+
 		// Create tab panel and panels for table and map view.
-		tabPanel = new TabPanel(); //1.5, Unit.EM);
+		tabPanel = new TabPanel(); // 1.5, Unit.EM);
 		tablePanel = new TablePanel();
 		mapPanel = new MapPanel();
-		
-		
+
 		// Add panels to tabPanel
 		tabPanel.add(tablePanel, TABLE_PAGE_TITLE);
-	    tabPanel.add(mapPanel, MAP_PAGE_TITLE);
+		tabPanel.add(mapPanel, MAP_PAGE_TITLE);
 
 		// Select the first tab by default
 		tabPanel.selectTab(0);
-		
-		// Add controls to RootPanel
-	    RootPanel.get("tabPanel").add(tabPanel);
-	    
-	    // Add tab selection handler
-	      tabPanel.addSelectionHandler(new SelectionHandler<Integer>() {
-	         @Override
-	         public void onSelection(SelectionEvent<Integer> event) {
-	            /* add a token to history containing pageIndex 
-	             History class will change the URL of application
-	             by appending the token to it.
-	            */
-	            History.newItem("pageIndex" + event.getSelectedItem());				
-	         }
-	      });
 
-	      /* Add value change handler to History 
-	       * this method will be called, when browser's 
-	       * Back button or Forward button are clicked 
-	       * and URL of application changes. */
-	      History.addValueChangeHandler(new ValueChangeHandler<String>() {
-	         @Override
-	         public void onValueChange(ValueChangeEvent<String> event) {
-	            String historyToken = event.getValue();
-	            /* parse the history token */
-	            try {
-	               if (historyToken.substring(0, 9).equals("pageIndex")) {
-	                  String tabIndexToken = historyToken.substring(9, 10);
-	                  int tabIndex = Integer.parseInt(tabIndexToken);
-	                  /* select the specified tab panel */
-	                  tabPanel.selectTab(tabIndex);
-	               } else {
-	                  tabPanel.selectTab(0);
-	               }
-	            } catch (IndexOutOfBoundsException e) {
-	               tabPanel.selectTab(0);
-	            }
-	         }
-	      });
+		// Add controls to RootPanel
+		RootPanel.get("tabPanel").add(tabPanel);
+
+		// Add tab selection handler
+		tabPanel.addSelectionHandler(new SelectionHandler<Integer>() {
+			@Override
+			public void onSelection(SelectionEvent<Integer> event) {
+				/*
+				 * add a token to history containing pageIndex History class
+				 * will change the URL of application by appending the token to
+				 * it.
+				 */
+				History.newItem("pageIndex" + event.getSelectedItem());
+			}
+		});
+
+		/*
+		 * Add value change handler to History this method will be called, when
+		 * browser's Back button or Forward button are clicked and URL of
+		 * application changes.
+		 */
+		History.addValueChangeHandler(new ValueChangeHandler<String>() {
+			@Override
+			public void onValueChange(ValueChangeEvent<String> event) {
+				String historyToken = event.getValue();
+				/* parse the history token */
+				try {
+					if (historyToken.substring(0, 9).equals("pageIndex")) {
+						String tabIndexToken = historyToken.substring(9, 10);
+						int tabIndex = Integer.parseInt(tabIndexToken);
+						/* select the specified tab panel */
+						tabPanel.selectTab(tabIndex);
+					} else {
+						tabPanel.selectTab(0);
+					}
+				} catch (IndexOutOfBoundsException e) {
+					tabPanel.selectTab(0);
+				}
+			}
+		});
 
 	}
 }
