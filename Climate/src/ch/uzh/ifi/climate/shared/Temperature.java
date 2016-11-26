@@ -65,4 +65,50 @@ public class Temperature implements Serializable{
 	public float fahrenheit(){
 		return (this.temperatureInKelvin * 9/5) - 459.67f;
 	}
+	
+	/**
+	 * Adds two temperatures
+	 * @pre 	summandOne != null && summandTwo != null
+	 * @post 	-
+	 * @param 	summandOne First Temperature to add.
+	 * 			summandTwo Second Temperaure to add
+	 * @return 	sum Added Temperature
+	 */
+	public static Temperature add(Temperature summandOne, Temperature summandTwo) {
+		float sum;
+		
+		sum = summandOne.kelvin() + summandTwo.kelvin();
+		return Temperature.createFromKelvin(sum);
+	}
+
+	
+	/**
+	 * Subtracts one temperature from another.
+	 * @pre 	minuend != null && subtrahend != null
+	 * @post 	-
+	 * @param 	minuend Temperature to subtract from.
+	 * 			subtrahend Temperature to subtract.
+	 * @return 	difference Subtracted Temperature
+	 */
+	public static Temperature subtract(Temperature minuend, Temperature subtrahend) {
+		float difference;
+		
+		difference = minuend.kelvin() - subtrahend.kelvin();
+		return Temperature.createFromKelvin(difference);
+	}
+
+	/**
+	 * Divides a Temperature by a real number.
+	 * @pre 	temp != null && tempTwo != null
+	 * @post 	-
+	 * @param	dividend Temperature to divide.
+	 * 			divisor Number to divde by.
+	 * @return	quotient Result of the division.
+	 */
+	public static Temperature subtract(Temperature dividend, float divisor) {
+		float quotient;
+		
+		quotient = dividend.kelvin() - divisor;
+		return Temperature.createFromKelvin(quotient);
+	}
 }
