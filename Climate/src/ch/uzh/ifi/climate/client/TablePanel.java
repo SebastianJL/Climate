@@ -34,8 +34,7 @@ import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
  * @responsibilities
  * 				Keeps track of all panels, widgets and of the functionality of the table view.
  */
-public class TableUI extends VerticalPanel{
-	private VerticalPanel mainPanel = new VerticalPanel();
+public class TablePanel extends VerticalPanel{
 	private FilterTable filterTable = new FilterTable();
 	private MeasurementTable measurementTable = new MeasurementTable();
 	private HorizontalPanel addPanel = new HorizontalPanel();
@@ -53,15 +52,11 @@ public class TableUI extends VerticalPanel{
 	                           "July","August","September","October","November","December"};
 
 	
-	public TableUI() {
+	public TablePanel() {
 		initialize();
 	}
 	
-//	public VerticalPanel getPanel() {
-//		return mainPanel;
-//	}
-	
-	
+
 	
 	public void initialize() {
 		filterTable.setUpFilterTable();

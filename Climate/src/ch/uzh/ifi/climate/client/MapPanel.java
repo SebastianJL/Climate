@@ -19,17 +19,12 @@ import com.googlecode.gwt.charts.client.geochart.GeoChartOptions;
  * @responsibilities Keeps track of all panels, widgets and of the functionality
  *                   of the map view.
  */
-public class MapUI extends SimplePanel {
-//	private SimplePanel mainPanel;
+public class MapPanel extends SimplePanel {
 	private GeoChart geoChart;
 
-	public MapUI() {
+	public MapPanel() {
 		initialize();
 	}
-
-//	public SimplePanel getPanel() {
-//		return mainPanel;
-//	}
 
 	public void initialize() {
 		ChartLoader chartLoader = new ChartLoader(ChartPackage.GEOCHART);

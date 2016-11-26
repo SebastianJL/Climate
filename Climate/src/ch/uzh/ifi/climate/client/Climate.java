@@ -43,6 +43,7 @@ import com.google.gwt.user.client.ui.TabPanel;
 
 import ch.uzh.ifi.climate.server.QueryServiceImpl;
 import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
+import sun.nio.cs.ext.MacArabic;
 
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.i18n.client.TimeZone;
@@ -52,34 +53,32 @@ import com.google.gwt.i18n.client.TimeZone;
 
 
 public class Climate implements EntryPoint {
+
+	private final String TABLE_PAGE_TITLE = "Table";
+	private final String MAP_PAGE_TITLE = "Map";
 	
-	private final TabPanel tabPanel = new TabPanel(); //1.5, Unit.EM);
-    private String tablePageTitle = "Table";
-    private String mapPageTitle = "Map";
-    private TableUI tableUI = new TableUI();
-    private MapUI mapUI = new MapUI();
+	private TabPanel tabPanel;
+    private TablePanel tablePanel;
+    private MapPanel mapPanel;
     
     
 	@Override
 	public void onModuleLoad() {
 		
-		// Initialize the userinterfaces for the different views.
-//		tableUI.initialize();
+		// Create tab panel and panels for table and map view.
+		tabPanel = new TabPanel(); //1.5, Unit.EM);
+		tablePanel = new TablePanel();
+		mapPanel = new MapPanel();
 		
-		// Create tabTable for the table view and the map view
 		
-		// Add pages to tabPanel
-		VerticalPanel tablePanel = new TableUI();
-		final SimplePanel mapPanel = new MapUI();
-		mapPanel.setVisible(true);
-		tabPanel.add(tablePanel, tablePageTitle);
-	    tabPanel.add(mapPanel, mapPageTitle);
+		// Add panels to tabPanel
+		tabPanel.add(tablePanel, TABLE_PAGE_TITLE);
+	    tabPanel.add(mapPanel, MAP_PAGE_TITLE);
 
 		// Select the first tab by default
 		tabPanel.selectTab(0);
 		
 		// Add controls to RootPanel
-//		RootLayoutPanel.get().add(mapPanel);
 	    RootPanel.get("tabPanel").add(tabPanel);
 	    
 	    // Add tab selection handler
