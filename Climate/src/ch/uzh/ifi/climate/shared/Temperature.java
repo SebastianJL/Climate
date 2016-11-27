@@ -1,6 +1,7 @@
 package ch.uzh.ifi.climate.shared;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 
 /**
  * This class manages a single temperature value and its transformation between units.
@@ -123,6 +124,21 @@ public class Temperature implements Serializable{
 	public static Temperature sum(Temperature[] temps) {
 		double sum = 0;
 		
+		for (Temperature temp : temps) {
+			sum += temp.kelvin();
+		}
+		return Temperature.createFromKelvin(sum);
+	}
+
+	/**
+	 * Sums an ArrayList of Temperatures.
+	 * @pre 	temps != null && temps.size() != 0 
+	 * @post 	-
+	 * @param	temps Array of Temperatures to sum.
+	 * @return	sum Result of the summation as a Temperature.
+	 */
+	public static Temperature sum(ArrayList<Temperature> temps) {
+		double sum = 0;
 		for (Temperature temp : temps) {
 			sum += temp.kelvin();
 		}
