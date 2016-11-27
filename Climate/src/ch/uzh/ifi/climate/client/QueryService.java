@@ -22,7 +22,7 @@ public interface QueryService extends RemoteService {
 	ArrayList<TemperatureMeasurement> clearMeasurements();
 	ArrayList<String> getCities();
 	ArrayList<String> getCountries();
-	ArrayList<TemperatureMeasurement> temperatureMeasurementsOfAllCitiesAtDate(ArrayList<String> cities, Date date);
+	ArrayList<TemperatureMeasurement> temperatureMeasurementsOfAllCitiesAtDate(Date date);
 	ArrayList<TemperatureMeasurement> removeCity(String city);
 	ArrayList<TemperatureMeasurement> removeCountry(String country);
 }
