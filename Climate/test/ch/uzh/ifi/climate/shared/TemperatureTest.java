@@ -2,6 +2,8 @@ package ch.uzh.ifi.climate.shared;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 import com.google.gwt.junit.client.GWTTestCase;
@@ -71,6 +73,25 @@ public class TemperatureTest{
 		double number = 3.75;
 		Temperature result = Temperature.divide(temp, number);
 		assertEquals(53.2/3.75, result.kelvin(), 0);
+		
+	}
+	
+	@Test
+	public void testSum() {
+		ArrayList<Temperature> temps = new ArrayList<Temperature>();
+		double sumDouble = 0;
+		Temperature sumTemp;
+		final double[] SUMMANDS = {13, 12, 484.2, 45, 99, 111, 8};
+		
+		for (int i = 0; i < SUMMANDS.length; i++) {
+			temps.add(Temperature.createFromKelvin(SUMMANDS[i]));
+			sumDouble += SUMMANDS[i];
+		}
+		sumTemp = Temperature.sum(temps.toArray(new Temperature[temps.size()]));
+		
+		assertEquals(sumDouble, sumTemp.kelvin(), 0);
+		
+		
 		
 	}
 
