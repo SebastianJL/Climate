@@ -49,5 +49,29 @@ public class TemperatureTest{
 		assertEquals(-459.67, temp2.fahrenheit(), 0.001);
 	}
 
+	@Test
+	public void testAdd() {
+		Temperature temp1 = Temperature.createFromKelvin(53.2);
+		Temperature temp2 = Temperature.createFromKelvin(26.7);
+		Temperature sum = Temperature.add(temp1, temp2);
+		assertEquals(53.2+26.7, sum.kelvin(), 0);		
+	}
+
+	@Test
+	public void testSubtract() {
+		Temperature temp1 = Temperature.createFromKelvin(53.2);
+		Temperature temp2 = Temperature.createFromKelvin(26.7);
+		Temperature difference = Temperature.subtract(temp1, temp2);
+		assertEquals(53.2-26.7, difference.kelvin(), 0);		
+	}
+	
+	@Test
+	public void testDivide() {
+		Temperature temp = Temperature.createFromKelvin(53.2);
+		double number = 3.75;
+		Temperature result = Temperature.divide(temp, number);
+		assertEquals(53.2/3.75, result.kelvin(), 0);
+		
+	}
 
 }
