@@ -31,10 +31,6 @@ public class Temperature implements Serializable{
 		return new Temperature(temperatureInKelvin);
 	}
 	
-	public double getTemperatureInKelvin(){
-		return this.temperatureInKelvin;
-	}
-	
 	/**
 	 * @pre -
 	 * @post -
