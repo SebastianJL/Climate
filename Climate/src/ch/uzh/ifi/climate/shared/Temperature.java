@@ -138,10 +138,11 @@ public class Temperature implements Serializable{
 	 * @return	sum Result of the summation as a Temperature.
 	 */
 	public static Temperature sum(ArrayList<Temperature> temps) {
-		double sum = 0;
-		for (Temperature temp : temps) {
-			sum += temp.kelvin();
-		}
-		return Temperature.createFromKelvin(sum);
+		return Temperature.sum(temps.toArray(new Temperature[temps.size()]));
+//		double sum = 0;
+//		for (Temperature temp : temps) {
+//			sum += temp.kelvin();
+//		}
+//		return Temperature.createFromKelvin(sum);
 	}
 }
