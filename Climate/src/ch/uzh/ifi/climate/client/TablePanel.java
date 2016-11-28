@@ -62,6 +62,26 @@ public class TablePanel extends VerticalPanel{
 		filterTable.setUpFilterTable();
 		measurementTable.setUpMeasurementTable();
 		
+		//Clear previous filtered data
+		if(querySvc == null){
+			querySvc = GWT.create(QueryService.class);
+		}
+		AsyncCallback<ArrayList<TemperatureMeasurement>> clearCallback = new AsyncCallback<ArrayList<TemperatureMeasurement>>(){
+
+			@Override
+			public void onFailure(Throwable caught) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onSuccess(ArrayList<TemperatureMeasurement> result) {
+				// TODO Auto-generated method stub
+				updateMeasurementTable(result);
+			}
+		};
+		querySvc.clearMeasurements(clearCallback);
+		
 		// Add city names to the suggestBox
 		if(querySvc == null)
 		{
