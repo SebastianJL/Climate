@@ -42,15 +42,16 @@ public class CSVParserTest {
 		assertNotNull(tempMeasurs);
 	}
 
-//	@Test
-//	public void testParseCSVNotEmptyWithTestFile() {
-//		ArrayList<TemperatureMeasurement> tempMeasurs = parser.parseCSV(testFileName);
-//		assertFalse(tempMeasurs.isEmpty());
-//	}
+	@Test
+	public void testParseCSVNotEmptyWithTestFile() throws IOException, ParseException {
+		ArrayList<TemperatureMeasurement> tempMeasurs = parser.parseCSV(testFileName);
+		assertFalse(tempMeasurs.isEmpty());
+	}
 	
 	@Test(expected = FileNotFoundException.class)  
 	public void testParseCSVFileNotFoundException() throws IOException, ParseException {
-		parser.parseCSV(testFileName);
+		parser.parseCSV("");
 	}
+
 
 }
