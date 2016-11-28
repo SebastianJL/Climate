@@ -42,7 +42,7 @@ public class MeasurementTable {
 		int row = measurementFlexTable.getRowCount();
 		
 		Float avgTemperature = new Float(Math.round(temperatureMeasurement.getTemperature().celsius()*100)/100f);
-		Float uncertainty = new Float(Math.round(temperatureMeasurement.getUncertainty().getTemperatureInKelvin()*100)/100f);
+		Float uncertainty = new Float(Math.round(temperatureMeasurement.getUncertainty().celsius()*100)/100f);
 		Float latitude = new Float(Math.round(temperatureMeasurement.getCoordinates().getLatitude()*100)/100f);
 		Float longitude = new Float(Math.round(temperatureMeasurement.getCoordinates().getLongitude()*100)/100f);
 		

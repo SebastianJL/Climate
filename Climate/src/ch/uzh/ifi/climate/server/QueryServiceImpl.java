@@ -179,21 +179,18 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 		return countries;
 	}
 	
-	/**Filters data for one city at a specific time
-	 * @pre 	data != null && filteredData != null && cities != null && date != null
+	/**Filters data for all city at a specific time
+	 * @pre 	data != null && filteredData != null && date != null
 	 * @param	cities contains all cities for which the data should be extracted
 	 * 			date is the date for all the measurements
 	 * @post	the asked data is stored in an ArrayList
 	 * @return	ArrayList sliderData contains all measurements for all cities at a specific time (and nothing else)
 	 */
-	public ArrayList<TemperatureMeasurement> temperatureMeasurementsOfAllCitiesAtDate(ArrayList<String> cities, Date date){
+	public ArrayList<TemperatureMeasurement> temperatureMeasurementsOfAllCitiesAtDate(Date date){
 		sliderData.clear();
 		for(TemperatureMeasurement Measurement:this.data){
-			for(String city:cities){
-				if(	Measurement.getCity().equals(city) &&
-					Measurement.getDate().getTime() == date.getTime()){
-						this.sliderData.add(Measurement);
-				}
+			if(Measurement.getDate().getTime() == date.getTime()){
+				this.sliderData.add(Measurement);
 			}
 		}
 		return this.sliderData;
