@@ -1,0 +1,2 @@
+# Module ch.uzh.ifi.climate.Climate.JUnit
+# RPC service class, partial path of RPC policy file
