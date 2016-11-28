@@ -42,6 +42,12 @@ public class FilterTable {
 	      FilterRow currentFilterRow = new FilterRow(country, city, sdate, edate);
 	      
 	      filterRows.add(currentFilterRow);
+	      if(city == ""){
+	    	  city = "all";
+	      }
+	      if(country == ""){
+	    	  country = "all";
+	      }
 	      filterFlexTable.setText(row, 0, city);
 	      filterFlexTable.setText(row, 1, country);
 	      if(sdate != null && edate != null){
@@ -49,8 +55,8 @@ public class FilterTable {
 	    	  filterFlexTable.setText(row, 3, DateTimeFormat.getFormat("dd/MM/yyyy").format(edate));
 	      }
 	      if(sdate == null && edate == null){
-	    	  filterFlexTable.setText(row, 2, "not determined");
-	    	  filterFlexTable.setText(row, 3, "not determined");
+	    	  filterFlexTable.setText(row, 2, "earliest");
+	    	  filterFlexTable.setText(row, 3, "latest");
 	      }
 	      filterFlexTable.setWidget(row, 4, currentFilterRow.getRemoveButton());	     
 	      filterFlexTable.setWidget(row, 5, currentFilterRow.getGetDataButton());
