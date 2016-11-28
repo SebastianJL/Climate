@@ -36,11 +36,12 @@ import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
  *                   of the map view.
  */
 public class MapPanel extends SimplePanel {
+	private final Date INITIAL_DATE = DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/01/2000");
+	
 	private GeoChart geoChart;
 	private ArrayList<CountryMean> data;
 	private QueryServiceAsync querySvc = GWT.create(QueryService.class);
 	private Date observedDate;
-	private final Date INITIAL_DATE = DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/01/2000");
 
 
 	public MapPanel() {
@@ -48,7 +49,6 @@ public class MapPanel extends SimplePanel {
 	}
 
 	private void initialize() {
-		ArrayList<CountryMean> bla = this.data;
 		ChartLoader chartLoader = new ChartLoader(ChartPackage.GEOCHART);
 		chartLoader.loadApi(new Runnable() {
 
@@ -73,7 +73,7 @@ public class MapPanel extends SimplePanel {
 	private void draw() {
 		
 
-		// Prepare the data
+		// Prepare the datatable
 		DataTable dataTable = prepareData();
 		
 		// Set options
@@ -90,7 +90,7 @@ public class MapPanel extends SimplePanel {
 
 	/**
 	 * Creates and fills DataTable for the geoChart.
-	 * @pre -
+	 * @pre data != null && !data.isEmpty()
 	 * @post -
 	 * @param result ArrayList<TemperatureMeasurement>
 	 * @return DataTable Contains the data for the qeochart.
@@ -176,12 +176,12 @@ public class MapPanel extends SimplePanel {
 	
 	
 	/**
-	 * This class manages a country with its mean temperature value.
+	 * This class manages a country with its mean temperature value and uncertainty.
 	 * 
 	 * @author Johannes Lade
 	 * @history 2016-26-11 JL First version
 	 * @version 2016-26-11 JL 0.1.0
-	 * @responsibilities Manages a country with its mean temperature Valu
+	 * @responsibilities Manages a country with its mean temperature value and uncertainty.
 	 */
 	class CountryMean {
 		private String country;
@@ -190,7 +190,7 @@ public class MapPanel extends SimplePanel {
 		
 		public CountryMean(String name, List<TemperatureMeasurement> tempMeasur) {
 			this.country = name;
-			calculateMeans(tempMeasur);
+			setMeans(tempMeasur);
 		}
 		
 		/**
@@ -215,14 +215,14 @@ public class MapPanel extends SimplePanel {
 		}
 
 		/**
-		 * Calculates the means of the Temperatures and the Uncertainties of the list of 
+		 * Calculates and sets the means of the Temperatures and the Uncertainties of the list of 
 		 * TemperatureMeasurements. (Scientificly incorrect method.)
 		 * @pre tempMeasur != null && tempMeasur.size() != 0
 		 * @post -
 		 * @param tempMeasurs ArrayList of TemperatureMeasurements
 		 * @return -
 		 */
-		private void calculateMeans(List<TemperatureMeasurement> tempMeasurs) {
+		private void setMeans(List<TemperatureMeasurement> tempMeasurs) {
 			ArrayList<Temperature> temps = new ArrayList<Temperature>();
 			ArrayList<Temperature> uncerts = new ArrayList<Temperature>();
 			
