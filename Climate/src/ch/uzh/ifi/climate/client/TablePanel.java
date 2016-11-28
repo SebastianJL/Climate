@@ -253,6 +253,12 @@ public class TablePanel extends VerticalPanel{
 				return; 
 			}
 		}
+		for(String s : filterTable.getCurrentCountries()){
+			if (s.toUpperCase().equals(country.toUpperCase())){
+				Window.alert("This country is already selected.");
+				return; 
+			}
+		}
 	    
 		// Test whether filter inputs are incorrect
 		if(sdate != null && edate != null){

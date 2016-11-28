@@ -42,14 +42,17 @@ public class FilterTable {
 	      FilterRow currentFilterRow = new FilterRow(country, city, sdate, edate);
 	      
 	      filterRows.add(currentFilterRow);
-	      if(city == ""){
-	    	  city = "all";
+	      
+	      if(country != ""){
+	    	  filterFlexTable.setText(row, 0, country);
+	      }else{
+	    	  filterFlexTable.setText(row, 0, "all");
 	      }
-	      if(country == ""){
-	    	  country = "all";
+	      if(country != ""){
+		      filterFlexTable.setText(row, 1, city); 
+	      }else{
+	    	  filterFlexTable.setText(row, 1, "all");
 	      }
-	      filterFlexTable.setText(row, 0, country);
-	      filterFlexTable.setText(row, 1, city);
 	      if(sdate != null && edate != null){
 	    	  filterFlexTable.setText(row, 2, DateTimeFormat.getFormat("dd/MM/yyyy").format(sdate));
 	    	  filterFlexTable.setText(row, 3, DateTimeFormat.getFormat("dd/MM/yyyy").format(edate));
@@ -113,5 +116,13 @@ public class FilterTable {
 			cities.add(filterRow.getCity());
 		}
 		return cities;
+	}
+	
+	public ArrayList<String> getCurrentCountries(){
+		ArrayList<String> countries = new ArrayList<String>();
+		for(FilterRow filterRow : filterRows){
+			countries.add(filterRow.getCountry());
+		}
+		return countries;
 	}
 }
