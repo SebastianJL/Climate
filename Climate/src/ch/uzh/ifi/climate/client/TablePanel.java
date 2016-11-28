@@ -248,15 +248,19 @@ public class TablePanel extends VerticalPanel{
 
 		// Don't add the filter if it's already in the table.
 		for(String s : filterTable.getCurrentCities()){
-			if (s.toUpperCase().equals(city.toUpperCase())){
-				Window.alert("This city is already selected.");
-				return; 
+			if(!s.equals("")){
+				if (s.toUpperCase().equals(city.toUpperCase())){
+					Window.alert("This city is already selected.");
+					return; 
+				}
 			}
 		}
 		for(String s : filterTable.getCurrentCountries()){
-			if (s.toUpperCase().equals(country.toUpperCase())){
-				Window.alert("This country is already selected.");
-				return; 
+			if(!s.equals("")){
+				if (s.toUpperCase().equals(country.toUpperCase())){
+					Window.alert("This country is already selected.");
+					return; 
+				}
 			}
 		}
 	    

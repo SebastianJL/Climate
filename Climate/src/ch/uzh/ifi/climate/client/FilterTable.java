@@ -48,7 +48,7 @@ public class FilterTable {
 	      }else{
 	    	  filterFlexTable.setText(row, 0, "all");
 	      }
-	      if(country != ""){
+	      if(city != ""){
 		      filterFlexTable.setText(row, 1, city); 
 	      }else{
 	    	  filterFlexTable.setText(row, 1, "all");
@@ -121,7 +121,9 @@ public class FilterTable {
 	public ArrayList<String> getCurrentCountries(){
 		ArrayList<String> countries = new ArrayList<String>();
 		for(FilterRow filterRow : filterRows){
-			countries.add(filterRow.getCountry());
+			if(filterRow.getCity() == ""){
+				countries.add(filterRow.getCountry());
+			}
 		}
 		return countries;
 	}
