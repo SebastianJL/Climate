@@ -1,4 +1,4 @@
-package ch.uzh.ifi.climate.server;
+package ch.uzh.ifi.climate.shared;
 
 import static org.junit.Assert.*;
 
