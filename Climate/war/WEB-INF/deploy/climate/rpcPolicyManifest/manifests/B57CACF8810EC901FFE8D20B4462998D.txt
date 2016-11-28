@@ -1,2 +1,2 @@
 serviceClass: ch.uzh.ifi.climate.client.QueryService
-path: AF65837D6ADF6455785CD1B6076762D6.gwt.rpc
+path: E2BD09A36E6EEADB072CD47D15D1D422.gwt.rpc
