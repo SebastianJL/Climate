@@ -20,7 +20,8 @@
   <!-- Other module inherits                                      -->
   <!-- Google Charts -->
   <inherits name="com.googlecode.gwt.charts.Charts"/>
-  
+  <!-- Slider Bar -->
+  <inherits name="com.kiouri.sliderbar.SliderBarMVP" />
   <!-- Specify the app entry point class.                         -->
   <entry-point class='ch.uzh.ifi.climate.client.Climate'/>
 
