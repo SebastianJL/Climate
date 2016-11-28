@@ -37,12 +37,11 @@ import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
  */
 public class MapPanel extends SimplePanel {
 	private final Date INITIAL_DATE = DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/01/2000");
-	
+
 	private GeoChart geoChart;
 	private ArrayList<CountryMean> data;
 	private QueryServiceAsync querySvc = GWT.create(QueryService.class);
-	private Date observedDate;
-
+	private Date observedDate = INITIAL_DATE;
 
 	public MapPanel() {
 		initialize();
@@ -62,37 +61,38 @@ public class MapPanel extends SimplePanel {
 		});
 	}
 
-	
 	/**
 	 * Draws the geoChart
+	 * 
 	 * @pre geoChart != null && data != null
 	 * @post pre
 	 * @param -
 	 * @return -
 	 */
 	private void draw() {
-		
 
 		// Prepare the datatable
 		DataTable dataTable = prepareData();
-		
+
 		// Set options
 		GeoChartOptions options = GeoChartOptions.create();
 		GeoChartColorAxis geoChartColorAxis = GeoChartColorAxis.create();
 		geoChartColorAxis.setColors("green", "yellow", "red");
 		options.setColorAxis(geoChartColorAxis);
 		options.setDatalessRegionColor("gray");
-		
+
 		// Draw the chart
 		geoChart.draw(dataTable, options);
-		
+
 	}
 
 	/**
 	 * Creates and fills DataTable for the geoChart.
+	 * 
 	 * @pre data != null && !data.isEmpty()
 	 * @post -
-	 * @param result ArrayList<TemperatureMeasurement>
+	 * @param result
+	 *            ArrayList<TemperatureMeasurement>
 	 * @return DataTable Contains the data for the qeochart.
 	 */
 	private DataTable prepareData() {
@@ -101,7 +101,7 @@ public class MapPanel extends SimplePanel {
 		dataTable.addColumn(ColumnType.NUMBER, "Mean Temperature");
 		dataTable.addColumn(ColumnType.NUMBER, "Uncertainty");
 		dataTable.addRows(data.size());
-		for (int i=0; i < data.size(); i++) {
+		for (int i = 0; i < data.size(); i++) {
 			dataTable.setValue(i, 0, data.get(i).getCountry());
 			dataTable.setValue(i, 1, data.get(i).getTemperatureMean().celsius());
 			dataTable.setValue(i, 2, data.get(i).getUncertaintyMean().celsius());
@@ -111,9 +111,11 @@ public class MapPanel extends SimplePanel {
 
 	/**
 	 * Updates the data for a specific date and redraws the geochart.
+	 * 
 	 * @pre data != null && date != null
 	 * @post pre
-	 * @param result ArrayList<TemperatureMeasurement>
+	 * @param result
+	 *            ArrayList<TemperatureMeasurement>
 	 * @return -
 	 */
 	private void updateGeoChart(Date date) {
@@ -122,7 +124,7 @@ public class MapPanel extends SimplePanel {
 			@Override
 			public void onFailure(Throwable caught) {
 				// TODO Auto-generated method stub
-				
+
 			}
 
 			@Override
@@ -131,68 +133,65 @@ public class MapPanel extends SimplePanel {
 				draw();
 			}
 		};
-		
+
 		if (querySvc == null) {
 			querySvc = GWT.create(QueryService.class);
 		}
 		querySvc.temperatureMeasurementsOfAllCitiesAtDate(date, callback);
-			
-		
-		
+
 	}
-	
+
 	/**
 	 * Generates CountryMeans for a list of TemperatureMeasurements
+	 * 
 	 * @pre tempMeasur
 	 * @post -
-	 * @param tempMeasur ArrayList<TemperatureMeasurement>
+	 * @param tempMeasur
+	 *            ArrayList<TemperatureMeasurement>
 	 * @return countryMeans ArrayList with CountryMeans
 	 */
 	private ArrayList<CountryMean> generateCountryMeans(ArrayList<TemperatureMeasurement> tempMeasurs) {
 		ArrayList<CountryMean> countryMeans = new ArrayList<CountryMean>();
-		NavigableMap<String, List<TemperatureMeasurement>> tempMeasursByCountry = 
-				new TreeMap<String, List<TemperatureMeasurement>>();
-		
+		NavigableMap<String, List<TemperatureMeasurement>> tempMeasursByCountry = new TreeMap<String, List<TemperatureMeasurement>>();
+
 		// Sort TemperatureMeasurements by country in tempMeasursByCountry
 		for (TemperatureMeasurement tempMeasur : tempMeasurs) {
 			List<TemperatureMeasurement> countryList = tempMeasursByCountry.get(tempMeasur.getCountry());
 			if (countryList == null) {
-				tempMeasursByCountry.put(
-						tempMeasur.getCountry(),
-						countryList = new ArrayList<TemperatureMeasurement>()
-				);
+				tempMeasursByCountry.put(tempMeasur.getCountry(),
+						countryList = new ArrayList<TemperatureMeasurement>());
 			}
 			countryList.add(tempMeasur);
 		}
-		
-		
+
 		// Generate CountryMeans
-		for (Map.Entry<String, List<TemperatureMeasurement>> entry: tempMeasursByCountry.entrySet()) {
+		for (Map.Entry<String, List<TemperatureMeasurement>> entry : tempMeasursByCountry.entrySet()) {
 			countryMeans.add(new CountryMean(entry.getKey(), entry.getValue()));
 		}
 		return countryMeans;
-		
+
 	}
-	
-	
+
 	/**
-	 * This class manages a country with its mean temperature value and uncertainty.
+	 * This class manages a country with its mean temperature value and
+	 * uncertainty.
 	 * 
 	 * @author Johannes Lade
 	 * @history 2016-26-11 JL First version
 	 * @version 2016-26-11 JL 0.1.0
-	 * @responsibilities Manages a country with its mean temperature value and uncertainty.
+	 * @responsibilities Manages a country with its mean temperature value and
+	 *                   uncertainty.
 	 */
 	class CountryMean {
 		private String country;
 		private Temperature tempMean;
 		private Temperature uncertaintyMean;
-		
+
 		public CountryMean(String name, List<TemperatureMeasurement> tempMeasur) {
 			this.country = name;
 			setMeans(tempMeasur);
 		}
-		
+
 		/**
 		 * @return the country
 		 */
@@ -215,33 +214,32 @@ public class MapPanel extends SimplePanel {
 		}
 
 		/**
-		 * Calculates and sets the means of the Temperatures and the Uncertainties of the list of 
-		 * TemperatureMeasurements. (Scientificly incorrect method.)
+		 * Calculates and sets the means of the Temperatures and the
+		 * Uncertainties of the list of TemperatureMeasurements. (Scientificly
+		 * incorrect method.)
+		 * 
 		 * @pre tempMeasur != null && tempMeasur.size() != 0
 		 * @post -
-		 * @param tempMeasurs ArrayList of TemperatureMeasurements
+		 * @param tempMeasurs
+		 *            ArrayList of TemperatureMeasurements
 		 * @return -
 		 */
 		private void setMeans(List<TemperatureMeasurement> tempMeasurs) {
 			ArrayList<Temperature> temps = new ArrayList<Temperature>();
 			ArrayList<Temperature> uncerts = new ArrayList<Temperature>();
-			
+
 			for (TemperatureMeasurement tm : tempMeasurs) {
 				temps.add(tm.getTemperature());
 				uncerts.add(tm.getUncertainty());
 			}
-			
+
 			this.tempMean = Temperature.sum(temps);
 			this.tempMean = Temperature.divide(this.tempMean, temps.size());
 			this.uncertaintyMean = Temperature.sum(uncerts);
 			this.uncertaintyMean = Temperature.divide(this.uncertaintyMean, uncerts.size());
-				
+
 		}
 
 	}
 
-
-	
 }
-
-
