@@ -12,8 +12,8 @@ public class FilterTable {
 	
 	public void setUpFilterTable(){
 		// Create table for filters.
-		filterFlexTable.setText(0, 0, "City");
-		filterFlexTable.setText(0, 1, "Country");
+		filterFlexTable.setText(0, 0, "Country");
+		filterFlexTable.setText(0, 1, "City");
 		filterFlexTable.setText(0, 2, "Start Date");
 		filterFlexTable.setText(0, 3, "End Date");
 		filterFlexTable.setText(0, 4, "Remove");
@@ -42,15 +42,21 @@ public class FilterTable {
 	      FilterRow currentFilterRow = new FilterRow(country, city, sdate, edate);
 	      
 	      filterRows.add(currentFilterRow);
-	      filterFlexTable.setText(row, 0, city);
-	      filterFlexTable.setText(row, 1, country);
+	      if(city == ""){
+	    	  city = "all";
+	      }
+	      if(country == ""){
+	    	  country = "all";
+	      }
+	      filterFlexTable.setText(row, 0, country);
+	      filterFlexTable.setText(row, 1, city);
 	      if(sdate != null && edate != null){
 	    	  filterFlexTable.setText(row, 2, DateTimeFormat.getFormat("dd/MM/yyyy").format(sdate));
 	    	  filterFlexTable.setText(row, 3, DateTimeFormat.getFormat("dd/MM/yyyy").format(edate));
 	      }
 	      if(sdate == null && edate == null){
-	    	  filterFlexTable.setText(row, 2, "not determined");
-	    	  filterFlexTable.setText(row, 3, "not determined");
+	    	  filterFlexTable.setText(row, 2, "earliest");
+	    	  filterFlexTable.setText(row, 3, "latest");
 	      }
 	      filterFlexTable.setWidget(row, 4, currentFilterRow.getRemoveButton());	     
 	      filterFlexTable.setWidget(row, 5, currentFilterRow.getGetDataButton());
