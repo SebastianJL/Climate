@@ -1,5 +1,8 @@
 package ch.uzh.ifi.climate.server;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -22,9 +25,27 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 	
 	private String CSVFileName = "GlobalLandTemperaturesByMajorCity_v1.csv";
 	private CSVParser parser = new CSVParser();
-	private ArrayList<TemperatureMeasurement> data = parser.parseCSV(CSVFileName);
+	private ArrayList<TemperatureMeasurement> data;
 	private ArrayList<TemperatureMeasurement> filteredData = new ArrayList<TemperatureMeasurement>();
 	private ArrayList<TemperatureMeasurement> sliderData = new ArrayList<TemperatureMeasurement>();
+	
+	
+	public QueryServiceImpl() {
+		try {
+			data = parser.parseCSV(CSVFileName);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
 	
 	/**
 	 * Filters data with respect to city, startDate, endDate

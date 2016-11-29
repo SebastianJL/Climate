@@ -34,11 +34,10 @@ public class CSVParser{
 	 * @param 	csvFileName is the name of the file that should be read
 	 * @post	data from the csv file is stored in the returned ArrayList
 	 * @return	ArrayList that contains all the measurements from the csv file
-	 * @throws	FileNotFoundException if the file with name csvFileName is not found
 	 * @throws	IOException If an IO error occurs
 	 * @throws	ParseException If a parse error occurs (for the parsed Date and float types)
 	 */
-	public ArrayList<TemperatureMeasurement> parseCSV(String csvFileName){
+	public ArrayList<TemperatureMeasurement> parseCSV(String csvFileName) throws IOException, ParseException {
 		
 		//initialization
 		BufferedReader br = null;
@@ -76,18 +75,17 @@ public class CSVParser{
 				}
 			}
 		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+			throw e;
 		} catch (IOException e) {
-			e.printStackTrace();
+			throw e;
 		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw e;
 		} finally {
 			if (br != null) {
 				try {
 					br.close();
 				} catch (IOException e) {
-					e.printStackTrace();
+					throw e;
 				}
 			}
 		}
