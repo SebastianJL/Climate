@@ -3,6 +3,7 @@ package ch.uzh.ifi.climate.server;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import ch.uzh.ifi.climate.client.QueryService;
@@ -39,7 +40,7 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 		for(TemperatureMeasurement Measurement:this.data){
 			if(	Measurement.getCity().equals(city) && 
 				Measurement.getDate().getTime()>=sdate.getTime() && 
-				Measurement.getDate().getTime()<=edate.getTime() &&
+				Measurement.getDate().getTime()<=edate.getTime()+4000000 &&
 				!filteredData.contains(Measurement)){
 					this.filteredData.add(Measurement);
 			}
@@ -77,7 +78,7 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 		for(TemperatureMeasurement Measurement:this.data){
 			if(	Measurement.getCountry().equals(country) && 
 				Measurement.getDate().getTime()>=sdate.getTime() && 
-				Measurement.getDate().getTime()<=edate.getTime() &&
+				Measurement.getDate().getTime()<=edate.getTime()+4000000 &&
 				!filteredData.contains(Measurement)){
 					this.filteredData.add(Measurement);
 			}
@@ -114,7 +115,8 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 			if(	Measurement.getCity().equals(city) &&
 				Measurement.getCountry().equals(country) &&
 				Measurement.getDate().getTime() >= sdate.getTime() &&
-				Measurement.getDate().getTime() <= edate.getTime()){
+				Measurement.getDate().getTime() <= edate.getTime()+4000000 &&
+				!filteredData.contains(Measurement)){
 					this.filteredData.add(Measurement);
 			}
 		}
@@ -189,7 +191,8 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 	public ArrayList<TemperatureMeasurement> temperatureMeasurementsOfAllCitiesAtDate(Date date){
 		sliderData.clear();
 		for(TemperatureMeasurement Measurement:this.data){
-			if(Measurement.getDate().getTime() == date.getTime()){
+			if(Measurement.getDate().getTime() >= date.getTime() &&
+				Measurement.getDate().getTime() <= date.getTime()+4000000){
 				this.sliderData.add(Measurement);
 			}
 		}

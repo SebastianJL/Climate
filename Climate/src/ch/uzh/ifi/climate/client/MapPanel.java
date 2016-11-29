@@ -9,6 +9,8 @@ import java.util.TreeMap;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.DateTimeFormat;
+import com.google.gwt.user.client.Timer;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.DockPanel;
@@ -36,10 +38,10 @@ import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
  *                   of the map view.
  */
 public class MapPanel extends SimplePanel {
-	private final Date INITIAL_DATE = DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/01/2000");
+	private final Date INITIAL_DATE = new Date("01/01/2000");//DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/01/2000");
 
 	private GeoChart geoChart;
-	private ArrayList<CountryMean> data;
+	private ArrayList<CountryMean> countryData;
 	private QueryServiceAsync querySvc = GWT.create(QueryService.class);
 	private Date observedDate = INITIAL_DATE;
 
@@ -79,8 +81,8 @@ public class MapPanel extends SimplePanel {
 		GeoChartColorAxis geoChartColorAxis = GeoChartColorAxis.create();
 		geoChartColorAxis.setColors("green", "yellow", "red");
 		options.setColorAxis(geoChartColorAxis);
-		options.setDatalessRegionColor("gray");
-
+		options.setDatalessRegionColor("grey");
+		
 		// Draw the chart
 		geoChart.draw(dataTable, options);
 
@@ -93,18 +95,18 @@ public class MapPanel extends SimplePanel {
 	 * @post -
 	 * @param result
 	 *            ArrayList<TemperatureMeasurement>
-	 * @return DataTable Contains the data for the qeochart.
+	 * @return DataTable Contains the data for the geoChart.
 	 */
 	private DataTable prepareData() {
 		DataTable dataTable = DataTable.create();
 		dataTable.addColumn(ColumnType.STRING, "Country");
 		dataTable.addColumn(ColumnType.NUMBER, "Mean Temperature");
 		dataTable.addColumn(ColumnType.NUMBER, "Uncertainty");
-		dataTable.addRows(data.size());
-		for (int i = 0; i < data.size(); i++) {
-			dataTable.setValue(i, 0, data.get(i).getCountry());
-			dataTable.setValue(i, 1, data.get(i).getTemperatureMean().celsius());
-			dataTable.setValue(i, 2, data.get(i).getUncertaintyMean().celsius());
+		dataTable.addRows(countryData.size());
+		for (int i = 0; i < countryData.size(); i++) {
+			dataTable.setValue(i, 0, countryData.get(i).getCountry());
+			dataTable.setValue(i, 1, countryData.get(i).getTemperatureMean().celsius());
+			dataTable.setValue(i, 2, countryData.get(i).getUncertaintyMean().celsius());
 		}
 		return dataTable;
 	}
@@ -119,6 +121,9 @@ public class MapPanel extends SimplePanel {
 	 * @return -
 	 */
 	private void updateGeoChart(Date date) {
+		if (querySvc == null) {
+			querySvc = GWT.create(QueryService.class);
+		}
 		AsyncCallback<ArrayList<TemperatureMeasurement>> callback = new AsyncCallback<ArrayList<TemperatureMeasurement>>() {
 
 			@Override
@@ -129,14 +134,12 @@ public class MapPanel extends SimplePanel {
 
 			@Override
 			public void onSuccess(ArrayList<TemperatureMeasurement> result) {
-				data = generateCountryMeans(result);
+				if(result.isEmpty()) Window.alert("No data recieved from server...");
+				countryData = generateCountryMeans(result);
 				draw();
 			}
 		};
-
-		if (querySvc == null) {
-			querySvc = GWT.create(QueryService.class);
-		}
+		
 		querySvc.temperatureMeasurementsOfAllCitiesAtDate(date, callback);
 
 	}
@@ -153,7 +156,6 @@ public class MapPanel extends SimplePanel {
 	private ArrayList<CountryMean> generateCountryMeans(ArrayList<TemperatureMeasurement> tempMeasurs) {
 		ArrayList<CountryMean> countryMeans = new ArrayList<CountryMean>();
 		NavigableMap<String, List<TemperatureMeasurement>> tempMeasursByCountry = new TreeMap<String, List<TemperatureMeasurement>>();
-
 		// Sort TemperatureMeasurements by country in tempMeasursByCountry
 		for (TemperatureMeasurement tempMeasur : tempMeasurs) {
 			List<TemperatureMeasurement> countryList = tempMeasursByCountry.get(tempMeasur.getCountry());
@@ -168,6 +170,7 @@ public class MapPanel extends SimplePanel {
 		for (Map.Entry<String, List<TemperatureMeasurement>> entry : tempMeasursByCountry.entrySet()) {
 			countryMeans.add(new CountryMean(entry.getKey(), entry.getValue()));
 		}
+
 		return countryMeans;
 
 	}
