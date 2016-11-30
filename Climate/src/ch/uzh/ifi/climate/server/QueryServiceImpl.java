@@ -29,6 +29,7 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 	private ArrayList<TemperatureMeasurement> data;
 	private ArrayList<TemperatureMeasurement> filteredData = new ArrayList<TemperatureMeasurement>();
 	private ArrayList<TemperatureMeasurement> sliderData = new ArrayList<TemperatureMeasurement>();
+	private final int DAY_IN_MILLISECONDS = 1000*60*60*24;
 	
 	
 	public QueryServiceImpl() {
@@ -60,8 +61,8 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 	public ArrayList<TemperatureMeasurement> temperatureMeasurements(String city, Date sdate, Date edate) {
 		for(TemperatureMeasurement Measurement:this.data){
 			if(	Measurement.getCity().equals(city) && 
-				Measurement.getDate().getTime()>=sdate.getTime() && 
-				Measurement.getDate().getTime()<=edate.getTime()+4000000 &&
+				Measurement.getDate().getTime()>=sdate.getTime()-DAY_IN_MILLISECONDS && 
+				Measurement.getDate().getTime()<=edate.getTime()+DAY_IN_MILLISECONDS &&
 				!filteredData.contains(Measurement)){
 					this.filteredData.add(Measurement);
 			}
@@ -98,8 +99,8 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 	public ArrayList<TemperatureMeasurement> temperatureMeasurementsCountry(String country, Date sdate, Date edate) {
 		for(TemperatureMeasurement Measurement:this.data){
 			if(	Measurement.getCountry().equals(country) && 
-				Measurement.getDate().getTime()>=sdate.getTime() && 
-				Measurement.getDate().getTime()<=edate.getTime()+4000000 &&
+				Measurement.getDate().getTime()>=sdate.getTime()-DAY_IN_MILLISECONDS && 
+				Measurement.getDate().getTime()<=edate.getTime()+DAY_IN_MILLISECONDS &&
 				!filteredData.contains(Measurement)){
 					this.filteredData.add(Measurement);
 			}
@@ -135,8 +136,8 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 		for(TemperatureMeasurement Measurement:this.data){
 			if(	Measurement.getCity().equals(city) &&
 				Measurement.getCountry().equals(country) &&
-				Measurement.getDate().getTime() >= sdate.getTime() &&
-				Measurement.getDate().getTime() <= edate.getTime()+4000000 &&
+				Measurement.getDate().getTime() >= sdate.getTime()-DAY_IN_MILLISECONDS &&
+				Measurement.getDate().getTime() <= edate.getTime()+DAY_IN_MILLISECONDS &&
 				!filteredData.contains(Measurement)){
 					this.filteredData.add(Measurement);
 			}
@@ -212,8 +213,8 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 	public ArrayList<TemperatureMeasurement> temperatureMeasurementsOfAllCitiesAtDate(Date date){
 		sliderData.clear();
 		for(TemperatureMeasurement Measurement:this.data){
-			if(Measurement.getDate().getTime() >= date.getTime() &&
-				Measurement.getDate().getTime() <= date.getTime()+4000000){
+			if(Measurement.getDate().getTime() >= date.getTime()-DAY_IN_MILLISECONDS &&
+				Measurement.getDate().getTime() <= date.getTime()+DAY_IN_MILLISECONDS){
 				this.sliderData.add(Measurement);
 			}
 		}
