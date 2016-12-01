@@ -12,6 +12,8 @@ import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.DockPanel;
+import com.google.gwt.user.client.ui.Label;
+import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.ScrollPanel;
 import com.google.gwt.user.client.ui.SimplePanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -23,6 +25,9 @@ import com.googlecode.gwt.charts.client.geochart.GeoChart;
 import com.googlecode.gwt.charts.client.geochart.GeoChartColorAxis;
 import com.googlecode.gwt.charts.client.geochart.GeoChartOptions;
 
+import ch.uzh.ifi.climate.client.slider.Slider;
+import ch.uzh.ifi.climate.client.slider.SliderEvent;
+import ch.uzh.ifi.climate.client.slider.SliderListener;
 import ch.uzh.ifi.climate.shared.Temperature;
 import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
 
@@ -35,13 +40,15 @@ import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
  * @responsibilities Keeps track of all panels, widgets and of the functionality
  *                   of the map view.
  */
-public class MapPanel extends SimplePanel {
+public class MapPanel extends SimplePanel implements SliderListener {
 	private final Date INITIAL_DATE = DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/01/2000");
 
 	private GeoChart geoChart;
 	private ArrayList<CountryMean> data;
 	private QueryServiceAsync querySvc = GWT.create(QueryService.class);
 	private Date observedDate = INITIAL_DATE;
+	private Slider slider;
+    private Label sliderLabel;
 
 	public MapPanel() {
 		initialize();
@@ -59,6 +66,16 @@ public class MapPanel extends SimplePanel {
 				updateGeoChart(INITIAL_DATE);
 			}
 		});
+		
+		// Creat and attach the slider
+		Label sliderLabel = new Label("Value:");
+        sliderLabel = new Label("0");
+        sliderLabel.addStyleName("slider-values");
+        slider = new Slider("slider",1700,2020,1700);
+        this.add(sliderLabel);
+        this.add(sliderLabel);
+        this.add(slider);
+        slider.addListener(this);
 	}
 
 	/**
@@ -241,5 +258,26 @@ public class MapPanel extends SimplePanel {
 		}
 
 	}
+	
+    @Override
+    public boolean onSlide(SliderEvent e){
+        sliderLabel.setText("" + e.getValues()[0]);
+        return true;
+    }
+
+    @Override
+    public void onStart(SliderEvent e){
+        // We are not going to do anything onStart
+    }
+
+    @Override
+    public void onStop(SliderEvent e){
+        // We are not going to do anything onStop        
+    }
+
+    @Override
+    public void onChange(SliderEvent e){
+        //We don't need to do anything, because everything is done in onSlide in this example
+    }
 
 }
