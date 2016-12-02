@@ -44,8 +44,6 @@ import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
  * @responsibilities Keeps track of all panels, widgets and of the functionality
  *                   of the map view.
  */
-public class MapPanel extends SimplePanel {
-	private final Date INITIAL_DATE = new Date("01/01/2000");//DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/01/2000");
 
 public class MapPanel extends VerticalPanel implements SliderListener{
 	private final Date INITIAL_DATE = DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/01/2000");
