@@ -9,6 +9,7 @@ import java.util.TreeMap;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.i18n.client.DateTimeFormat;
+import com.google.gwt.thirdparty.javascript.rhino.jstype.SimpleSlot;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.DockPanel;
@@ -22,6 +23,7 @@ import com.googlecode.gwt.charts.client.DataTable;
 import com.googlecode.gwt.charts.client.geochart.GeoChart;
 import com.googlecode.gwt.charts.client.geochart.GeoChartColorAxis;
 import com.googlecode.gwt.charts.client.geochart.GeoChartOptions;
+import com.kiouri.sliderbar.client.solution.simplehorizontal.SliderBarSimpleHorizontal;
 
 import ch.uzh.ifi.climate.shared.Temperature;
 import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
@@ -35,7 +37,7 @@ import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
  * @responsibilities Keeps track of all panels, widgets and of the functionality
  *                   of the map view.
  */
-public class MapPanel extends SimplePanel {
+public class MapPanel extends VerticalPanel {
 	private final Date INITIAL_DATE = DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/01/2000");
 
 	private GeoChart geoChart;
@@ -48,6 +50,8 @@ public class MapPanel extends SimplePanel {
 	}
 
 	private void initialize() {
+		SliderBarSimpleHorizontal slider = new SliderBarSimpleHorizontal(200, "50%", true);
+		add(slider);
 		ChartLoader chartLoader = new ChartLoader(ChartPackage.GEOCHART);
 		chartLoader.loadApi(new Runnable() {
 
