@@ -3,6 +3,8 @@ package ch.uzh.ifi.climate.server;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.google.gwt.i18n.shared.DateTimeFormat;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import ch.uzh.ifi.climate.client.QueryService;
@@ -25,6 +27,7 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 	private ArrayList<TemperatureMeasurement> data = parser.parseCSV(CSVFileName);
 	private ArrayList<TemperatureMeasurement> filteredData = new ArrayList<TemperatureMeasurement>();
 	private ArrayList<TemperatureMeasurement> sliderData = new ArrayList<TemperatureMeasurement>();
+	private final int DAY_IN_MILLISECONDS = 1000*60*60*24;
 	
 	/**
 	 * Filters data with respect to city, startDate, endDate
@@ -38,8 +41,8 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 	public ArrayList<TemperatureMeasurement> temperatureMeasurements(String city, Date sdate, Date edate) {
 		for(TemperatureMeasurement Measurement:this.data){
 			if(	Measurement.getCity().equals(city) && 
-				Measurement.getDate().getTime()>=sdate.getTime() && 
-				Measurement.getDate().getTime()<=edate.getTime() &&
+				Measurement.getDate().getTime()>=sdate.getTime()-DAY_IN_MILLISECONDS && 
+				Measurement.getDate().getTime()<=edate.getTime()+DAY_IN_MILLISECONDS &&
 				!filteredData.contains(Measurement)){
 					this.filteredData.add(Measurement);
 			}
@@ -76,8 +79,8 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 	public ArrayList<TemperatureMeasurement> temperatureMeasurementsCountry(String country, Date sdate, Date edate) {
 		for(TemperatureMeasurement Measurement:this.data){
 			if(	Measurement.getCountry().equals(country) && 
-				Measurement.getDate().getTime()>=sdate.getTime() && 
-				Measurement.getDate().getTime()<=edate.getTime() &&
+				Measurement.getDate().getTime()>=sdate.getTime()-DAY_IN_MILLISECONDS && 
+				Measurement.getDate().getTime()<=edate.getTime()+DAY_IN_MILLISECONDS &&
 				!filteredData.contains(Measurement)){
 					this.filteredData.add(Measurement);
 			}
@@ -113,8 +116,8 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 		for(TemperatureMeasurement Measurement:this.data){
 			if(	Measurement.getCity().equals(city) &&
 				Measurement.getCountry().equals(country) &&
-				Measurement.getDate().getTime() >= sdate.getTime() &&
-				Measurement.getDate().getTime() <= edate.getTime()){
+				Measurement.getDate().getTime() >= sdate.getTime()-DAY_IN_MILLISECONDS &&
+				Measurement.getDate().getTime() <= edate.getTime()+DAY_IN_MILLISECONDS){
 					this.filteredData.add(Measurement);
 			}
 		}
@@ -195,6 +198,18 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 		}
 		return this.sliderData;
 	}
+	
+	public ArrayList<TemperatureMeasurement> temperatureMeasurementsOfAllCitiesAtYear(Date date){
+		sliderData.clear();
+		for(TemperatureMeasurement Measurement:this.data){
+			if(Measurement.getDate().getTime() >= date.getTime()-DAY_IN_MILLISECONDS && 
+					Measurement.getDate().getTime() <= new Date((date.getMonth()+1)+"/"+date.getDate()+"/"+(date.getYear()+1901)).getTime()+DAY_IN_MILLISECONDS){
+				this.sliderData.add(Measurement);
+			}
+		}
+		return this.sliderData;
+	}
+	
 	
 	/**Removes all measurements of one specific city
 	 * @pre		data != null && filteredData != null && city != null

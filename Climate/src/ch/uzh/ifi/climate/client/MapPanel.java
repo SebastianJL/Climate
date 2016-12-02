@@ -141,7 +141,7 @@ public class MapPanel extends VerticalPanel {
 		if (querySvc == null) {
 			querySvc = GWT.create(QueryService.class);
 		}
-		querySvc.temperatureMeasurementsOfAllCitiesAtDate(date, callback);
+		querySvc.temperatureMeasurementsOfAllCitiesAtYear(date, callback);
 
 	}
 
