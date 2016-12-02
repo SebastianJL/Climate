@@ -40,15 +40,16 @@ import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
  * @responsibilities Keeps track of all panels, widgets and of the functionality
  *                   of the map view.
  */
-public class MapPanel extends SimplePanel implements SliderListener {
+public class MapPanel extends VerticalPanel implements SliderListener {
 	private final Date INITIAL_DATE = DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/01/2000");
 
 	private GeoChart geoChart;
 	private ArrayList<CountryMean> data;
 	private QueryServiceAsync querySvc = GWT.create(QueryService.class);
 	private Date observedDate = INITIAL_DATE;
-	private Slider slider;
-    private Label sliderLabel;
+    private Label sliderLabel = new Label("Value:");
+    private Label currentSliderValue = new Label("1700");
+    private Slider slider = new Slider("slider",1700,2020,1700);
 
 	public MapPanel() {
 		initialize();
@@ -67,15 +68,14 @@ public class MapPanel extends SimplePanel implements SliderListener {
 			}
 		});
 		
-		// Creat and attach the slider
-		Label sliderLabel = new Label("Value:");
-        sliderLabel = new Label("0");
-        sliderLabel.addStyleName("slider-values");
-        slider = new Slider("slider",1700,2020,1700);
-        this.add(sliderLabel);
-        this.add(sliderLabel);
-        this.add(slider);
+		// Create and attach the slider
+        currentSliderValue.addStyleName("slider-values");
+        slider.addStyleName("slider");
+        add(sliderLabel);
+        add(currentSliderValue);
+        add(slider);
         slider.addListener(this);
+        
 	}
 
 	/**
@@ -261,7 +261,7 @@ public class MapPanel extends SimplePanel implements SliderListener {
 	
     @Override
     public boolean onSlide(SliderEvent e){
-        sliderLabel.setText("" + e.getValues()[0]);
+        currentSliderValue.setText("" + e.getValues()[0]);
         return true;
     }
 
