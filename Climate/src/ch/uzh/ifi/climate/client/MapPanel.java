@@ -62,8 +62,6 @@ public class MapPanel extends VerticalPanel implements SliderListener{
 	}
 
 	private void initialize() {
-		SliderBarSimpleHorizontal slider = new SliderBarSimpleHorizontal(200, "50%", true);
-		add(slider);
 		ChartLoader chartLoader = new ChartLoader(ChartPackage.GEOCHART);
 		chartLoader.loadApi(new Runnable() {
 
