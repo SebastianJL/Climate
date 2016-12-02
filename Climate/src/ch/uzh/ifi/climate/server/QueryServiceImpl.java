@@ -6,6 +6,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 
+import com.google.gwt.i18n.shared.DateTimeFormat;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
@@ -137,8 +138,7 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 			if(	Measurement.getCity().equals(city) &&
 				Measurement.getCountry().equals(country) &&
 				Measurement.getDate().getTime() >= sdate.getTime()-DAY_IN_MILLISECONDS &&
-				Measurement.getDate().getTime() <= edate.getTime()+DAY_IN_MILLISECONDS &&
-				!filteredData.contains(Measurement)){
+				Measurement.getDate().getTime() <= edate.getTime()+DAY_IN_MILLISECONDS){
 					this.filteredData.add(Measurement);
 			}
 		}
@@ -220,6 +220,18 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 		}
 		return this.sliderData;
 	}
+	
+	public ArrayList<TemperatureMeasurement> temperatureMeasurementsOfAllCitiesAtYear(Date date){
+		sliderData.clear();
+		for(TemperatureMeasurement Measurement:this.data){
+			if(Measurement.getDate().getTime() >= date.getTime()-DAY_IN_MILLISECONDS && 
+					Measurement.getDate().getTime() <= new Date((date.getMonth()+1)+"/"+date.getDate()+"/"+(date.getYear()+1901)).getTime()+DAY_IN_MILLISECONDS){
+				this.sliderData.add(Measurement);
+			}
+		}
+		return this.sliderData;
+	}
+	
 	
 	/**Removes all measurements of one specific city
 	 * @pre		data != null && filteredData != null && city != null
