@@ -42,14 +42,18 @@ import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
  */
 public class MapPanel extends VerticalPanel implements SliderListener {
 	private final Date INITIAL_DATE = DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/01/2000");
-
+	private final int MIN_YEAR = 1743;
+	private final int MAX_YEAR = 2013;
+	
 	private GeoChart geoChart;
 	private ArrayList<CountryMean> data;
 	private QueryServiceAsync querySvc = GWT.create(QueryService.class);
-	private Date observedDate = INITIAL_DATE;
+	
+	
+	// Initialize somewhere else
     private Label sliderLabel = new Label("Value:");
     private Label currentSliderValue = new Label("1700");
-    private Slider slider = new Slider("slider",1700,2020,1700);
+    private Slider slider = new Slider("slider", MIN_YEAR, MAX_YEAR, 2000);
 
 	public MapPanel() {
 		initialize();
@@ -260,23 +264,27 @@ public class MapPanel extends VerticalPanel implements SliderListener {
 	}
 	
     @Override
-    public boolean onSlide(SliderEvent e){
-        currentSliderValue.setText("" + e.getValues()[0]);
+    public boolean onSlide(SliderEvent e) {
+    	String year = "" + e.getValues()[0];
+        currentSliderValue.setText(year);
         return true;
     }
 
     @Override
-    public void onStart(SliderEvent e){
+    public void onStart(SliderEvent e) {
         // We are not going to do anything onStart
     }
 
     @Override
-    public void onStop(SliderEvent e){
+    public void onStop(SliderEvent e) {
+    	String year = "" + e.getValues()[0];
+    	Date date = DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/01/" + year);
+    	updateGeoChart(date);
         // We are not going to do anything onStop        
     }
 
     @Override
-    public void onChange(SliderEvent e){
+    public void onChange(SliderEvent e) {
         //We don't need to do anything, because everything is done in onSlide in this example
     }
 
