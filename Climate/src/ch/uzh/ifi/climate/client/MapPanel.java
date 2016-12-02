@@ -46,19 +46,18 @@ import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
  */
 
 public class MapPanel extends VerticalPanel implements SliderListener{
-	private final Date INITIAL_DATE = DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/01/2000");
+	private final Integer INITIAL_YEAR = 2000;
+	private final Date INITIAL_DATE = DateTimeFormat.getFormat("dd/MM/yyyy").parse(
+			"01/01/"+INITIAL_YEAR.toString());
 	private final int MIN_YEAR = 1743;
 	private final int MAX_YEAR = 2013;
 	
 	private GeoChart geoChart;
 	private ArrayList<CountryMean> countryData;
 	private QueryServiceAsync querySvc = GWT.create(QueryService.class);
-	
-	
-	// Initialize somewhere else
-    private Label sliderLabel = new Label("Value:");
-    private Label currentSliderValue = new Label("1700");
-    private Slider slider = new Slider("slider", MIN_YEAR, MAX_YEAR, 2000);
+    private Label sliderLabel;
+    private Label sliderValue;
+    private Slider slider;
 
 	public MapPanel() {
 		initialize();
@@ -77,11 +76,18 @@ public class MapPanel extends VerticalPanel implements SliderListener{
 			}
 		});
 		
-		// Create and attach the slider
-        currentSliderValue.addStyleName("slider-values");
+		// Create slider and labels belonging to it.
+		slider = new Slider("slider", MIN_YEAR, MAX_YEAR, INITIAL_YEAR);
+		sliderLabel = new Label("Year:");
+		sliderValue = new Label(INITIAL_YEAR.toString());
+		
+		// Add styles
+        sliderValue.addStyleName("slider-values");
         slider.addStyleName("slider");
+        
+        // Add labels and slider to main panel
         add(sliderLabel);
-        add(currentSliderValue);
+        add(sliderValue);
         add(slider);
         slider.addListener(this);
         
@@ -271,8 +277,9 @@ public class MapPanel extends VerticalPanel implements SliderListener{
 	
     @Override
     public boolean onSlide(SliderEvent e) {
+    	// update slider value
     	String year = "" + e.getValues()[0];
-        currentSliderValue.setText(year);
+        sliderValue.setText(year);
         return true;
     }
 
@@ -283,15 +290,15 @@ public class MapPanel extends VerticalPanel implements SliderListener{
 
     @Override
     public void onStop(SliderEvent e) {
+    	//update geochart
     	String year = "" + e.getValues()[0];
     	Date date = DateTimeFormat.getFormat("dd/MM/yyyy").parse("01/01/" + year);
     	updateGeoChart(date);
-        // We are not going to do anything onStop        
     }
 
     @Override
     public void onChange(SliderEvent e) {
-        //We don't need to do anything, because everything is done in onSlide in this example
+    	// Not used so far
     }
 
 }
