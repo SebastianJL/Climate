@@ -10,26 +10,35 @@ import java.io.Serializable;
  * @responsibilities
  * 				This class manages a coordinate pair (longitude+latitude)
  */
-
 public class Coordinates implements Serializable{
+	//latitude positive is north, negative is south
+	//longitude positive is east, negative is west
 	private float latitude;
 	private float longitude;
 	
-	public Coordinates(){
-		
-	}
+	public Coordinates() {}
 
-	//latitude positive is north, negative is south
-	//longitude positive is east, negative is west
 	public Coordinates(float latitude, float longitude) {
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
 	
+	/**
+	 * Retrieve this.latitude
+	 * @pre -
+	 * @post -
+	 * @return Latitude as float
+	 */
 	public float getLatitude(){
 		return this.latitude;
 	}
 	
+	/**
+	 * Retrieve this.longitude
+	 * @pre -
+	 * @post -
+	 * @return Longitude as float
+	 */
 	public float getLongitude(){
 		return this.longitude;
 	}
