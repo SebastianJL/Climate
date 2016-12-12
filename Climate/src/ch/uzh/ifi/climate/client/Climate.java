@@ -48,6 +48,16 @@ import sun.nio.cs.ext.MacArabic;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.i18n.client.TimeZone;
 
+
+/**
+ * This class manages the entry point of the webpage.
+ * @author		Johannes Lade
+ * @history 	2016-08-11 JL First version
+ * @history 	2016-25-11 JL Version 0.1.1
+ * @version 	2016-08-11 JL 0.1.1
+ * @responsibilities
+ * 				This class manages the entry point of the webpage.
+ */
 public class Climate implements EntryPoint {
 
 	private final String TABLE_PAGE_TITLE = "Table";
