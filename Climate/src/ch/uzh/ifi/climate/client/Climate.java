@@ -63,8 +63,10 @@ public class Climate implements EntryPoint {
 		// Create tab panel and panels for table and map view.
 		tabPanel = new TabPanel(); // 1.5, Unit.EM);
 		tablePanel = new TablePanel();
+		tablePanel.addStyleName("tablePanel");
 		mapPanel = new MapPanel();
-		mapPanel.setSize("80em", "50em");
+		mapPanel.addStyleName("mapPanel");
+		mapPanel.setSize("70em", "30em");
 
 		// Add panels to tabPanel
 		tabPanel.add(tablePanel, TABLE_PAGE_TITLE);

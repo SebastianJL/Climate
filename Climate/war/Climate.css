@@ -7,26 +7,40 @@ body {
     height: 100%;
     padding: 0;
     margin: 0;
+    background: url("background.png") !important;
 }
+
+/* table panel for all tables */
+.tablePanel {
+   background: url("white.png") !important;
+}
+
+/* map panel */
+.mapPanel {
+   background: url("white.png") !important;
+}
+
 
 /* filter table header row */
 .filterTableHeader {
-  background-color: #2062B8
-  color: white;
+  background-color: #D3D3D3;
+  color: black;
   font-style: italic;
 }
 
 /* filter table */
 .filterTable {
-  border: 1px solid silver;
+  background-color: #778899;
   padding: 2px;
+  color: black;
   margin-bottom:6px;
+  width: 100%;
 }
 
 /* filter table columns */
 .filterTableColumn {
   text-align: center;
-  width:8em;
+  width: 8em;
 }
 
 
@@ -48,11 +62,25 @@ body {
 
 .slider-values {
 	display: block;
-	color: blue;
+	color: black;
+	font-size: 30px;
+	text-align: center;
+	font-style: bold;
+	margin-left: 5px;
+	margin-top: 5px;
+}
+
+.slider-label {
+	display: block;
+	color: black;
+	font-size: 20px;
+	text-align: center;
+	font-style: bold;
 	margin-left: 5px;
 	margin-top: 5px;
 }
 
 .slider {
 	margin: 10px 10px 10px 10px;
+	background-color: Lightgray;
 }
