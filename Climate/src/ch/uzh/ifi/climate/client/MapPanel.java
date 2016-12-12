@@ -90,6 +90,7 @@ public class MapPanel extends VerticalPanel implements SliderListener{
 		sliderValue = new Label(INITIAL_YEAR.toString());
 		
 		// Add styles
+		sliderLabel.addStyleName("slider-label");
         sliderValue.addStyleName("slider-values");
         slider.addStyleName("slider");
         
@@ -116,9 +117,10 @@ public class MapPanel extends VerticalPanel implements SliderListener{
 		// Set options
 		GeoChartOptions options = GeoChartOptions.create();
 		GeoChartColorAxis geoChartColorAxis = GeoChartColorAxis.create();
-		geoChartColorAxis.setColors("green", "yellow", "red");
+		geoChartColorAxis.setColors("green", "yellow", "orange");
 		options.setColorAxis(geoChartColorAxis);
 		options.setDatalessRegionColor("grey");
+		options.setBackgroundColor("transparent");
 		
 		// Draw the chart
 		geoChart.draw(dataTable, options);

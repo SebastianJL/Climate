@@ -147,7 +147,8 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 	 */
 	public ArrayList<TemperatureMeasurement> temperatureMeasurementsCityCountry(String country, String city, Date sdate, Date edate){
 		for(TemperatureMeasurement Measurement:this.data){
-			if(	Measurement.getCity().equals(city) &&
+			if(	!filteredData.contains(Measurement) &&
+				Measurement.getCity().equals(city) &&
 				Measurement.getCountry().equals(country) &&
 				Measurement.getDate().getTime() >= sdate.getTime()-DAY_IN_MILLISECONDS &&
 				Measurement.getDate().getTime() <= edate.getTime()+DAY_IN_MILLISECONDS){

@@ -29,6 +29,8 @@ public class FilterTable {
 		filterFlexTable.getCellFormatter().addStyleName(0, 1, "filterTableColumn");
 		filterFlexTable.getCellFormatter().addStyleName(0, 2, "filterTableColumn");
 		filterFlexTable.getCellFormatter().addStyleName(0, 3, "filterTableColumn");
+		filterFlexTable.getCellFormatter().addStyleName(0, 4, "filterTableColumn");
+		filterFlexTable.getCellFormatter().addStyleName(0, 5, "filterTableColumn");
 	}
 
 	public FlexTable getFilterTable(){
@@ -68,6 +70,8 @@ public class FilterTable {
 	      filterFlexTable.getCellFormatter().addStyleName(row, 1, "filterTableColumn");
 	      filterFlexTable.getCellFormatter().addStyleName(row, 2, "filterTableColumn");
 	      filterFlexTable.getCellFormatter().addStyleName(row, 3, "filterTableColumn");
+	      filterFlexTable.getCellFormatter().addStyleName(row, 4, "filterTableColumn");
+	      filterFlexTable.getCellFormatter().addStyleName(row, 5, "filterTableColumn");
 	      currentFilterRow.getRemoveButton().addStyleDependentName("remove");
 		  currentFilterRow.getGetDataButton().addStyleDependentName("launch search");	 
 	}
