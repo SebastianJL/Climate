@@ -63,6 +63,14 @@ public class MapPanel extends VerticalPanel implements SliderListener{
 		initialize();
 	}
 
+	
+	/**
+	 * Initializes MapPanel
+	 * 
+	 * @pre -
+	 * @post this.slider != null && this.geoChart != null
+	 * @return -
+	 */
 	private void initialize() {
 		ChartLoader chartLoader = new ChartLoader(ChartPackage.GEOCHART);
 		chartLoader.loadApi(new Runnable() {
@@ -96,9 +104,8 @@ public class MapPanel extends VerticalPanel implements SliderListener{
 	/**
 	 * Draws the geoChart
 	 * 
-	 * @pre geoChart != null && data != null
-	 * @post pre
-	 * @param -
+	 * @pre geoChart != null
+	 * @post geoChart != null
 	 * @return -
 	 */
 	private void draw() {
@@ -121,10 +128,8 @@ public class MapPanel extends VerticalPanel implements SliderListener{
 	/**
 	 * Creates and fills DataTable for the geoChart.
 	 * 
-	 * @pre data != null && !data.isEmpty()
-	 * @post -
-	 * @param result
-	 *            ArrayList<TemperatureMeasurement>
+	 * @pre countryData != null && !countryData.isEmpty()
+	 * @post pre
 	 * @return DataTable Contains the data for the geoChart.
 	 */
 	private DataTable prepareData() {
@@ -144,10 +149,8 @@ public class MapPanel extends VerticalPanel implements SliderListener{
 	/**
 	 * Updates the data for a specific date and redraws the geochart.
 	 * 
-	 * @pre data != null && date != null
+	 * @pre countryData != null && date != null
 	 * @post pre
-	 * @param result
-	 *            ArrayList<TemperatureMeasurement>
 	 * @return -
 	 */
 	private void updateGeoChart(Date date) {
@@ -179,8 +182,7 @@ public class MapPanel extends VerticalPanel implements SliderListener{
 	 * 
 	 * @pre tempMeasur
 	 * @post -
-	 * @param tempMeasur
-	 *            ArrayList<TemperatureMeasurement>
+	 * @param tempMeasur ArrayList<TemperatureMeasurement>
 	 * @return countryMeans ArrayList with CountryMeans
 	 */
 	private ArrayList<CountryMean> generateCountryMeans(ArrayList<TemperatureMeasurement> tempMeasurs) {
@@ -226,6 +228,8 @@ public class MapPanel extends VerticalPanel implements SliderListener{
 		}
 
 		/**
+		 * @pre -
+		 * @post -
 		 * @return the country
 		 */
 		public String getCountry() {
@@ -233,6 +237,8 @@ public class MapPanel extends VerticalPanel implements SliderListener{
 		}
 
 		/**
+		 * @pre -
+		 * @post -
 		 * @return the tempMean
 		 */
 		public Temperature getTemperatureMean() {
@@ -240,6 +246,8 @@ public class MapPanel extends VerticalPanel implements SliderListener{
 		}
 
 		/**
+		 * @pre -
+		 * @post -
 		 * @return the uncertaintyMean
 		 */
 		public Temperature getUncertaintyMean() {
@@ -275,6 +283,10 @@ public class MapPanel extends VerticalPanel implements SliderListener{
 
 	}
 	
+	
+	/**
+	 * See documentation in superclass
+	 */
     @Override
     public boolean onSlide(SliderEvent e) {
     	// update slider value
@@ -283,11 +295,17 @@ public class MapPanel extends VerticalPanel implements SliderListener{
         return true;
     }
 
+	/**
+	 * See documentation in superclass
+	 */
     @Override
     public void onStart(SliderEvent e) {
         // We are not going to do anything onStart
     }
 
+	/**
+	 * See documentation in superclass
+	 */
     @Override
     public void onStop(SliderEvent e) {
     	//update geochart
@@ -296,6 +314,9 @@ public class MapPanel extends VerticalPanel implements SliderListener{
     	updateGeoChart(date);
     }
 
+	/**
+	 * See documentation in superclass
+	 */
     @Override
     public void onChange(SliderEvent e) {
     	// Not used so far
