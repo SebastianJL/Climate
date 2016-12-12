@@ -12,7 +12,6 @@ import java.util.ArrayList;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
