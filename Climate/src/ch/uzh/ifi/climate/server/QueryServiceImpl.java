@@ -32,6 +32,11 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 	private ArrayList<TemperatureMeasurement> sliderData = new ArrayList<TemperatureMeasurement>();
 	private final int DAY_IN_MILLISECONDS = 1000*60*60*24;
 	
+	//Constructor for tests
+	public QueryServiceImpl(ArrayList<TemperatureMeasurement> data){
+		this.data = data;
+	}
+	
 	//Constructor that handles possible exceptions
 	public QueryServiceImpl() {
 		try {
