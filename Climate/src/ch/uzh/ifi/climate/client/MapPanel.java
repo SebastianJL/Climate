@@ -135,11 +135,14 @@ public class MapPanel extends VerticalPanel implements SliderListener{
 	 * @return DataTable Contains the data for the geoChart.
 	 */
 	private DataTable prepareData() {
+		// Create Data Table
 		DataTable dataTable = DataTable.create();
 		dataTable.addColumn(ColumnType.STRING, "Country");
 		dataTable.addColumn(ColumnType.NUMBER, "Mean Temperature");
 		dataTable.addColumn(ColumnType.NUMBER, "Uncertainty");
 		dataTable.addRows(countryData.size());
+		
+		// Fill Data Table
 		for (int i = 0; i < countryData.size(); i++) {
 			dataTable.setValue(i, 0, countryData.get(i).getCountry());
 			dataTable.setValue(i, 1, countryData.get(i).getTemperatureMean().celsius());
@@ -156,6 +159,7 @@ public class MapPanel extends VerticalPanel implements SliderListener{
 	 * @return -
 	 */
 	private void updateGeoChart(Date date) {
+		// Prepare callback object.
 		AsyncCallback<ArrayList<TemperatureMeasurement>> callback = new AsyncCallback<ArrayList<TemperatureMeasurement>>() {
 
 			@Override
@@ -171,7 +175,8 @@ public class MapPanel extends VerticalPanel implements SliderListener{
 				draw();
 			}
 		};
-
+		
+		// Create QueryService and make remote procedure call to server.
 		if (querySvc == null) {
 			querySvc = GWT.create(QueryService.class);
 		}
@@ -190,6 +195,7 @@ public class MapPanel extends VerticalPanel implements SliderListener{
 	private ArrayList<CountryMean> generateCountryMeans(ArrayList<TemperatureMeasurement> tempMeasurs) {
 		ArrayList<CountryMean> countryMeans = new ArrayList<CountryMean>();
 		NavigableMap<String, List<TemperatureMeasurement>> tempMeasursByCountry = new TreeMap<String, List<TemperatureMeasurement>>();
+		
 		// Sort TemperatureMeasurements by country in tempMeasursByCountry
 		for (TemperatureMeasurement tempMeasur : tempMeasurs) {
 			List<TemperatureMeasurement> countryList = tempMeasursByCountry.get(tempMeasur.getCountry());
