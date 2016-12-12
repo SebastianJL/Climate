@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.kiouri.sliderbar.client.view.SliderBar;
 
 import ch.uzh.ifi.climate.client.QueryService;
 import ch.uzh.ifi.climate.shared.Temperature;
