@@ -1,6 +1,5 @@
 package ch.uzh.ifi.climate.shared;
 
-import java.io.Serializable;
 import java.util.Date;
 
 import com.google.gwt.user.client.rpc.IsSerializable;
