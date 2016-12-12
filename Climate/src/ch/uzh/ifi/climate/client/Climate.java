@@ -67,6 +67,9 @@ public class Climate implements EntryPoint {
 	private TablePanel tablePanel;
 	private MapPanel mapPanel;
 
+	/**
+	 * See super class documentation
+	 */
 	@Override
 	public void onModuleLoad() {
 
