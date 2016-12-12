@@ -130,8 +130,8 @@ public class MapPanel extends VerticalPanel implements SliderListener{
 		// Create Data Table
 		DataTable dataTable = DataTable.create();
 		dataTable.addColumn(ColumnType.STRING, "Country");
-		dataTable.addColumn(ColumnType.NUMBER, "Mean Temperature");
-		dataTable.addColumn(ColumnType.NUMBER, "Uncertainty");
+		dataTable.addColumn(ColumnType.NUMBER, "Temperature Change since 1900");
+		dataTable.addColumn(ColumnType.NUMBER, "Uncertainty of actual measurement");
 		dataTable.addRows(countryData.size());
 		
 		// Fill Data Table
@@ -172,7 +172,7 @@ public class MapPanel extends VerticalPanel implements SliderListener{
 		if (querySvc == null) {
 			querySvc = GWT.create(QueryService.class);
 		}
-		querySvc.temperatureMeasurementsOfAllCitiesAtYear(date, callback);
+		querySvc.referencedDataForSliderBar(date, callback);
 
 	}
 

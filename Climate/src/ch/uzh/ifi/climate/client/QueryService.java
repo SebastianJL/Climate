@@ -34,6 +34,7 @@ public interface QueryService extends RemoteService {
 	ArrayList<String> getCountries();
 	ArrayList<TemperatureMeasurement> temperatureMeasurementsOfAllCitiesAtDate(Date date);
 	ArrayList<TemperatureMeasurement> temperatureMeasurementsOfAllCitiesAtYear(Date date);
-	ArrayList<TemperatureMeasurement> removeCity(String city);
+	ArrayList<TemperatureMeasurement> referencedDataForSliderBar(Date date);
+ 	ArrayList<TemperatureMeasurement> removeCity(String city);
 	ArrayList<TemperatureMeasurement> removeCountry(String country);
 }

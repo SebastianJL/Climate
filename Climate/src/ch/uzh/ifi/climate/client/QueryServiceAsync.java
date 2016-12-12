@@ -35,6 +35,7 @@ public interface QueryServiceAsync {
 			AsyncCallback<ArrayList<TemperatureMeasurement>> callback);
 	void temperatureMeasurementsOfAllCitiesAtYear(Date date,
 			AsyncCallback<ArrayList<TemperatureMeasurement>> callback);
+	void referencedDataForSliderBar(Date date, AsyncCallback<ArrayList<TemperatureMeasurement>> callback);
 	void getCities(AsyncCallback<ArrayList<String>> callback);
 	void getCountries(AsyncCallback<ArrayList<String>> callback);
 	void removeCity(String city, AsyncCallback<ArrayList<TemperatureMeasurement>> callback);

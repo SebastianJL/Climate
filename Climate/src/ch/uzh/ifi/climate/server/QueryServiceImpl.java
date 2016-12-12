@@ -9,6 +9,7 @@ import java.util.Date;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 
 import ch.uzh.ifi.climate.client.QueryService;
+import ch.uzh.ifi.climate.shared.Temperature;
 import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
 
 /**
@@ -241,13 +242,35 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 	 */
 	public ArrayList<TemperatureMeasurement> temperatureMeasurementsOfAllCitiesAtYear(Date date){
 		sliderData.clear();
+		ArrayList<TemperatureMeasurement> test = new ArrayList<TemperatureMeasurement>();
 		for(TemperatureMeasurement Measurement:this.data){
 			if(Measurement.getDate().getTime() >= date.getTime()-DAY_IN_MILLISECONDS && 
 					Measurement.getDate().getTime() <= new Date((date.getMonth()+1)+"/"+date.getDate()+"/"+(date.getYear()+1901)).getTime()+DAY_IN_MILLISECONDS){
-				this.sliderData.add(Measurement);
+				test.add(Measurement);
 			}
 		}
-		return this.sliderData;
+		return test;
+	}
+	
+	public ArrayList<TemperatureMeasurement> referencedDataForSliderBar(Date date){
+		ArrayList<TemperatureMeasurement> actualData = temperatureMeasurementsOfAllCitiesAtYear(date);
+		ArrayList<TemperatureMeasurement> referenceData = temperatureMeasurementsOfAllCitiesAtYear(new Date("01/01/1900"));
+		ArrayList<TemperatureMeasurement> returnData = new ArrayList<TemperatureMeasurement>();
+		for(TemperatureMeasurement actualValue : actualData){
+			for(TemperatureMeasurement referenceValue : referenceData){
+				if(	actualValue.getCity().equals(referenceValue.getCity()) &&
+					actualValue.getDate().getMonth() == referenceValue.getDate().getMonth()){
+						returnData.add(new TemperatureMeasurement(
+							Temperature.createFromCelsius((float)actualValue.getTemperature().celsius() - (float)referenceValue.getTemperature().celsius()),
+							actualValue.getUncertainty(),
+							actualValue.getDate(),
+							actualValue.getCity(),
+							actualValue.getCountry(),
+							actualValue.getCoordinates()));
+				}
+			}
+		}
+		return returnData;
 	}
 	
 	
