@@ -131,7 +131,7 @@ public class MapPanel extends VerticalPanel implements SliderListener{
 		DataTable dataTable = DataTable.create();
 		dataTable.addColumn(ColumnType.STRING, "Country");
 		dataTable.addColumn(ColumnType.NUMBER, "Temperature Change since 1900");
-		dataTable.addColumn(ColumnType.NUMBER, "Uncertainty");
+		dataTable.addColumn(ColumnType.NUMBER, "Uncertainty of actual measurement");
 		dataTable.addRows(countryData.size());
 		
 		// Fill Data Table
