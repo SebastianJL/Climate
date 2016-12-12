@@ -44,6 +44,22 @@ body {
 }
 
 
+/* all boxes for setting up filters */
+.searchBox {
+  text-align: center;
+  width: 10em;
+  padding: 3px;
+  margin: 3px;
+}
+
+.gwt-SuggestBox {
+  text-align: center;
+  width: 10em;
+  height: 1.4em;
+  padding: 3px;
+  margin: 3px;
+}
+
 /* Add filter panel */
 .addPanel {
   margin: 10px 0px 15px 0px;
