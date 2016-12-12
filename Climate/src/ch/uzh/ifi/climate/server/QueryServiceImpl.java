@@ -252,6 +252,13 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 		return test;
 	}
 	
+	/**Creates an ArrayList of TemperatureMeasurements over one year that contains differences of temperatures 
+	 * of a specific date compared to 1900
+	 * @pre 	date != null
+	 * @param	date	start date for the comparison data
+	 * @post	Asked data is stored in an ArrayList
+	 * @return	ArrayList of TemperatureMeasurements where the temperature is referenced to the measurements of 1900
+	 */
 	public ArrayList<TemperatureMeasurement> referencedDataForSliderBar(Date date){
 		ArrayList<TemperatureMeasurement> actualData = temperatureMeasurementsOfAllCitiesAtYear(date);
 		ArrayList<TemperatureMeasurement> referenceData = temperatureMeasurementsOfAllCitiesAtYear(new Date("01/01/1900"));

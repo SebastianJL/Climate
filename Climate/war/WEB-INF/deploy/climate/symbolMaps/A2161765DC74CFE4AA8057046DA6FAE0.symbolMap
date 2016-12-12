@@ -1,19 +1,19 @@
 # { 0 }
 # { 'user.agent' : 'ie8' }
 # jsName, jsniIdent, className, memberName, sourceUri, sourceLine, fragmentNumber
-Climate,,ch.uzh.ifi.climate.client.Climate,,ch/uzh/ifi/climate/client/Climate.java,51,-1
-P,ch.uzh.ifi.climate.client.Climate::$onModuleLoad(Lch/uzh/ifi/climate/client/Climate;)V,ch.uzh.ifi.climate.client.Climate,$onModuleLoad,ch/uzh/ifi/climate/client/Climate.java,61,0
-Q,ch.uzh.ifi.climate.client.Climate::Climate() <init>,ch.uzh.ifi.climate.client.Climate,Climate,ch/uzh/ifi/climate/client/Climate.java,51,0
-a,ch.uzh.ifi.climate.client.Climate::mapPanel,ch.uzh.ifi.climate.client.Climate,mapPanel,ch/uzh/ifi/climate/client/Climate.java,58,-1
-b,ch.uzh.ifi.climate.client.Climate::tabPanel,ch.uzh.ifi.climate.client.Climate,tabPanel,ch/uzh/ifi/climate/client/Climate.java,56,-1
-c,ch.uzh.ifi.climate.client.Climate::tablePanel,ch.uzh.ifi.climate.client.Climate,tablePanel,ch/uzh/ifi/climate/client/Climate.java,57,-1
-Climate$1,,ch.uzh.ifi.climate.client.Climate$1,,ch/uzh/ifi/climate/client/Climate.java,82,-1
-R,ch.uzh.ifi.climate.client.Climate$1::Climate$1(Lch/uzh/ifi/climate/client/Climate;) <init>,ch.uzh.ifi.climate.client.Climate$1,Climate$1,ch/uzh/ifi/climate/client/Climate.java,82,0
-S,ch.uzh.ifi.climate.client.Climate$1::onSelection(Lcom/google/gwt/event/logical/shared/SelectionEvent;)V,ch.uzh.ifi.climate.client.Climate$1,onSelection,ch/uzh/ifi/climate/client/Climate.java,84,0
-Climate$2,,ch.uzh.ifi.climate.client.Climate$2,,ch/uzh/ifi/climate/client/Climate.java,99,-1
-T,ch.uzh.ifi.climate.client.Climate$2::Climate$2(Lch/uzh/ifi/climate/client/Climate;) <init>,ch.uzh.ifi.climate.client.Climate$2,Climate$2,ch/uzh/ifi/climate/client/Climate.java,99,0
-U,ch.uzh.ifi.climate.client.Climate$2::onValueChange(Lcom/google/gwt/event/logical/shared/ValueChangeEvent;)V,ch.uzh.ifi.climate.client.Climate$2,onValueChange,ch/uzh/ifi/climate/client/Climate.java,101,0
-a,ch.uzh.ifi.climate.client.Climate$2::this$01,ch.uzh.ifi.climate.client.Climate$2,this$01,ch/uzh/ifi/climate/client/Climate.java,99,-1
+Climate,,ch.uzh.ifi.climate.client.Climate,,ch/uzh/ifi/climate/client/Climate.java,22,-1
+P,ch.uzh.ifi.climate.client.Climate::$onModuleLoad(Lch/uzh/ifi/climate/client/Climate;)V,ch.uzh.ifi.climate.client.Climate,$onModuleLoad,ch/uzh/ifi/climate/client/Climate.java,35,0
+Q,ch.uzh.ifi.climate.client.Climate::Climate() <init>,ch.uzh.ifi.climate.client.Climate,Climate,ch/uzh/ifi/climate/client/Climate.java,22,0
+a,ch.uzh.ifi.climate.client.Climate::mapPanel,ch.uzh.ifi.climate.client.Climate,mapPanel,ch/uzh/ifi/climate/client/Climate.java,29,-1
+b,ch.uzh.ifi.climate.client.Climate::tabPanel,ch.uzh.ifi.climate.client.Climate,tabPanel,ch/uzh/ifi/climate/client/Climate.java,27,-1
+c,ch.uzh.ifi.climate.client.Climate::tablePanel,ch.uzh.ifi.climate.client.Climate,tablePanel,ch/uzh/ifi/climate/client/Climate.java,28,-1
+Climate$1,,ch.uzh.ifi.climate.client.Climate$1,,ch/uzh/ifi/climate/client/Climate.java,56,-1
+R,ch.uzh.ifi.climate.client.Climate$1::Climate$1(Lch/uzh/ifi/climate/client/Climate;) <init>,ch.uzh.ifi.climate.client.Climate$1,Climate$1,ch/uzh/ifi/climate/client/Climate.java,56,0
+S,ch.uzh.ifi.climate.client.Climate$1::onSelection(Lcom/google/gwt/event/logical/shared/SelectionEvent;)V,ch.uzh.ifi.climate.client.Climate$1,onSelection,ch/uzh/ifi/climate/client/Climate.java,58,0
+Climate$2,,ch.uzh.ifi.climate.client.Climate$2,,ch/uzh/ifi/climate/client/Climate.java,73,-1
+T,ch.uzh.ifi.climate.client.Climate$2::Climate$2(Lch/uzh/ifi/climate/client/Climate;) <init>,ch.uzh.ifi.climate.client.Climate$2,Climate$2,ch/uzh/ifi/climate/client/Climate.java,73,0
+U,ch.uzh.ifi.climate.client.Climate$2::onValueChange(Lcom/google/gwt/event/logical/shared/ValueChangeEvent;)V,ch.uzh.ifi.climate.client.Climate$2,onValueChange,ch/uzh/ifi/climate/client/Climate.java,75,0
+a,ch.uzh.ifi.climate.client.Climate$2::this$01,ch.uzh.ifi.climate.client.Climate$2,this$01,ch/uzh/ifi/climate/client/Climate.java,73,-1
 FilterRow,,ch.uzh.ifi.climate.client.FilterRow,,ch/uzh/ifi/climate/client/FilterRow.java,7,-1
 V,ch.uzh.ifi.climate.client.FilterRow::FilterRow(Ljava/lang/String;Ljava/lang/String;Ljava/util/Date;Ljava/util/Date;) <init>,ch.uzh.ifi.climate.client.FilterRow,FilterRow,ch/uzh/ifi/climate/client/FilterRow.java,15,0
 a,ch.uzh.ifi.climate.client.FilterRow::city,ch.uzh.ifi.climate.client.FilterRow,city,ch/uzh/ifi/climate/client/FilterRow.java,9,-1
@@ -34,36 +34,36 @@ cb,ch.uzh.ifi.climate.client.FilterTable::$setUpFilterTable(Lch/uzh/ifi/climate/
 db,ch.uzh.ifi.climate.client.FilterTable::FilterTable() <init>,ch.uzh.ifi.climate.client.FilterTable,FilterTable,ch/uzh/ifi/climate/client/FilterTable.java,9,0
 a,ch.uzh.ifi.climate.client.FilterTable::filterFlexTable,ch.uzh.ifi.climate.client.FilterTable,filterFlexTable,ch/uzh/ifi/climate/client/FilterTable.java,10,-1
 b,ch.uzh.ifi.climate.client.FilterTable::filterRows,ch.uzh.ifi.climate.client.FilterTable,filterRows,ch/uzh/ifi/climate/client/FilterTable.java,11,-1
-MapPanel,,ch.uzh.ifi.climate.client.MapPanel,,ch/uzh/ifi/climate/client/MapPanel.java,48,-1
-jc,ch.uzh.ifi.climate.client.MapPanel::$draw(Lch/uzh/ifi/climate/client/MapPanel;)V,ch.uzh.ifi.climate.client.MapPanel,$draw,ch/uzh/ifi/climate/client/MapPanel.java,112,0
-kc,ch.uzh.ifi.climate.client.MapPanel::$generateCountryMeans(Lch/uzh/ifi/climate/client/MapPanel;Ljava/util/ArrayList;)Ljava/util/ArrayList;,ch.uzh.ifi.climate.client.MapPanel,$generateCountryMeans,ch/uzh/ifi/climate/client/MapPanel.java,190,0
-lc,ch.uzh.ifi.climate.client.MapPanel::$prepareData(Lch/uzh/ifi/climate/client/MapPanel;)Lcom/googlecode/gwt/charts/client/DataTable;,ch.uzh.ifi.climate.client.MapPanel,$prepareData,ch/uzh/ifi/climate/client/MapPanel.java,137,0
-mc,ch.uzh.ifi.climate.client.MapPanel::$updateGeoChart(Lch/uzh/ifi/climate/client/MapPanel;Ljava/util/Date;)V,ch.uzh.ifi.climate.client.MapPanel,$updateGeoChart,ch/uzh/ifi/climate/client/MapPanel.java,158,0
-a,ch.uzh.ifi.climate.client.MapPanel::INITIAL_DATE,ch.uzh.ifi.climate.client.MapPanel,INITIAL_DATE,ch/uzh/ifi/climate/client/MapPanel.java,50,-1
-b,ch.uzh.ifi.climate.client.MapPanel::INITIAL_YEAR,ch.uzh.ifi.climate.client.MapPanel,INITIAL_YEAR,ch/uzh/ifi/climate/client/MapPanel.java,49,-1
-nc,ch.uzh.ifi.climate.client.MapPanel::MapPanel() <init>,ch.uzh.ifi.climate.client.MapPanel,MapPanel,ch/uzh/ifi/climate/client/MapPanel.java,62,0
-c,ch.uzh.ifi.climate.client.MapPanel::countryData,ch.uzh.ifi.climate.client.MapPanel,countryData,ch/uzh/ifi/climate/client/MapPanel.java,56,-1
-d,ch.uzh.ifi.climate.client.MapPanel::geoChart,ch.uzh.ifi.climate.client.MapPanel,geoChart,ch/uzh/ifi/climate/client/MapPanel.java,55,-1
-e,ch.uzh.ifi.climate.client.MapPanel::querySvc,ch.uzh.ifi.climate.client.MapPanel,querySvc,ch/uzh/ifi/climate/client/MapPanel.java,57,-1
-f,ch.uzh.ifi.climate.client.MapPanel::slider,ch.uzh.ifi.climate.client.MapPanel,slider,ch/uzh/ifi/climate/client/MapPanel.java,60,-1
-g,ch.uzh.ifi.climate.client.MapPanel::sliderLabel,ch.uzh.ifi.climate.client.MapPanel,sliderLabel,ch/uzh/ifi/climate/client/MapPanel.java,58,-1
-i,ch.uzh.ifi.climate.client.MapPanel::sliderValue,ch.uzh.ifi.climate.client.MapPanel,sliderValue,ch/uzh/ifi/climate/client/MapPanel.java,59,-1
-MapPanel$1,,ch.uzh.ifi.climate.client.MapPanel$1,,ch/uzh/ifi/climate/client/MapPanel.java,76,-1
-oc,ch.uzh.ifi.climate.client.MapPanel$1::MapPanel$1(Lch/uzh/ifi/climate/client/MapPanel;) <init>,ch.uzh.ifi.climate.client.MapPanel$1,MapPanel$1,ch/uzh/ifi/climate/client/MapPanel.java,76,0
-pc,ch.uzh.ifi.climate.client.MapPanel$1::run()V,ch.uzh.ifi.climate.client.MapPanel$1,run,ch/uzh/ifi/climate/client/MapPanel.java,79,0
-a,ch.uzh.ifi.climate.client.MapPanel$1::this$01,ch.uzh.ifi.climate.client.MapPanel$1,this$01,ch/uzh/ifi/climate/client/MapPanel.java,76,-1
-MapPanel$2,,ch.uzh.ifi.climate.client.MapPanel$2,,ch/uzh/ifi/climate/client/MapPanel.java,159,-1
-qc,ch.uzh.ifi.climate.client.MapPanel$2::$onSuccess(Lch/uzh/ifi/climate/client/MapPanel$2;Ljava/util/ArrayList;)V,ch.uzh.ifi.climate.client.MapPanel$2,$onSuccess,ch/uzh/ifi/climate/client/MapPanel.java,168,0
-rc,ch.uzh.ifi.climate.client.MapPanel$2::MapPanel$2(Lch/uzh/ifi/climate/client/MapPanel;) <init>,ch.uzh.ifi.climate.client.MapPanel$2,MapPanel$2,ch/uzh/ifi/climate/client/MapPanel.java,159,0
-sc,ch.uzh.ifi.climate.client.MapPanel$2::onFailure(Ljava/lang/Throwable;)V,ch.uzh.ifi.climate.client.MapPanel$2,onFailure,ch/uzh/ifi/climate/client/MapPanel.java,162,0
-tc,ch.uzh.ifi.climate.client.MapPanel$2::onSuccess(Ljava/lang/Object;)V,ch.uzh.ifi.climate.client.MapPanel$2,onSuccess,ch/uzh/ifi/climate/client/MapPanel.java,168,0
-a,ch.uzh.ifi.climate.client.MapPanel$2::this$01,ch.uzh.ifi.climate.client.MapPanel$2,this$01,ch/uzh/ifi/climate/client/MapPanel.java,159,-1
-MapPanel$CountryMean,,ch.uzh.ifi.climate.client.MapPanel$CountryMean,,ch/uzh/ifi/climate/client/MapPanel.java,222,-1
-uc,ch.uzh.ifi.climate.client.MapPanel$CountryMean::$setMeans(Lch/uzh/ifi/climate/client/MapPanel$CountryMean;Ljava/util/List;)V,ch.uzh.ifi.climate.client.MapPanel$CountryMean,$setMeans,ch/uzh/ifi/climate/client/MapPanel.java,270,0
-vc,ch.uzh.ifi.climate.client.MapPanel$CountryMean::MapPanel$CountryMean(Lch/uzh/ifi/climate/client/MapPanel;Ljava/lang/String;Ljava/util/List;) <init>,ch.uzh.ifi.climate.client.MapPanel$CountryMean,MapPanel$CountryMean,ch/uzh/ifi/climate/client/MapPanel.java,227,0
-a,ch.uzh.ifi.climate.client.MapPanel$CountryMean::country,ch.uzh.ifi.climate.client.MapPanel$CountryMean,country,ch/uzh/ifi/climate/client/MapPanel.java,223,-1
-b,ch.uzh.ifi.climate.client.MapPanel$CountryMean::tempMean,ch.uzh.ifi.climate.client.MapPanel$CountryMean,tempMean,ch/uzh/ifi/climate/client/MapPanel.java,224,-1
-c,ch.uzh.ifi.climate.client.MapPanel$CountryMean::uncertaintyMean,ch.uzh.ifi.climate.client.MapPanel$CountryMean,uncertaintyMean,ch/uzh/ifi/climate/client/MapPanel.java,225,-1
+MapPanel,,ch.uzh.ifi.climate.client.MapPanel,,ch/uzh/ifi/climate/client/MapPanel.java,40,-1
+jc,ch.uzh.ifi.climate.client.MapPanel::$draw(Lch/uzh/ifi/climate/client/MapPanel;)V,ch.uzh.ifi.climate.client.MapPanel,$draw,ch/uzh/ifi/climate/client/MapPanel.java,104,0
+kc,ch.uzh.ifi.climate.client.MapPanel::$generateCountryMeans(Lch/uzh/ifi/climate/client/MapPanel;Ljava/util/ArrayList;)Ljava/util/ArrayList;,ch.uzh.ifi.climate.client.MapPanel,$generateCountryMeans,ch/uzh/ifi/climate/client/MapPanel.java,187,0
+lc,ch.uzh.ifi.climate.client.MapPanel::$prepareData(Lch/uzh/ifi/climate/client/MapPanel;)Lcom/googlecode/gwt/charts/client/DataTable;,ch.uzh.ifi.climate.client.MapPanel,$prepareData,ch/uzh/ifi/climate/client/MapPanel.java,129,0
+mc,ch.uzh.ifi.climate.client.MapPanel::$updateGeoChart(Lch/uzh/ifi/climate/client/MapPanel;Ljava/util/Date;)V,ch.uzh.ifi.climate.client.MapPanel,$updateGeoChart,ch/uzh/ifi/climate/client/MapPanel.java,153,0
+a,ch.uzh.ifi.climate.client.MapPanel::INITIAL_DATE,ch.uzh.ifi.climate.client.MapPanel,INITIAL_DATE,ch/uzh/ifi/climate/client/MapPanel.java,42,-1
+b,ch.uzh.ifi.climate.client.MapPanel::INITIAL_YEAR,ch.uzh.ifi.climate.client.MapPanel,INITIAL_YEAR,ch/uzh/ifi/climate/client/MapPanel.java,41,-1
+nc,ch.uzh.ifi.climate.client.MapPanel::MapPanel() <init>,ch.uzh.ifi.climate.client.MapPanel,MapPanel,ch/uzh/ifi/climate/client/MapPanel.java,54,0
+c,ch.uzh.ifi.climate.client.MapPanel::countryData,ch.uzh.ifi.climate.client.MapPanel,countryData,ch/uzh/ifi/climate/client/MapPanel.java,48,-1
+d,ch.uzh.ifi.climate.client.MapPanel::geoChart,ch.uzh.ifi.climate.client.MapPanel,geoChart,ch/uzh/ifi/climate/client/MapPanel.java,47,-1
+e,ch.uzh.ifi.climate.client.MapPanel::querySvc,ch.uzh.ifi.climate.client.MapPanel,querySvc,ch/uzh/ifi/climate/client/MapPanel.java,49,-1
+f,ch.uzh.ifi.climate.client.MapPanel::slider,ch.uzh.ifi.climate.client.MapPanel,slider,ch/uzh/ifi/climate/client/MapPanel.java,52,-1
+g,ch.uzh.ifi.climate.client.MapPanel::sliderLabel,ch.uzh.ifi.climate.client.MapPanel,sliderLabel,ch/uzh/ifi/climate/client/MapPanel.java,50,-1
+i,ch.uzh.ifi.climate.client.MapPanel::sliderValue,ch.uzh.ifi.climate.client.MapPanel,sliderValue,ch/uzh/ifi/climate/client/MapPanel.java,51,-1
+MapPanel$1,,ch.uzh.ifi.climate.client.MapPanel$1,,ch/uzh/ifi/climate/client/MapPanel.java,68,-1
+oc,ch.uzh.ifi.climate.client.MapPanel$1::MapPanel$1(Lch/uzh/ifi/climate/client/MapPanel;) <init>,ch.uzh.ifi.climate.client.MapPanel$1,MapPanel$1,ch/uzh/ifi/climate/client/MapPanel.java,68,0
+pc,ch.uzh.ifi.climate.client.MapPanel$1::run()V,ch.uzh.ifi.climate.client.MapPanel$1,run,ch/uzh/ifi/climate/client/MapPanel.java,71,0
+a,ch.uzh.ifi.climate.client.MapPanel$1::this$01,ch.uzh.ifi.climate.client.MapPanel$1,this$01,ch/uzh/ifi/climate/client/MapPanel.java,68,-1
+MapPanel$2,,ch.uzh.ifi.climate.client.MapPanel$2,,ch/uzh/ifi/climate/client/MapPanel.java,155,-1
+qc,ch.uzh.ifi.climate.client.MapPanel$2::$onSuccess(Lch/uzh/ifi/climate/client/MapPanel$2;Ljava/util/ArrayList;)V,ch.uzh.ifi.climate.client.MapPanel$2,$onSuccess,ch/uzh/ifi/climate/client/MapPanel.java,164,0
+rc,ch.uzh.ifi.climate.client.MapPanel$2::MapPanel$2(Lch/uzh/ifi/climate/client/MapPanel;) <init>,ch.uzh.ifi.climate.client.MapPanel$2,MapPanel$2,ch/uzh/ifi/climate/client/MapPanel.java,155,0
+sc,ch.uzh.ifi.climate.client.MapPanel$2::onFailure(Ljava/lang/Throwable;)V,ch.uzh.ifi.climate.client.MapPanel$2,onFailure,ch/uzh/ifi/climate/client/MapPanel.java,158,0
+tc,ch.uzh.ifi.climate.client.MapPanel$2::onSuccess(Ljava/lang/Object;)V,ch.uzh.ifi.climate.client.MapPanel$2,onSuccess,ch/uzh/ifi/climate/client/MapPanel.java,164,0
+a,ch.uzh.ifi.climate.client.MapPanel$2::this$01,ch.uzh.ifi.climate.client.MapPanel$2,this$01,ch/uzh/ifi/climate/client/MapPanel.java,155,-1
+MapPanel$CountryMean,,ch.uzh.ifi.climate.client.MapPanel$CountryMean,,ch/uzh/ifi/climate/client/MapPanel.java,220,-1
+uc,ch.uzh.ifi.climate.client.MapPanel$CountryMean::$setMeans(Lch/uzh/ifi/climate/client/MapPanel$CountryMean;Ljava/util/List;)V,ch.uzh.ifi.climate.client.MapPanel$CountryMean,$setMeans,ch/uzh/ifi/climate/client/MapPanel.java,268,0
+vc,ch.uzh.ifi.climate.client.MapPanel$CountryMean::MapPanel$CountryMean(Lch/uzh/ifi/climate/client/MapPanel;Ljava/lang/String;Ljava/util/List;) <init>,ch.uzh.ifi.climate.client.MapPanel$CountryMean,MapPanel$CountryMean,ch/uzh/ifi/climate/client/MapPanel.java,225,0
+a,ch.uzh.ifi.climate.client.MapPanel$CountryMean::country,ch.uzh.ifi.climate.client.MapPanel$CountryMean,country,ch/uzh/ifi/climate/client/MapPanel.java,221,-1
+b,ch.uzh.ifi.climate.client.MapPanel$CountryMean::tempMean,ch.uzh.ifi.climate.client.MapPanel$CountryMean,tempMean,ch/uzh/ifi/climate/client/MapPanel.java,222,-1
+c,ch.uzh.ifi.climate.client.MapPanel$CountryMean::uncertaintyMean,ch.uzh.ifi.climate.client.MapPanel$CountryMean,uncertaintyMean,ch/uzh/ifi/climate/client/MapPanel.java,223,-1
 MeasurementTable,,ch.uzh.ifi.climate.client.MeasurementTable,,ch/uzh/ifi/climate/client/MeasurementTable.java,8,-1
 wc,ch.uzh.ifi.climate.client.MeasurementTable::$clearMeasurementTable(Lch/uzh/ifi/climate/client/MeasurementTable;)V,ch.uzh.ifi.climate.client.MeasurementTable,$clearMeasurementTable,ch/uzh/ifi/climate/client/MeasurementTable.java,29,0
 xc,ch.uzh.ifi.climate.client.MeasurementTable::$fillTable(Lch/uzh/ifi/climate/client/MeasurementTable;Lch/uzh/ifi/climate/shared/TemperatureMeasurement;)V,ch.uzh.ifi.climate.client.MeasurementTable,$fillTable,ch/uzh/ifi/climate/client/MeasurementTable.java,40,0
@@ -73,18 +73,18 @@ a,ch.uzh.ifi.climate.client.MeasurementTable::measurementFlexTable,ch.uzh.ifi.cl
 QueryService_Proxy,,ch.uzh.ifi.climate.client.QueryService_Proxy,,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,14,-1
 Hc,ch.uzh.ifi.climate.client.QueryService_Proxy::$clearMeasurements(Lch/uzh/ifi/climate/client/QueryService_Proxy;Lcom/google/gwt/user/client/rpc/AsyncCallback;)V,ch.uzh.ifi.climate.client.QueryService_Proxy,$clearMeasurements,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,26,0
 Gc,ch.uzh.ifi.climate.client.QueryService_Proxy::$clinit()V,ch.uzh.ifi.climate.client.QueryService_Proxy,$clinit,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,14,0
-Ic,ch.uzh.ifi.climate.client.QueryService_Proxy::$createStreamWriter(Lch/uzh/ifi/climate/client/QueryService_Proxy;)Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;,ch.uzh.ifi.climate.client.QueryService_Proxy,$createStreamWriter,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,192,0
+Ic,ch.uzh.ifi.climate.client.QueryService_Proxy::$createStreamWriter(Lch/uzh/ifi/climate/client/QueryService_Proxy;)Lcom/google/gwt/user/client/rpc/SerializationStreamWriter;,ch.uzh.ifi.climate.client.QueryService_Proxy,$createStreamWriter,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,204,0
 Jc,ch.uzh.ifi.climate.client.QueryService_Proxy::$getCities(Lch/uzh/ifi/climate/client/QueryService_Proxy;Lcom/google/gwt/user/client/rpc/AsyncCallback;)V,ch.uzh.ifi.climate.client.QueryService_Proxy,$getCities,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,36,0
 Kc,ch.uzh.ifi.climate.client.QueryService_Proxy::$getCountries(Lch/uzh/ifi/climate/client/QueryService_Proxy;Lcom/google/gwt/user/client/rpc/AsyncCallback;)V,ch.uzh.ifi.climate.client.QueryService_Proxy,$getCountries,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,46,0
-Lc,ch.uzh.ifi.climate.client.QueryService_Proxy::$removeCity(Lch/uzh/ifi/climate/client/QueryService_Proxy;Ljava/lang/String;Lcom/google/gwt/user/client/rpc/AsyncCallback;)V,ch.uzh.ifi.climate.client.QueryService_Proxy,$removeCity,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,56,0
-Mc,ch.uzh.ifi.climate.client.QueryService_Proxy::$removeCountry(Lch/uzh/ifi/climate/client/QueryService_Proxy;Ljava/lang/String;Lcom/google/gwt/user/client/rpc/AsyncCallback;)V,ch.uzh.ifi.climate.client.QueryService_Proxy,$removeCountry,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,68,0
-Nc,ch.uzh.ifi.climate.client.QueryService_Proxy::$temperatureMeasurements(Lch/uzh/ifi/climate/client/QueryService_Proxy;Ljava/lang/String;Lcom/google/gwt/user/client/rpc/AsyncCallback;)V,ch.uzh.ifi.climate.client.QueryService_Proxy,$temperatureMeasurements,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,80,0
-Oc,ch.uzh.ifi.climate.client.QueryService_Proxy::$temperatureMeasurements(Lch/uzh/ifi/climate/client/QueryService_Proxy;Ljava/lang/String;Ljava/util/Date;Ljava/util/Date;Lcom/google/gwt/user/client/rpc/AsyncCallback;)V,ch.uzh.ifi.climate.client.QueryService_Proxy,$temperatureMeasurements,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,92,0
-Pc,ch.uzh.ifi.climate.client.QueryService_Proxy::$temperatureMeasurementsCityCountry(Lch/uzh/ifi/climate/client/QueryService_Proxy;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/user/client/rpc/AsyncCallback;)V,ch.uzh.ifi.climate.client.QueryService_Proxy,$temperatureMeasurementsCityCountry,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,108,0
-Qc,ch.uzh.ifi.climate.client.QueryService_Proxy::$temperatureMeasurementsCityCountry(Lch/uzh/ifi/climate/client/QueryService_Proxy;Ljava/lang/String;Ljava/lang/String;Ljava/util/Date;Ljava/util/Date;Lcom/google/gwt/user/client/rpc/AsyncCallback;)V,ch.uzh.ifi.climate.client.QueryService_Proxy,$temperatureMeasurementsCityCountry,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,122,0
-Rc,ch.uzh.ifi.climate.client.QueryService_Proxy::$temperatureMeasurementsCountry(Lch/uzh/ifi/climate/client/QueryService_Proxy;Ljava/lang/String;Lcom/google/gwt/user/client/rpc/AsyncCallback;)V,ch.uzh.ifi.climate.client.QueryService_Proxy,$temperatureMeasurementsCountry,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,140,0
-Sc,ch.uzh.ifi.climate.client.QueryService_Proxy::$temperatureMeasurementsCountry(Lch/uzh/ifi/climate/client/QueryService_Proxy;Ljava/lang/String;Ljava/util/Date;Ljava/util/Date;Lcom/google/gwt/user/client/rpc/AsyncCallback;)V,ch.uzh.ifi.climate.client.QueryService_Proxy,$temperatureMeasurementsCountry,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,152,0
-Tc,ch.uzh.ifi.climate.client.QueryService_Proxy::$temperatureMeasurementsOfAllCitiesAtYear(Lch/uzh/ifi/climate/client/QueryService_Proxy;Ljava/util/Date;Lcom/google/gwt/user/client/rpc/AsyncCallback;)V,ch.uzh.ifi.climate.client.QueryService_Proxy,$temperatureMeasurementsOfAllCitiesAtYear,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,180,0
+Lc,ch.uzh.ifi.climate.client.QueryService_Proxy::$referencedDataForSliderBar(Lch/uzh/ifi/climate/client/QueryService_Proxy;Ljava/util/Date;Lcom/google/gwt/user/client/rpc/AsyncCallback;)V,ch.uzh.ifi.climate.client.QueryService_Proxy,$referencedDataForSliderBar,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,56,0
+Mc,ch.uzh.ifi.climate.client.QueryService_Proxy::$removeCity(Lch/uzh/ifi/climate/client/QueryService_Proxy;Ljava/lang/String;Lcom/google/gwt/user/client/rpc/AsyncCallback;)V,ch.uzh.ifi.climate.client.QueryService_Proxy,$removeCity,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,68,0
+Nc,ch.uzh.ifi.climate.client.QueryService_Proxy::$removeCountry(Lch/uzh/ifi/climate/client/QueryService_Proxy;Ljava/lang/String;Lcom/google/gwt/user/client/rpc/AsyncCallback;)V,ch.uzh.ifi.climate.client.QueryService_Proxy,$removeCountry,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,80,0
+Oc,ch.uzh.ifi.climate.client.QueryService_Proxy::$temperatureMeasurements(Lch/uzh/ifi/climate/client/QueryService_Proxy;Ljava/lang/String;Lcom/google/gwt/user/client/rpc/AsyncCallback;)V,ch.uzh.ifi.climate.client.QueryService_Proxy,$temperatureMeasurements,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,92,0
+Pc,ch.uzh.ifi.climate.client.QueryService_Proxy::$temperatureMeasurements(Lch/uzh/ifi/climate/client/QueryService_Proxy;Ljava/lang/String;Ljava/util/Date;Ljava/util/Date;Lcom/google/gwt/user/client/rpc/AsyncCallback;)V,ch.uzh.ifi.climate.client.QueryService_Proxy,$temperatureMeasurements,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,104,0
+Qc,ch.uzh.ifi.climate.client.QueryService_Proxy::$temperatureMeasurementsCityCountry(Lch/uzh/ifi/climate/client/QueryService_Proxy;Ljava/lang/String;Ljava/lang/String;Lcom/google/gwt/user/client/rpc/AsyncCallback;)V,ch.uzh.ifi.climate.client.QueryService_Proxy,$temperatureMeasurementsCityCountry,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,120,0
+Rc,ch.uzh.ifi.climate.client.QueryService_Proxy::$temperatureMeasurementsCityCountry(Lch/uzh/ifi/climate/client/QueryService_Proxy;Ljava/lang/String;Ljava/lang/String;Ljava/util/Date;Ljava/util/Date;Lcom/google/gwt/user/client/rpc/AsyncCallback;)V,ch.uzh.ifi.climate.client.QueryService_Proxy,$temperatureMeasurementsCityCountry,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,134,0
+Sc,ch.uzh.ifi.climate.client.QueryService_Proxy::$temperatureMeasurementsCountry(Lch/uzh/ifi/climate/client/QueryService_Proxy;Ljava/lang/String;Lcom/google/gwt/user/client/rpc/AsyncCallback;)V,ch.uzh.ifi.climate.client.QueryService_Proxy,$temperatureMeasurementsCountry,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,152,0
+Tc,ch.uzh.ifi.climate.client.QueryService_Proxy::$temperatureMeasurementsCountry(Lch/uzh/ifi/climate/client/QueryService_Proxy;Ljava/lang/String;Ljava/util/Date;Ljava/util/Date;Lcom/google/gwt/user/client/rpc/AsyncCallback;)V,ch.uzh.ifi.climate.client.QueryService_Proxy,$temperatureMeasurementsCountry,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,164,0
 Uc,ch.uzh.ifi.climate.client.QueryService_Proxy::QueryService_Proxy() <init>,ch.uzh.ifi.climate.client.QueryService_Proxy,QueryService_Proxy,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,19,0
 Fc,ch.uzh.ifi.climate.client.QueryService_Proxy::SERIALIZER,ch.uzh.ifi.climate.client.QueryService_Proxy,SERIALIZER,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,17,-1
 QueryService_TypeSerializer,,ch.uzh.ifi.climate.client.QueryService_TypeSerializer,,gen/ch/uzh/ifi/climate/client/QueryService_TypeSerializer.java,10,-1
@@ -93,17 +93,17 @@ cd,ch.uzh.ifi.climate.client.QueryService_TypeSerializer::QueryService_TypeSeria
 _c,ch.uzh.ifi.climate.client.QueryService_TypeSerializer::methodMapNative,ch.uzh.ifi.climate.client.QueryService_TypeSerializer,methodMapNative,gen/ch/uzh/ifi/climate/client/QueryService_TypeSerializer.java,11,-1
 ad,ch.uzh.ifi.climate.client.QueryService_TypeSerializer::signatureMapNative,ch.uzh.ifi.climate.client.QueryService_TypeSerializer,signatureMapNative,gen/ch/uzh/ifi/climate/client/QueryService_TypeSerializer.java,12,-1
 TablePanel,,ch.uzh.ifi.climate.client.TablePanel,,ch/uzh/ifi/climate/client/TablePanel.java,37,-1
-dd,ch.uzh.ifi.climate.client.TablePanel::$addCityNames(Lch/uzh/ifi/climate/client/TablePanel;Ljava/util/ArrayList;)V,ch.uzh.ifi.climate.client.TablePanel,$addCityNames,ch/uzh/ifi/climate/client/TablePanel.java,411,0
-ed,ch.uzh.ifi.climate.client.TablePanel::$addCountryNames(Lch/uzh/ifi/climate/client/TablePanel;Ljava/util/ArrayList;)V,ch.uzh.ifi.climate.client.TablePanel,$addCountryNames,ch/uzh/ifi/climate/client/TablePanel.java,415,0
-fd,ch.uzh.ifi.climate.client.TablePanel::$addData(Lch/uzh/ifi/climate/client/TablePanel;Ljava/lang/String;Ljava/util/Date;Ljava/util/Date;)V,ch.uzh.ifi.climate.client.TablePanel,$addData,ch/uzh/ifi/climate/client/TablePanel.java,419,0
-gd,ch.uzh.ifi.climate.client.TablePanel::$addFilter(Lch/uzh/ifi/climate/client/TablePanel;)V,ch.uzh.ifi.climate.client.TablePanel,$addFilter,ch/uzh/ifi/climate/client/TablePanel.java,223,0
-hd,ch.uzh.ifi.climate.client.TablePanel::$initialize(Lch/uzh/ifi/climate/client/TablePanel;)V,ch.uzh.ifi.climate.client.TablePanel,$initialize,ch/uzh/ifi/climate/client/TablePanel.java,61,0
-jd,ch.uzh.ifi.climate.client.TablePanel::$refreshMeasurementTable(Lch/uzh/ifi/climate/client/TablePanel;Ljava/lang/String;Ljava/lang/String;Ljava/util/Date;Ljava/util/Date;)V,ch.uzh.ifi.climate.client.TablePanel,$refreshMeasurementTable,ch/uzh/ifi/climate/client/TablePanel.java,318,0
-kd,ch.uzh.ifi.climate.client.TablePanel::$removeData(Lch/uzh/ifi/climate/client/TablePanel;Ljava/lang/String;)V,ch.uzh.ifi.climate.client.TablePanel,$removeData,ch/uzh/ifi/climate/client/TablePanel.java,425,0
-ld,ch.uzh.ifi.climate.client.TablePanel::$removeDataCountry(Lch/uzh/ifi/climate/client/TablePanel;Ljava/lang/String;)V,ch.uzh.ifi.climate.client.TablePanel,$removeDataCountry,ch/uzh/ifi/climate/client/TablePanel.java,431,0
-md,ch.uzh.ifi.climate.client.TablePanel::$updateMeasurementTable(Lch/uzh/ifi/climate/client/TablePanel;Ljava/util/ArrayList;)V,ch.uzh.ifi.climate.client.TablePanel,$updateMeasurementTable,ch/uzh/ifi/climate/client/TablePanel.java,358,0
+dd,ch.uzh.ifi.climate.client.TablePanel::$addCityNames(Lch/uzh/ifi/climate/client/TablePanel;Ljava/util/ArrayList;)V,ch.uzh.ifi.climate.client.TablePanel,$addCityNames,ch/uzh/ifi/climate/client/TablePanel.java,422,0
+ed,ch.uzh.ifi.climate.client.TablePanel::$addCountryNames(Lch/uzh/ifi/climate/client/TablePanel;Ljava/util/ArrayList;)V,ch.uzh.ifi.climate.client.TablePanel,$addCountryNames,ch/uzh/ifi/climate/client/TablePanel.java,426,0
+fd,ch.uzh.ifi.climate.client.TablePanel::$addData(Lch/uzh/ifi/climate/client/TablePanel;Ljava/lang/String;Ljava/util/Date;Ljava/util/Date;)V,ch.uzh.ifi.climate.client.TablePanel,$addData,ch/uzh/ifi/climate/client/TablePanel.java,430,0
+gd,ch.uzh.ifi.climate.client.TablePanel::$addFilter(Lch/uzh/ifi/climate/client/TablePanel;)V,ch.uzh.ifi.climate.client.TablePanel,$addFilter,ch/uzh/ifi/climate/client/TablePanel.java,234,0
+hd,ch.uzh.ifi.climate.client.TablePanel::$initialize(Lch/uzh/ifi/climate/client/TablePanel;)V,ch.uzh.ifi.climate.client.TablePanel,$initialize,ch/uzh/ifi/climate/client/TablePanel.java,63,0
+jd,ch.uzh.ifi.climate.client.TablePanel::$refreshMeasurementTable(Lch/uzh/ifi/climate/client/TablePanel;Ljava/lang/String;Ljava/lang/String;Ljava/util/Date;Ljava/util/Date;)V,ch.uzh.ifi.climate.client.TablePanel,$refreshMeasurementTable,ch/uzh/ifi/climate/client/TablePanel.java,329,0
+kd,ch.uzh.ifi.climate.client.TablePanel::$removeData(Lch/uzh/ifi/climate/client/TablePanel;Ljava/lang/String;)V,ch.uzh.ifi.climate.client.TablePanel,$removeData,ch/uzh/ifi/climate/client/TablePanel.java,436,0
+ld,ch.uzh.ifi.climate.client.TablePanel::$removeDataCountry(Lch/uzh/ifi/climate/client/TablePanel;Ljava/lang/String;)V,ch.uzh.ifi.climate.client.TablePanel,$removeDataCountry,ch/uzh/ifi/climate/client/TablePanel.java,442,0
+md,ch.uzh.ifi.climate.client.TablePanel::$updateMeasurementTable(Lch/uzh/ifi/climate/client/TablePanel;Ljava/util/ArrayList;)V,ch.uzh.ifi.climate.client.TablePanel,$updateMeasurementTable,ch/uzh/ifi/climate/client/TablePanel.java,369,0
 a,ch.uzh.ifi.climate.client.TablePanel::MONTHS,ch.uzh.ifi.climate.client.TablePanel,MONTHS,ch/uzh/ifi/climate/client/TablePanel.java,51,-1
-nd,ch.uzh.ifi.climate.client.TablePanel::TablePanel() <init>,ch.uzh.ifi.climate.client.TablePanel,TablePanel,ch/uzh/ifi/climate/client/TablePanel.java,55,0
+nd,ch.uzh.ifi.climate.client.TablePanel::TablePanel() <init>,ch.uzh.ifi.climate.client.TablePanel,TablePanel,ch/uzh/ifi/climate/client/TablePanel.java,57,0
 b,ch.uzh.ifi.climate.client.TablePanel::addFilterButton,ch.uzh.ifi.climate.client.TablePanel,addFilterButton,ch/uzh/ifi/climate/client/TablePanel.java,47,-1
 c,ch.uzh.ifi.climate.client.TablePanel::addPanel,ch.uzh.ifi.climate.client.TablePanel,addPanel,ch/uzh/ifi/climate/client/TablePanel.java,40,-1
 d,ch.uzh.ifi.climate.client.TablePanel::cityNames,ch.uzh.ifi.climate.client.TablePanel,cityNames,ch/uzh/ifi/climate/client/TablePanel.java,49,-1
@@ -117,82 +117,82 @@ n,ch.uzh.ifi.climate.client.TablePanel::newSuggestBoxCity,ch.uzh.ifi.climate.cli
 o,ch.uzh.ifi.climate.client.TablePanel::newSuggestBoxCountry,ch.uzh.ifi.climate.client.TablePanel,newSuggestBoxCountry,ch/uzh/ifi/climate/client/TablePanel.java,42,-1
 p,ch.uzh.ifi.climate.client.TablePanel::querySvc,ch.uzh.ifi.climate.client.TablePanel,querySvc,ch/uzh/ifi/climate/client/TablePanel.java,48,-1
 q,ch.uzh.ifi.climate.client.TablePanel::startMonth,ch.uzh.ifi.climate.client.TablePanel,startMonth,ch/uzh/ifi/climate/client/TablePanel.java,45,-1
-TablePanel$1,,ch.uzh.ifi.climate.client.TablePanel$1,,ch/uzh/ifi/climate/client/TablePanel.java,69,-1
-od,ch.uzh.ifi.climate.client.TablePanel$1::$onSuccess(Lch/uzh/ifi/climate/client/TablePanel$1;Ljava/util/ArrayList;)V,ch.uzh.ifi.climate.client.TablePanel$1,$onSuccess,ch/uzh/ifi/climate/client/TablePanel.java,78,0
-pd,ch.uzh.ifi.climate.client.TablePanel$1::TablePanel$1(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$1,TablePanel$1,ch/uzh/ifi/climate/client/TablePanel.java,69,0
-qd,ch.uzh.ifi.climate.client.TablePanel$1::onFailure(Ljava/lang/Throwable;)V,ch.uzh.ifi.climate.client.TablePanel$1,onFailure,ch/uzh/ifi/climate/client/TablePanel.java,72,0
-rd,ch.uzh.ifi.climate.client.TablePanel$1::onSuccess(Ljava/lang/Object;)V,ch.uzh.ifi.climate.client.TablePanel$1,onSuccess,ch/uzh/ifi/climate/client/TablePanel.java,78,0
-a,ch.uzh.ifi.climate.client.TablePanel$1::this$01,ch.uzh.ifi.climate.client.TablePanel$1,this$01,ch/uzh/ifi/climate/client/TablePanel.java,69,-1
-TablePanel$10,,ch.uzh.ifi.climate.client.TablePanel$10,,ch/uzh/ifi/climate/client/TablePanel.java,210,-1
-sd,ch.uzh.ifi.climate.client.TablePanel$10::TablePanel$10(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$10,TablePanel$10,ch/uzh/ifi/climate/client/TablePanel.java,210,0
-td,ch.uzh.ifi.climate.client.TablePanel$10::onKeyDown(Lcom/google/gwt/event/dom/client/KeyDownEvent;)V,ch.uzh.ifi.climate.client.TablePanel$10,onKeyDown,ch/uzh/ifi/climate/client/TablePanel.java,211,0
-a,ch.uzh.ifi.climate.client.TablePanel$10::this$01,ch.uzh.ifi.climate.client.TablePanel$10,this$01,ch/uzh/ifi/climate/client/TablePanel.java,210,-1
-TablePanel$11,,ch.uzh.ifi.climate.client.TablePanel$11,,ch/uzh/ifi/climate/client/TablePanel.java,287,-1
-ud,ch.uzh.ifi.climate.client.TablePanel$11::TablePanel$11(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$11,TablePanel$11,ch/uzh/ifi/climate/client/TablePanel.java,287,0
-vd,ch.uzh.ifi.climate.client.TablePanel$11::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,ch.uzh.ifi.climate.client.TablePanel$11,onClick,ch/uzh/ifi/climate/client/TablePanel.java,288,0
-a,ch.uzh.ifi.climate.client.TablePanel$11::this$01,ch.uzh.ifi.climate.client.TablePanel$11,this$01,ch/uzh/ifi/climate/client/TablePanel.java,287,-1
-b,ch.uzh.ifi.climate.client.TablePanel$11::val$city2,ch.uzh.ifi.climate.client.TablePanel$11,val$city2,ch/uzh/ifi/climate/client/TablePanel.java,287,-1
-TablePanel$12,,ch.uzh.ifi.climate.client.TablePanel$12,,ch/uzh/ifi/climate/client/TablePanel.java,294,-1
-wd,ch.uzh.ifi.climate.client.TablePanel$12::TablePanel$12(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$12,TablePanel$12,ch/uzh/ifi/climate/client/TablePanel.java,294,0
-xd,ch.uzh.ifi.climate.client.TablePanel$12::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,ch.uzh.ifi.climate.client.TablePanel$12,onClick,ch/uzh/ifi/climate/client/TablePanel.java,295,0
-a,ch.uzh.ifi.climate.client.TablePanel$12::this$01,ch.uzh.ifi.climate.client.TablePanel$12,this$01,ch/uzh/ifi/climate/client/TablePanel.java,294,-1
-b,ch.uzh.ifi.climate.client.TablePanel$12::val$city3,ch.uzh.ifi.climate.client.TablePanel$12,val$city3,ch/uzh/ifi/climate/client/TablePanel.java,294,-1
-c,ch.uzh.ifi.climate.client.TablePanel$12::val$country2,ch.uzh.ifi.climate.client.TablePanel$12,val$country2,ch/uzh/ifi/climate/client/TablePanel.java,294,-1
-TablePanel$13,,ch.uzh.ifi.climate.client.TablePanel$13,,ch/uzh/ifi/climate/client/TablePanel.java,303,-1
-yd,ch.uzh.ifi.climate.client.TablePanel$13::TablePanel$13(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$13,TablePanel$13,ch/uzh/ifi/climate/client/TablePanel.java,303,0
-zd,ch.uzh.ifi.climate.client.TablePanel$13::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,ch.uzh.ifi.climate.client.TablePanel$13,onClick,ch/uzh/ifi/climate/client/TablePanel.java,304,0
-a,ch.uzh.ifi.climate.client.TablePanel$13::this$01,ch.uzh.ifi.climate.client.TablePanel$13,this$01,ch/uzh/ifi/climate/client/TablePanel.java,303,-1
-b,ch.uzh.ifi.climate.client.TablePanel$13::val$city2,ch.uzh.ifi.climate.client.TablePanel$13,val$city2,ch/uzh/ifi/climate/client/TablePanel.java,303,-1
-TablePanel$14,,ch.uzh.ifi.climate.client.TablePanel$14,,ch/uzh/ifi/climate/client/TablePanel.java,322,-1
-Ad,ch.uzh.ifi.climate.client.TablePanel$14::$onSuccess(Lch/uzh/ifi/climate/client/TablePanel$14;Ljava/util/ArrayList;)V,ch.uzh.ifi.climate.client.TablePanel$14,$onSuccess,ch/uzh/ifi/climate/client/TablePanel.java,329,0
-Bd,ch.uzh.ifi.climate.client.TablePanel$14::TablePanel$14(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$14,TablePanel$14,ch/uzh/ifi/climate/client/TablePanel.java,322,0
-Cd,ch.uzh.ifi.climate.client.TablePanel$14::onFailure(Ljava/lang/Throwable;)V,ch.uzh.ifi.climate.client.TablePanel$14,onFailure,ch/uzh/ifi/climate/client/TablePanel.java,324,0
-Dd,ch.uzh.ifi.climate.client.TablePanel$14::onSuccess(Ljava/lang/Object;)V,ch.uzh.ifi.climate.client.TablePanel$14,onSuccess,ch/uzh/ifi/climate/client/TablePanel.java,329,0
-a,ch.uzh.ifi.climate.client.TablePanel$14::this$01,ch.uzh.ifi.climate.client.TablePanel$14,this$01,ch/uzh/ifi/climate/client/TablePanel.java,322,-1
-TablePanel$15,,ch.uzh.ifi.climate.client.TablePanel$15,,ch/uzh/ifi/climate/client/TablePanel.java,372,-1
-Ed,ch.uzh.ifi.climate.client.TablePanel$15::$onSuccess(Lch/uzh/ifi/climate/client/TablePanel$15;Ljava/util/ArrayList;)V,ch.uzh.ifi.climate.client.TablePanel$15,$onSuccess,ch/uzh/ifi/climate/client/TablePanel.java,379,0
-Fd,ch.uzh.ifi.climate.client.TablePanel$15::TablePanel$15(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$15,TablePanel$15,ch/uzh/ifi/climate/client/TablePanel.java,372,0
-Gd,ch.uzh.ifi.climate.client.TablePanel$15::onFailure(Ljava/lang/Throwable;)V,ch.uzh.ifi.climate.client.TablePanel$15,onFailure,ch/uzh/ifi/climate/client/TablePanel.java,374,0
-Hd,ch.uzh.ifi.climate.client.TablePanel$15::onSuccess(Ljava/lang/Object;)V,ch.uzh.ifi.climate.client.TablePanel$15,onSuccess,ch/uzh/ifi/climate/client/TablePanel.java,379,0
-a,ch.uzh.ifi.climate.client.TablePanel$15::this$01,ch.uzh.ifi.climate.client.TablePanel$15,this$01,ch/uzh/ifi/climate/client/TablePanel.java,372,-1
-TablePanel$16,,ch.uzh.ifi.climate.client.TablePanel$16,,ch/uzh/ifi/climate/client/TablePanel.java,390,-1
-Id,ch.uzh.ifi.climate.client.TablePanel$16::$onSuccess(Lch/uzh/ifi/climate/client/TablePanel$16;Ljava/util/ArrayList;)V,ch.uzh.ifi.climate.client.TablePanel$16,$onSuccess,ch/uzh/ifi/climate/client/TablePanel.java,397,0
-Jd,ch.uzh.ifi.climate.client.TablePanel$16::TablePanel$16(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$16,TablePanel$16,ch/uzh/ifi/climate/client/TablePanel.java,390,0
-Kd,ch.uzh.ifi.climate.client.TablePanel$16::onFailure(Ljava/lang/Throwable;)V,ch.uzh.ifi.climate.client.TablePanel$16,onFailure,ch/uzh/ifi/climate/client/TablePanel.java,392,0
-Ld,ch.uzh.ifi.climate.client.TablePanel$16::onSuccess(Ljava/lang/Object;)V,ch.uzh.ifi.climate.client.TablePanel$16,onSuccess,ch/uzh/ifi/climate/client/TablePanel.java,397,0
-a,ch.uzh.ifi.climate.client.TablePanel$16::this$01,ch.uzh.ifi.climate.client.TablePanel$16,this$01,ch/uzh/ifi/climate/client/TablePanel.java,390,-1
-TablePanel$2,,ch.uzh.ifi.climate.client.TablePanel$2,,ch/uzh/ifi/climate/client/TablePanel.java,91,-1
-Md,ch.uzh.ifi.climate.client.TablePanel$2::$onSuccess(Lch/uzh/ifi/climate/client/TablePanel$2;Ljava/util/ArrayList;)V,ch.uzh.ifi.climate.client.TablePanel$2,$onSuccess,ch/uzh/ifi/climate/client/TablePanel.java,98,0
-Nd,ch.uzh.ifi.climate.client.TablePanel$2::TablePanel$2(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$2,TablePanel$2,ch/uzh/ifi/climate/client/TablePanel.java,91,0
-Od,ch.uzh.ifi.climate.client.TablePanel$2::onFailure(Ljava/lang/Throwable;)V,ch.uzh.ifi.climate.client.TablePanel$2,onFailure,ch/uzh/ifi/climate/client/TablePanel.java,93,0
-Pd,ch.uzh.ifi.climate.client.TablePanel$2::onSuccess(Ljava/lang/Object;)V,ch.uzh.ifi.climate.client.TablePanel$2,onSuccess,ch/uzh/ifi/climate/client/TablePanel.java,98,0
-a,ch.uzh.ifi.climate.client.TablePanel$2::this$01,ch.uzh.ifi.climate.client.TablePanel$2,this$01,ch/uzh/ifi/climate/client/TablePanel.java,91,-1
-TablePanel$3,,ch.uzh.ifi.climate.client.TablePanel$3,,ch/uzh/ifi/climate/client/TablePanel.java,105,-1
-Qd,ch.uzh.ifi.climate.client.TablePanel$3::$onSuccess(Lch/uzh/ifi/climate/client/TablePanel$3;Ljava/util/ArrayList;)V,ch.uzh.ifi.climate.client.TablePanel$3,$onSuccess,ch/uzh/ifi/climate/client/TablePanel.java,112,0
-Rd,ch.uzh.ifi.climate.client.TablePanel$3::TablePanel$3(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$3,TablePanel$3,ch/uzh/ifi/climate/client/TablePanel.java,105,0
-Sd,ch.uzh.ifi.climate.client.TablePanel$3::onFailure(Ljava/lang/Throwable;)V,ch.uzh.ifi.climate.client.TablePanel$3,onFailure,ch/uzh/ifi/climate/client/TablePanel.java,107,0
-Td,ch.uzh.ifi.climate.client.TablePanel$3::onSuccess(Ljava/lang/Object;)V,ch.uzh.ifi.climate.client.TablePanel$3,onSuccess,ch/uzh/ifi/climate/client/TablePanel.java,112,0
-a,ch.uzh.ifi.climate.client.TablePanel$3::this$01,ch.uzh.ifi.climate.client.TablePanel$3,this$01,ch/uzh/ifi/climate/client/TablePanel.java,105,-1
-TablePanel$4,,ch.uzh.ifi.climate.client.TablePanel$4,,ch/uzh/ifi/climate/client/TablePanel.java,148,-1
-Ud,ch.uzh.ifi.climate.client.TablePanel$4::TablePanel$4(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$4,TablePanel$4,ch/uzh/ifi/climate/client/TablePanel.java,148,0
-Vd,ch.uzh.ifi.climate.client.TablePanel$4::onKeyPress(Lcom/google/gwt/event/dom/client/KeyPressEvent;)V,ch.uzh.ifi.climate.client.TablePanel$4,onKeyPress,ch/uzh/ifi/climate/client/TablePanel.java,150,0
-TablePanel$5,,ch.uzh.ifi.climate.client.TablePanel$5,,ch/uzh/ifi/climate/client/TablePanel.java,156,-1
-Wd,ch.uzh.ifi.climate.client.TablePanel$5::TablePanel$5(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$5,TablePanel$5,ch/uzh/ifi/climate/client/TablePanel.java,156,0
-Xd,ch.uzh.ifi.climate.client.TablePanel$5::onKeyPress(Lcom/google/gwt/event/dom/client/KeyPressEvent;)V,ch.uzh.ifi.climate.client.TablePanel$5,onKeyPress,ch/uzh/ifi/climate/client/TablePanel.java,158,0
-TablePanel$6,,ch.uzh.ifi.climate.client.TablePanel$6,,ch/uzh/ifi/climate/client/TablePanel.java,167,-1
-Yd,ch.uzh.ifi.climate.client.TablePanel$6::TablePanel$6(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$6,TablePanel$6,ch/uzh/ifi/climate/client/TablePanel.java,167,0
-Zd,ch.uzh.ifi.climate.client.TablePanel$6::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,ch.uzh.ifi.climate.client.TablePanel$6,onClick,ch/uzh/ifi/climate/client/TablePanel.java,168,0
-a,ch.uzh.ifi.climate.client.TablePanel$6::this$01,ch.uzh.ifi.climate.client.TablePanel$6,this$01,ch/uzh/ifi/climate/client/TablePanel.java,167,-1
-TablePanel$7,,ch.uzh.ifi.climate.client.TablePanel$7,,ch/uzh/ifi/climate/client/TablePanel.java,175,-1
-$d,ch.uzh.ifi.climate.client.TablePanel$7::TablePanel$7(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$7,TablePanel$7,ch/uzh/ifi/climate/client/TablePanel.java,175,0
-_d,ch.uzh.ifi.climate.client.TablePanel$7::onKeyPress(Lcom/google/gwt/event/dom/client/KeyPressEvent;)V,ch.uzh.ifi.climate.client.TablePanel$7,onKeyPress,ch/uzh/ifi/climate/client/TablePanel.java,177,0
-TablePanel$8,,ch.uzh.ifi.climate.client.TablePanel$8,,ch/uzh/ifi/climate/client/TablePanel.java,185,-1
-ae,ch.uzh.ifi.climate.client.TablePanel$8::TablePanel$8(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$8,TablePanel$8,ch/uzh/ifi/climate/client/TablePanel.java,185,0
-be,ch.uzh.ifi.climate.client.TablePanel$8::onKeyPress(Lcom/google/gwt/event/dom/client/KeyPressEvent;)V,ch.uzh.ifi.climate.client.TablePanel$8,onKeyPress,ch/uzh/ifi/climate/client/TablePanel.java,187,0
-TablePanel$9,,ch.uzh.ifi.climate.client.TablePanel$9,,ch/uzh/ifi/climate/client/TablePanel.java,203,-1
-ce,ch.uzh.ifi.climate.client.TablePanel$9::TablePanel$9(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$9,TablePanel$9,ch/uzh/ifi/climate/client/TablePanel.java,203,0
-de,ch.uzh.ifi.climate.client.TablePanel$9::onKeyDown(Lcom/google/gwt/event/dom/client/KeyDownEvent;)V,ch.uzh.ifi.climate.client.TablePanel$9,onKeyDown,ch/uzh/ifi/climate/client/TablePanel.java,204,0
-a,ch.uzh.ifi.climate.client.TablePanel$9::this$01,ch.uzh.ifi.climate.client.TablePanel$9,this$01,ch/uzh/ifi/climate/client/TablePanel.java,203,-1
+TablePanel$1,,ch.uzh.ifi.climate.client.TablePanel$1,,ch/uzh/ifi/climate/client/TablePanel.java,80,-1
+od,ch.uzh.ifi.climate.client.TablePanel$1::$onSuccess(Lch/uzh/ifi/climate/client/TablePanel$1;Ljava/util/ArrayList;)V,ch.uzh.ifi.climate.client.TablePanel$1,$onSuccess,ch/uzh/ifi/climate/client/TablePanel.java,89,0
+pd,ch.uzh.ifi.climate.client.TablePanel$1::TablePanel$1(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$1,TablePanel$1,ch/uzh/ifi/climate/client/TablePanel.java,80,0
+qd,ch.uzh.ifi.climate.client.TablePanel$1::onFailure(Ljava/lang/Throwable;)V,ch.uzh.ifi.climate.client.TablePanel$1,onFailure,ch/uzh/ifi/climate/client/TablePanel.java,83,0
+rd,ch.uzh.ifi.climate.client.TablePanel$1::onSuccess(Ljava/lang/Object;)V,ch.uzh.ifi.climate.client.TablePanel$1,onSuccess,ch/uzh/ifi/climate/client/TablePanel.java,89,0
+a,ch.uzh.ifi.climate.client.TablePanel$1::this$01,ch.uzh.ifi.climate.client.TablePanel$1,this$01,ch/uzh/ifi/climate/client/TablePanel.java,80,-1
+TablePanel$10,,ch.uzh.ifi.climate.client.TablePanel$10,,ch/uzh/ifi/climate/client/TablePanel.java,221,-1
+sd,ch.uzh.ifi.climate.client.TablePanel$10::TablePanel$10(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$10,TablePanel$10,ch/uzh/ifi/climate/client/TablePanel.java,221,0
+td,ch.uzh.ifi.climate.client.TablePanel$10::onKeyDown(Lcom/google/gwt/event/dom/client/KeyDownEvent;)V,ch.uzh.ifi.climate.client.TablePanel$10,onKeyDown,ch/uzh/ifi/climate/client/TablePanel.java,222,0
+a,ch.uzh.ifi.climate.client.TablePanel$10::this$01,ch.uzh.ifi.climate.client.TablePanel$10,this$01,ch/uzh/ifi/climate/client/TablePanel.java,221,-1
+TablePanel$11,,ch.uzh.ifi.climate.client.TablePanel$11,,ch/uzh/ifi/climate/client/TablePanel.java,298,-1
+ud,ch.uzh.ifi.climate.client.TablePanel$11::TablePanel$11(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$11,TablePanel$11,ch/uzh/ifi/climate/client/TablePanel.java,298,0
+vd,ch.uzh.ifi.climate.client.TablePanel$11::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,ch.uzh.ifi.climate.client.TablePanel$11,onClick,ch/uzh/ifi/climate/client/TablePanel.java,299,0
+a,ch.uzh.ifi.climate.client.TablePanel$11::this$01,ch.uzh.ifi.climate.client.TablePanel$11,this$01,ch/uzh/ifi/climate/client/TablePanel.java,298,-1
+b,ch.uzh.ifi.climate.client.TablePanel$11::val$city2,ch.uzh.ifi.climate.client.TablePanel$11,val$city2,ch/uzh/ifi/climate/client/TablePanel.java,298,-1
+TablePanel$12,,ch.uzh.ifi.climate.client.TablePanel$12,,ch/uzh/ifi/climate/client/TablePanel.java,305,-1
+wd,ch.uzh.ifi.climate.client.TablePanel$12::TablePanel$12(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$12,TablePanel$12,ch/uzh/ifi/climate/client/TablePanel.java,305,0
+xd,ch.uzh.ifi.climate.client.TablePanel$12::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,ch.uzh.ifi.climate.client.TablePanel$12,onClick,ch/uzh/ifi/climate/client/TablePanel.java,306,0
+a,ch.uzh.ifi.climate.client.TablePanel$12::this$01,ch.uzh.ifi.climate.client.TablePanel$12,this$01,ch/uzh/ifi/climate/client/TablePanel.java,305,-1
+b,ch.uzh.ifi.climate.client.TablePanel$12::val$city3,ch.uzh.ifi.climate.client.TablePanel$12,val$city3,ch/uzh/ifi/climate/client/TablePanel.java,305,-1
+c,ch.uzh.ifi.climate.client.TablePanel$12::val$country2,ch.uzh.ifi.climate.client.TablePanel$12,val$country2,ch/uzh/ifi/climate/client/TablePanel.java,305,-1
+TablePanel$13,,ch.uzh.ifi.climate.client.TablePanel$13,,ch/uzh/ifi/climate/client/TablePanel.java,314,-1
+yd,ch.uzh.ifi.climate.client.TablePanel$13::TablePanel$13(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$13,TablePanel$13,ch/uzh/ifi/climate/client/TablePanel.java,314,0
+zd,ch.uzh.ifi.climate.client.TablePanel$13::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,ch.uzh.ifi.climate.client.TablePanel$13,onClick,ch/uzh/ifi/climate/client/TablePanel.java,315,0
+a,ch.uzh.ifi.climate.client.TablePanel$13::this$01,ch.uzh.ifi.climate.client.TablePanel$13,this$01,ch/uzh/ifi/climate/client/TablePanel.java,314,-1
+b,ch.uzh.ifi.climate.client.TablePanel$13::val$city2,ch.uzh.ifi.climate.client.TablePanel$13,val$city2,ch/uzh/ifi/climate/client/TablePanel.java,314,-1
+TablePanel$14,,ch.uzh.ifi.climate.client.TablePanel$14,,ch/uzh/ifi/climate/client/TablePanel.java,333,-1
+Ad,ch.uzh.ifi.climate.client.TablePanel$14::$onSuccess(Lch/uzh/ifi/climate/client/TablePanel$14;Ljava/util/ArrayList;)V,ch.uzh.ifi.climate.client.TablePanel$14,$onSuccess,ch/uzh/ifi/climate/client/TablePanel.java,340,0
+Bd,ch.uzh.ifi.climate.client.TablePanel$14::TablePanel$14(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$14,TablePanel$14,ch/uzh/ifi/climate/client/TablePanel.java,333,0
+Cd,ch.uzh.ifi.climate.client.TablePanel$14::onFailure(Ljava/lang/Throwable;)V,ch.uzh.ifi.climate.client.TablePanel$14,onFailure,ch/uzh/ifi/climate/client/TablePanel.java,335,0
+Dd,ch.uzh.ifi.climate.client.TablePanel$14::onSuccess(Ljava/lang/Object;)V,ch.uzh.ifi.climate.client.TablePanel$14,onSuccess,ch/uzh/ifi/climate/client/TablePanel.java,340,0
+a,ch.uzh.ifi.climate.client.TablePanel$14::this$01,ch.uzh.ifi.climate.client.TablePanel$14,this$01,ch/uzh/ifi/climate/client/TablePanel.java,333,-1
+TablePanel$15,,ch.uzh.ifi.climate.client.TablePanel$15,,ch/uzh/ifi/climate/client/TablePanel.java,383,-1
+Ed,ch.uzh.ifi.climate.client.TablePanel$15::$onSuccess(Lch/uzh/ifi/climate/client/TablePanel$15;Ljava/util/ArrayList;)V,ch.uzh.ifi.climate.client.TablePanel$15,$onSuccess,ch/uzh/ifi/climate/client/TablePanel.java,390,0
+Fd,ch.uzh.ifi.climate.client.TablePanel$15::TablePanel$15(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$15,TablePanel$15,ch/uzh/ifi/climate/client/TablePanel.java,383,0
+Gd,ch.uzh.ifi.climate.client.TablePanel$15::onFailure(Ljava/lang/Throwable;)V,ch.uzh.ifi.climate.client.TablePanel$15,onFailure,ch/uzh/ifi/climate/client/TablePanel.java,385,0
+Hd,ch.uzh.ifi.climate.client.TablePanel$15::onSuccess(Ljava/lang/Object;)V,ch.uzh.ifi.climate.client.TablePanel$15,onSuccess,ch/uzh/ifi/climate/client/TablePanel.java,390,0
+a,ch.uzh.ifi.climate.client.TablePanel$15::this$01,ch.uzh.ifi.climate.client.TablePanel$15,this$01,ch/uzh/ifi/climate/client/TablePanel.java,383,-1
+TablePanel$16,,ch.uzh.ifi.climate.client.TablePanel$16,,ch/uzh/ifi/climate/client/TablePanel.java,401,-1
+Id,ch.uzh.ifi.climate.client.TablePanel$16::$onSuccess(Lch/uzh/ifi/climate/client/TablePanel$16;Ljava/util/ArrayList;)V,ch.uzh.ifi.climate.client.TablePanel$16,$onSuccess,ch/uzh/ifi/climate/client/TablePanel.java,408,0
+Jd,ch.uzh.ifi.climate.client.TablePanel$16::TablePanel$16(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$16,TablePanel$16,ch/uzh/ifi/climate/client/TablePanel.java,401,0
+Kd,ch.uzh.ifi.climate.client.TablePanel$16::onFailure(Ljava/lang/Throwable;)V,ch.uzh.ifi.climate.client.TablePanel$16,onFailure,ch/uzh/ifi/climate/client/TablePanel.java,403,0
+Ld,ch.uzh.ifi.climate.client.TablePanel$16::onSuccess(Ljava/lang/Object;)V,ch.uzh.ifi.climate.client.TablePanel$16,onSuccess,ch/uzh/ifi/climate/client/TablePanel.java,408,0
+a,ch.uzh.ifi.climate.client.TablePanel$16::this$01,ch.uzh.ifi.climate.client.TablePanel$16,this$01,ch/uzh/ifi/climate/client/TablePanel.java,401,-1
+TablePanel$2,,ch.uzh.ifi.climate.client.TablePanel$2,,ch/uzh/ifi/climate/client/TablePanel.java,102,-1
+Md,ch.uzh.ifi.climate.client.TablePanel$2::$onSuccess(Lch/uzh/ifi/climate/client/TablePanel$2;Ljava/util/ArrayList;)V,ch.uzh.ifi.climate.client.TablePanel$2,$onSuccess,ch/uzh/ifi/climate/client/TablePanel.java,109,0
+Nd,ch.uzh.ifi.climate.client.TablePanel$2::TablePanel$2(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$2,TablePanel$2,ch/uzh/ifi/climate/client/TablePanel.java,102,0
+Od,ch.uzh.ifi.climate.client.TablePanel$2::onFailure(Ljava/lang/Throwable;)V,ch.uzh.ifi.climate.client.TablePanel$2,onFailure,ch/uzh/ifi/climate/client/TablePanel.java,104,0
+Pd,ch.uzh.ifi.climate.client.TablePanel$2::onSuccess(Ljava/lang/Object;)V,ch.uzh.ifi.climate.client.TablePanel$2,onSuccess,ch/uzh/ifi/climate/client/TablePanel.java,109,0
+a,ch.uzh.ifi.climate.client.TablePanel$2::this$01,ch.uzh.ifi.climate.client.TablePanel$2,this$01,ch/uzh/ifi/climate/client/TablePanel.java,102,-1
+TablePanel$3,,ch.uzh.ifi.climate.client.TablePanel$3,,ch/uzh/ifi/climate/client/TablePanel.java,116,-1
+Qd,ch.uzh.ifi.climate.client.TablePanel$3::$onSuccess(Lch/uzh/ifi/climate/client/TablePanel$3;Ljava/util/ArrayList;)V,ch.uzh.ifi.climate.client.TablePanel$3,$onSuccess,ch/uzh/ifi/climate/client/TablePanel.java,123,0
+Rd,ch.uzh.ifi.climate.client.TablePanel$3::TablePanel$3(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$3,TablePanel$3,ch/uzh/ifi/climate/client/TablePanel.java,116,0
+Sd,ch.uzh.ifi.climate.client.TablePanel$3::onFailure(Ljava/lang/Throwable;)V,ch.uzh.ifi.climate.client.TablePanel$3,onFailure,ch/uzh/ifi/climate/client/TablePanel.java,118,0
+Td,ch.uzh.ifi.climate.client.TablePanel$3::onSuccess(Ljava/lang/Object;)V,ch.uzh.ifi.climate.client.TablePanel$3,onSuccess,ch/uzh/ifi/climate/client/TablePanel.java,123,0
+a,ch.uzh.ifi.climate.client.TablePanel$3::this$01,ch.uzh.ifi.climate.client.TablePanel$3,this$01,ch/uzh/ifi/climate/client/TablePanel.java,116,-1
+TablePanel$4,,ch.uzh.ifi.climate.client.TablePanel$4,,ch/uzh/ifi/climate/client/TablePanel.java,159,-1
+Ud,ch.uzh.ifi.climate.client.TablePanel$4::TablePanel$4(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$4,TablePanel$4,ch/uzh/ifi/climate/client/TablePanel.java,159,0
+Vd,ch.uzh.ifi.climate.client.TablePanel$4::onKeyPress(Lcom/google/gwt/event/dom/client/KeyPressEvent;)V,ch.uzh.ifi.climate.client.TablePanel$4,onKeyPress,ch/uzh/ifi/climate/client/TablePanel.java,161,0
+TablePanel$5,,ch.uzh.ifi.climate.client.TablePanel$5,,ch/uzh/ifi/climate/client/TablePanel.java,167,-1
+Wd,ch.uzh.ifi.climate.client.TablePanel$5::TablePanel$5(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$5,TablePanel$5,ch/uzh/ifi/climate/client/TablePanel.java,167,0
+Xd,ch.uzh.ifi.climate.client.TablePanel$5::onKeyPress(Lcom/google/gwt/event/dom/client/KeyPressEvent;)V,ch.uzh.ifi.climate.client.TablePanel$5,onKeyPress,ch/uzh/ifi/climate/client/TablePanel.java,169,0
+TablePanel$6,,ch.uzh.ifi.climate.client.TablePanel$6,,ch/uzh/ifi/climate/client/TablePanel.java,178,-1
+Yd,ch.uzh.ifi.climate.client.TablePanel$6::TablePanel$6(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$6,TablePanel$6,ch/uzh/ifi/climate/client/TablePanel.java,178,0
+Zd,ch.uzh.ifi.climate.client.TablePanel$6::onClick(Lcom/google/gwt/event/dom/client/ClickEvent;)V,ch.uzh.ifi.climate.client.TablePanel$6,onClick,ch/uzh/ifi/climate/client/TablePanel.java,179,0
+a,ch.uzh.ifi.climate.client.TablePanel$6::this$01,ch.uzh.ifi.climate.client.TablePanel$6,this$01,ch/uzh/ifi/climate/client/TablePanel.java,178,-1
+TablePanel$7,,ch.uzh.ifi.climate.client.TablePanel$7,,ch/uzh/ifi/climate/client/TablePanel.java,186,-1
+$d,ch.uzh.ifi.climate.client.TablePanel$7::TablePanel$7(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$7,TablePanel$7,ch/uzh/ifi/climate/client/TablePanel.java,186,0
+_d,ch.uzh.ifi.climate.client.TablePanel$7::onKeyPress(Lcom/google/gwt/event/dom/client/KeyPressEvent;)V,ch.uzh.ifi.climate.client.TablePanel$7,onKeyPress,ch/uzh/ifi/climate/client/TablePanel.java,188,0
+TablePanel$8,,ch.uzh.ifi.climate.client.TablePanel$8,,ch/uzh/ifi/climate/client/TablePanel.java,196,-1
+ae,ch.uzh.ifi.climate.client.TablePanel$8::TablePanel$8(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$8,TablePanel$8,ch/uzh/ifi/climate/client/TablePanel.java,196,0
+be,ch.uzh.ifi.climate.client.TablePanel$8::onKeyPress(Lcom/google/gwt/event/dom/client/KeyPressEvent;)V,ch.uzh.ifi.climate.client.TablePanel$8,onKeyPress,ch/uzh/ifi/climate/client/TablePanel.java,198,0
+TablePanel$9,,ch.uzh.ifi.climate.client.TablePanel$9,,ch/uzh/ifi/climate/client/TablePanel.java,214,-1
+ce,ch.uzh.ifi.climate.client.TablePanel$9::TablePanel$9(Lch/uzh/ifi/climate/client/TablePanel;) <init>,ch.uzh.ifi.climate.client.TablePanel$9,TablePanel$9,ch/uzh/ifi/climate/client/TablePanel.java,214,0
+de,ch.uzh.ifi.climate.client.TablePanel$9::onKeyDown(Lcom/google/gwt/event/dom/client/KeyDownEvent;)V,ch.uzh.ifi.climate.client.TablePanel$9,onKeyDown,ch/uzh/ifi/climate/client/TablePanel.java,215,0
+a,ch.uzh.ifi.climate.client.TablePanel$9::this$01,ch.uzh.ifi.climate.client.TablePanel$9,this$01,ch/uzh/ifi/climate/client/TablePanel.java,214,-1
 Slider,,ch.uzh.ifi.climate.client.slider.Slider,,ch/uzh/ifi/climate/client/slider/Slider.java,41,-1
 ee,ch.uzh.ifi.climate.client.slider.Slider::$addListener(Lch/uzh/ifi/climate/client/slider/Slider;Lch/uzh/ifi/climate/client/slider/SliderListener;)V,ch.uzh.ifi.climate.client.slider.Slider,$addListener,ch/uzh/ifi/climate/client/slider/Slider.java,281,0
 fe,ch.uzh.ifi.climate.client.slider.Slider::$createSliderJS(Lch/uzh/ifi/climate/client/slider/Slider;Lch/uzh/ifi/climate/client/slider/Slider;Ljava/lang/String;Lcom/google/gwt/core/client/JavaScriptObject;)V,ch.uzh.ifi.climate.client.slider.Slider,$createSliderJS,ch/uzh/ifi/climate/client/slider/Slider.java,402,0
@@ -230,10 +230,10 @@ Je,ch.uzh.ifi.climate.client.slider.SliderOption::VALUES,ch.uzh.ifi.climate.clie
 a,ch.uzh.ifi.climate.client.slider.SliderOption::m_name,ch.uzh.ifi.climate.client.slider.SliderOption,m_name,ch/uzh/ifi/climate/client/slider/SliderOption.java,87,-1
 Me,ch.uzh.ifi.climate.client.slider.SliderOption::toString()Ljava/lang/String;,ch.uzh.ifi.climate.client.slider.SliderOption,toString,ch/uzh/ifi/climate/client/slider/SliderOption.java,95,0
 Ne,ch.uzh.ifi.climate.client.slider.SliderOption::values()[Lch/uzh/ifi/climate/client/slider/SliderOption;,ch.uzh.ifi.climate.client.slider.SliderOption,values,ch/uzh/ifi/climate/client/slider/SliderOption.java,21,0
-Coordinates,,ch.uzh.ifi.climate.shared.Coordinates,,ch/uzh/ifi/climate/shared/Coordinates.java,14,-1
-Oe,ch.uzh.ifi.climate.shared.Coordinates::Coordinates() <init>,ch.uzh.ifi.climate.shared.Coordinates,Coordinates,ch/uzh/ifi/climate/shared/Coordinates.java,18,0
-a,ch.uzh.ifi.climate.shared.Coordinates::latitude,ch.uzh.ifi.climate.shared.Coordinates,latitude,ch/uzh/ifi/climate/shared/Coordinates.java,15,-1
-b,ch.uzh.ifi.climate.shared.Coordinates::longitude,ch.uzh.ifi.climate.shared.Coordinates,longitude,ch/uzh/ifi/climate/shared/Coordinates.java,16,-1
+Coordinates,,ch.uzh.ifi.climate.shared.Coordinates,,ch/uzh/ifi/climate/shared/Coordinates.java,13,-1
+Oe,ch.uzh.ifi.climate.shared.Coordinates::Coordinates() <init>,ch.uzh.ifi.climate.shared.Coordinates,Coordinates,ch/uzh/ifi/climate/shared/Coordinates.java,19,0
+a,ch.uzh.ifi.climate.shared.Coordinates::latitude,ch.uzh.ifi.climate.shared.Coordinates,latitude,ch/uzh/ifi/climate/shared/Coordinates.java,16,-1
+b,ch.uzh.ifi.climate.shared.Coordinates::longitude,ch.uzh.ifi.climate.shared.Coordinates,longitude,ch/uzh/ifi/climate/shared/Coordinates.java,17,-1
 Pe,ch.uzh.ifi.climate.shared.Coordinates_FieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Lch/uzh/ifi/climate/shared/Coordinates;)V,ch.uzh.ifi.climate.shared.Coordinates_FieldSerializer,deserialize,gen/ch/uzh/ifi/climate/shared/Coordinates_FieldSerializer.java,28,0
 Qe,ch.uzh.ifi.climate.shared.Coordinates_FieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;)Lch/uzh/ifi/climate/shared/Coordinates;,ch.uzh.ifi.climate.shared.Coordinates_FieldSerializer,instantiate,gen/ch/uzh/ifi/climate/shared/Coordinates_FieldSerializer.java,34,0
 Re,ch.uzh.ifi.climate.shared.Coordinates_FieldSerializer::setLatitude(Lch/uzh/ifi/climate/shared/Coordinates;F)V,ch.uzh.ifi.climate.shared.Coordinates_FieldSerializer,setLatitude,gen/ch/uzh/ifi/climate/shared/Coordinates_FieldSerializer.java,14,0
@@ -244,14 +244,14 @@ Ue,ch.uzh.ifi.climate.shared.Temperature::Temperature(D) <init>,ch.uzh.ifi.clima
 Ve,ch.uzh.ifi.climate.shared.Temperature::divide(Lch/uzh/ifi/climate/shared/Temperature;D)Lch/uzh/ifi/climate/shared/Temperature;,ch.uzh.ifi.climate.shared.Temperature,divide,ch/uzh/ifi/climate/shared/Temperature.java,122,0
 We,ch.uzh.ifi.climate.shared.Temperature::sum([Lch/uzh/ifi/climate/shared/Temperature;)Lch/uzh/ifi/climate/shared/Temperature;,ch.uzh.ifi.climate.shared.Temperature,sum,ch/uzh/ifi/climate/shared/Temperature.java,137,0
 a,ch.uzh.ifi.climate.shared.Temperature::temperatureInKelvin,ch.uzh.ifi.climate.shared.Temperature,temperatureInKelvin,ch/uzh/ifi/climate/shared/Temperature.java,15,-1
-TemperatureMeasurement,,ch.uzh.ifi.climate.shared.TemperatureMeasurement,,ch/uzh/ifi/climate/shared/TemperatureMeasurement.java,19,-1
-Xe,ch.uzh.ifi.climate.shared.TemperatureMeasurement::TemperatureMeasurement() <init>,ch.uzh.ifi.climate.shared.TemperatureMeasurement,TemperatureMeasurement,ch/uzh/ifi/climate/shared/TemperatureMeasurement.java,28,0
-a,ch.uzh.ifi.climate.shared.TemperatureMeasurement::city,ch.uzh.ifi.climate.shared.TemperatureMeasurement,city,ch/uzh/ifi/climate/shared/TemperatureMeasurement.java,23,-1
-b,ch.uzh.ifi.climate.shared.TemperatureMeasurement::coordinates,ch.uzh.ifi.climate.shared.TemperatureMeasurement,coordinates,ch/uzh/ifi/climate/shared/TemperatureMeasurement.java,25,-1
-c,ch.uzh.ifi.climate.shared.TemperatureMeasurement::country,ch.uzh.ifi.climate.shared.TemperatureMeasurement,country,ch/uzh/ifi/climate/shared/TemperatureMeasurement.java,24,-1
-d,ch.uzh.ifi.climate.shared.TemperatureMeasurement::date,ch.uzh.ifi.climate.shared.TemperatureMeasurement,date,ch/uzh/ifi/climate/shared/TemperatureMeasurement.java,22,-1
-e,ch.uzh.ifi.climate.shared.TemperatureMeasurement::temperature,ch.uzh.ifi.climate.shared.TemperatureMeasurement,temperature,ch/uzh/ifi/climate/shared/TemperatureMeasurement.java,20,-1
-f,ch.uzh.ifi.climate.shared.TemperatureMeasurement::uncertainty,ch.uzh.ifi.climate.shared.TemperatureMeasurement,uncertainty,ch/uzh/ifi/climate/shared/TemperatureMeasurement.java,21,-1
+TemperatureMeasurement,,ch.uzh.ifi.climate.shared.TemperatureMeasurement,,ch/uzh/ifi/climate/shared/TemperatureMeasurement.java,18,-1
+Xe,ch.uzh.ifi.climate.shared.TemperatureMeasurement::TemperatureMeasurement() <init>,ch.uzh.ifi.climate.shared.TemperatureMeasurement,TemperatureMeasurement,ch/uzh/ifi/climate/shared/TemperatureMeasurement.java,27,0
+a,ch.uzh.ifi.climate.shared.TemperatureMeasurement::city,ch.uzh.ifi.climate.shared.TemperatureMeasurement,city,ch/uzh/ifi/climate/shared/TemperatureMeasurement.java,22,-1
+b,ch.uzh.ifi.climate.shared.TemperatureMeasurement::coordinates,ch.uzh.ifi.climate.shared.TemperatureMeasurement,coordinates,ch/uzh/ifi/climate/shared/TemperatureMeasurement.java,24,-1
+c,ch.uzh.ifi.climate.shared.TemperatureMeasurement::country,ch.uzh.ifi.climate.shared.TemperatureMeasurement,country,ch/uzh/ifi/climate/shared/TemperatureMeasurement.java,23,-1
+d,ch.uzh.ifi.climate.shared.TemperatureMeasurement::date,ch.uzh.ifi.climate.shared.TemperatureMeasurement,date,ch/uzh/ifi/climate/shared/TemperatureMeasurement.java,21,-1
+e,ch.uzh.ifi.climate.shared.TemperatureMeasurement::temperature,ch.uzh.ifi.climate.shared.TemperatureMeasurement,temperature,ch/uzh/ifi/climate/shared/TemperatureMeasurement.java,19,-1
+f,ch.uzh.ifi.climate.shared.TemperatureMeasurement::uncertainty,ch.uzh.ifi.climate.shared.TemperatureMeasurement,uncertainty,ch/uzh/ifi/climate/shared/TemperatureMeasurement.java,20,-1
 Ye,ch.uzh.ifi.climate.shared.TemperatureMeasurement_FieldSerializer::deserialize(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;Lch/uzh/ifi/climate/shared/TemperatureMeasurement;)V,ch.uzh.ifi.climate.shared.TemperatureMeasurement_FieldSerializer,deserialize,gen/ch/uzh/ifi/climate/shared/TemperatureMeasurement_FieldSerializer.java,64,0
 Ze,ch.uzh.ifi.climate.shared.TemperatureMeasurement_FieldSerializer::instantiate(Lcom/google/gwt/user/client/rpc/SerializationStreamReader;)Lch/uzh/ifi/climate/shared/TemperatureMeasurement;,ch.uzh.ifi.climate.shared.TemperatureMeasurement_FieldSerializer,instantiate,gen/ch/uzh/ifi/climate/shared/TemperatureMeasurement_FieldSerializer.java,74,0
 $e,ch.uzh.ifi.climate.shared.TemperatureMeasurement_FieldSerializer::setCity(Lch/uzh/ifi/climate/shared/TemperatureMeasurement;Ljava/lang/String;)V,ch.uzh.ifi.climate.shared.TemperatureMeasurement_FieldSerializer,setCity,gen/ch/uzh/ifi/climate/shared/TemperatureMeasurement_FieldSerializer.java,14,0
@@ -1225,40 +1225,40 @@ fs,com.google.gwt.lang.Cast::stringCastMap,com.google.gwt.lang.Cast,stringCastMa
 ts,com.google.gwt.lang.Cast::throwClassCastExceptionUnlessNull(Ljava/lang/Object;)Ljava/lang/Object;,com.google.gwt.lang.Cast,throwClassCastExceptionUnlessNull,com/google/gwt/dev/jjs/intrinsic/com/google/gwt/lang/Cast.java,277,0
 us,com.google.gwt.lang.ClassLiteralHolder::C_classLit,com.google.gwt.lang.ClassLiteralHolder,C_classLit,Unknown,0,-1
 vs,com.google.gwt.lang.ClassLiteralHolder::I_classLit,com.google.gwt.lang.ClassLiteralHolder,I_classLit,Unknown,0,-1
-ws,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_Climate$1_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_Climate$1_2_classLit,ch/uzh/ifi/climate/client/Climate.java,82,-1
-xs,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_Climate$2_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_Climate$2_2_classLit,ch/uzh/ifi/climate/client/Climate.java,99,-1
-ys,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_Climate_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_Climate_2_classLit,ch/uzh/ifi/climate/client/Climate.java,51,-1
+ws,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_Climate$1_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_Climate$1_2_classLit,ch/uzh/ifi/climate/client/Climate.java,56,-1
+xs,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_Climate$2_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_Climate$2_2_classLit,ch/uzh/ifi/climate/client/Climate.java,73,-1
+ys,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_Climate_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_Climate_2_classLit,ch/uzh/ifi/climate/client/Climate.java,22,-1
 zs,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_FilterRow_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_FilterRow_2_classLit,ch/uzh/ifi/climate/client/FilterRow.java,7,-1
 As,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_FilterTable_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_FilterTable_2_classLit,ch/uzh/ifi/climate/client/FilterTable.java,9,-1
-Bs,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_MapPanel$1_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_MapPanel$1_2_classLit,ch/uzh/ifi/climate/client/MapPanel.java,76,-1
-Cs,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_MapPanel$2_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_MapPanel$2_2_classLit,ch/uzh/ifi/climate/client/MapPanel.java,159,-1
-Ds,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_MapPanel$CountryMean_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_MapPanel$CountryMean_2_classLit,ch/uzh/ifi/climate/client/MapPanel.java,222,-1
-Es,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_MapPanel_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_MapPanel_2_classLit,ch/uzh/ifi/climate/client/MapPanel.java,48,-1
+Bs,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_MapPanel$1_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_MapPanel$1_2_classLit,ch/uzh/ifi/climate/client/MapPanel.java,68,-1
+Cs,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_MapPanel$2_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_MapPanel$2_2_classLit,ch/uzh/ifi/climate/client/MapPanel.java,155,-1
+Ds,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_MapPanel$CountryMean_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_MapPanel$CountryMean_2_classLit,ch/uzh/ifi/climate/client/MapPanel.java,220,-1
+Es,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_MapPanel_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_MapPanel_2_classLit,ch/uzh/ifi/climate/client/MapPanel.java,40,-1
 Fs,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_MeasurementTable_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_MeasurementTable_2_classLit,ch/uzh/ifi/climate/client/MeasurementTable.java,8,-1
 Gs,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_QueryService_1Proxy_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_QueryService_1Proxy_2_classLit,gen/ch/uzh/ifi/climate/client/QueryService_Proxy.java,14,-1
 Hs,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_QueryService_1TypeSerializer_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_QueryService_1TypeSerializer_2_classLit,gen/ch/uzh/ifi/climate/client/QueryService_TypeSerializer.java,10,-1
-Is,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$10_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$10_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,210,-1
-Js,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$11_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$11_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,287,-1
-Ks,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$12_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$12_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,294,-1
-Ls,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$13_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$13_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,303,-1
-Ms,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$14_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$14_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,322,-1
-Ns,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$15_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$15_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,372,-1
-Os,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$16_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$16_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,390,-1
-Ps,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$1_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$1_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,69,-1
-Qs,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$2_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$2_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,91,-1
-Rs,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$3_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$3_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,105,-1
-Ss,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$4_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$4_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,148,-1
-Ts,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$5_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$5_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,156,-1
-Us,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$6_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$6_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,167,-1
-Vs,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$7_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$7_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,175,-1
-Ws,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$8_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$8_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,185,-1
-Xs,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$9_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$9_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,203,-1
+Is,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$10_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$10_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,221,-1
+Js,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$11_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$11_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,298,-1
+Ks,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$12_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$12_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,305,-1
+Ls,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$13_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$13_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,314,-1
+Ms,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$14_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$14_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,333,-1
+Ns,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$15_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$15_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,383,-1
+Os,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$16_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$16_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,401,-1
+Ps,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$1_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$1_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,80,-1
+Qs,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$2_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$2_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,102,-1
+Rs,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$3_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$3_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,116,-1
+Ss,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$4_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$4_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,159,-1
+Ts,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$5_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$5_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,167,-1
+Us,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$6_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$6_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,178,-1
+Vs,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$7_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$7_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,186,-1
+Ws,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$8_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$8_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,196,-1
+Xs,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel$9_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel$9_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,214,-1
 Ys,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_TablePanel_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_TablePanel_2_classLit,ch/uzh/ifi/climate/client/TablePanel.java,37,-1
 Zs,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_slider_SliderEvent_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_slider_SliderEvent_2_classLit,ch/uzh/ifi/climate/client/slider/SliderEvent.java,23,-1
 $s,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_slider_SliderOption_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_slider_SliderOption_2_classLit,ch/uzh/ifi/climate/client/slider/SliderOption.java,21,-1
 _s,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_client_slider_Slider_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_client_slider_Slider_2_classLit,ch/uzh/ifi/climate/client/slider/Slider.java,41,-1
-at,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_shared_Coordinates_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_shared_Coordinates_2_classLit,ch/uzh/ifi/climate/shared/Coordinates.java,14,-1
-bt,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_shared_TemperatureMeasurement_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_shared_TemperatureMeasurement_2_classLit,ch/uzh/ifi/climate/shared/TemperatureMeasurement.java,19,-1
+at,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_shared_Coordinates_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_shared_Coordinates_2_classLit,ch/uzh/ifi/climate/shared/Coordinates.java,13,-1
+bt,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_shared_TemperatureMeasurement_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_shared_TemperatureMeasurement_2_classLit,ch/uzh/ifi/climate/shared/TemperatureMeasurement.java,18,-1
 ct,com.google.gwt.lang.ClassLiteralHolder::Lch_uzh_ifi_climate_shared_Temperature_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lch_uzh_ifi_climate_shared_Temperature_2_classLit,ch/uzh/ifi/climate/shared/Temperature.java,14,-1
 dt,com.google.gwt.lang.ClassLiteralHolder::Lcom_google_gwt_animation_client_Animation$1_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_google_gwt_animation_client_Animation$1_2_classLit,com/google/gwt/animation/client/Animation.java,29,-1
 et,com.google.gwt.lang.ClassLiteralHolder::Lcom_google_gwt_animation_client_AnimationScheduler$AnimationHandle_2_classLit,com.google.gwt.lang.ClassLiteralHolder,Lcom_google_gwt_animation_client_AnimationScheduler$AnimationHandle_2_classLit,com/google/gwt/animation/client/AnimationScheduler.java,57,-1
