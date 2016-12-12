@@ -172,7 +172,8 @@ public class MapPanel extends VerticalPanel implements SliderListener{
 		if (querySvc == null) {
 			querySvc = GWT.create(QueryService.class);
 		}
-		querySvc.temperatureMeasurementsOfAllCitiesAtYear(date, callback);
+		//querySvc.temperatureMeasurementsOfAllCitiesAtYear(date, callback);
+		querySvc.referencedDataForSliderBar(date, callback);
 
 	}
 
