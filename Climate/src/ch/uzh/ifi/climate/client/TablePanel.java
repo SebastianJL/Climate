@@ -51,6 +51,8 @@ public class TablePanel extends VerticalPanel{
 	private final String[] MONTHS = {"January","February","March","April","May","June",
 	                           "July","August","September","October","November","December"};
 
+
+	
 	
 	public TablePanel() {
 		initialize();
@@ -61,6 +63,15 @@ public class TablePanel extends VerticalPanel{
 	public void initialize() {
 		filterTable.setUpFilterTable();
 		measurementTable.setUpMeasurementTable();
+		
+		//Set up styles
+		newSuggestBoxCity.addStyleName("searchBox");
+		newSuggestBoxCountry.addStyleName("searchBox");
+		integerBoxStartYear.addStyleName("searchBox");
+		integerBoxEndYear.addStyleName("searchBox");
+		startMonth.addStyleName("searchBox");
+		endMonth.addStyleName("searchBox");
+		addFilterButton.addStyleName("searchBox");
 		
 		//Clear previous filtered data
 		if(querySvc == null){

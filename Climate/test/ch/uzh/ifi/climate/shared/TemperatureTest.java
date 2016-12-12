@@ -1,20 +1,13 @@
 package ch.uzh.ifi.climate.shared;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 
 import org.junit.Test;
 
-import com.google.gwt.junit.client.GWTTestCase;
-
 public class TemperatureTest{
 	
-//	@Override
-//	public String getModuleName() {
-//		return "ch.uzh.ifi.climate.Climate";
-//	}
-
 	@Test
 	public void testCreateFromKelvin() {
 		Temperature temp = Temperature.createFromKelvin(273.15f);

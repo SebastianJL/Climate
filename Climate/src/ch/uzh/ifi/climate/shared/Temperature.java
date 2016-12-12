@@ -22,20 +22,35 @@ public class Temperature implements Serializable{
 		this.temperatureInKelvin = temperatureInKelvin;
 	}
 	
+	/**
+	 * Create temperature from units of kelvin
+	 * @pre -
+	 * @post -
+	 * @param temperatureInKelvin float representing temperature in Kelvin
+	 * @return Temperature object
+	 */
 	public static Temperature createFromKelvin(double temperatureInKelvin) {
 		return new Temperature(temperatureInKelvin);
 	}
 	
+	/**
+	 * Create temperature from units of celcius
+	 * @pre -
+	 * @post -
+	 * @param temperatureInCelcius float representing temperature in Celcius
+	 * @return Temperature object
+	 */
 	public static Temperature createFromCelsius(float temperatureInCelcius) {
 		float temperatureInKelvin = temperatureInCelcius + 273.15f;
 		return new Temperature(temperatureInKelvin);
 	}
 	
 	/**
+	 * Get temperature in units of kelvin
 	 * @pre -
 	 * @post -
 	 * @param -
-	 * @return float Temperature in units of Kelvin
+	 * @return Temperature in units of Kelvin
 	 */
 	public double kelvin() {
 		return this.temperatureInKelvin;
@@ -43,10 +58,11 @@ public class Temperature implements Serializable{
 	
 	
 	/**
+	 * Get tempertature in units of celsius
 	 * @pre -
 	 * @post -
 	 * @param -
-	 * @return float Temperature in units of Celsius
+	 * @return Temperature in units of Celsius
 	 */
 	public double celsius(){
 		return this.temperatureInKelvin - 273.15f;
@@ -54,10 +70,11 @@ public class Temperature implements Serializable{
 	
 	
 	/**
+	 * Get temperature in units of Fahrenheit
 	 * @pre -
 	 * @post -
 	 * @param -
-	 * @return float Temperature in units of Fahrenheit
+	 * @return Temperature in units of Fahrenheit
 	 */
 	public double fahrenheit(){
 		return (this.temperatureInKelvin * 9/5) - 459.67f;
@@ -68,7 +85,7 @@ public class Temperature implements Serializable{
 	 * @pre 	summandOne != null && summandTwo != null
 	 * @post 	-
 	 * @param 	summandOne First Temperature to add.
-	 * 			summandTwo Second Temperaure to add
+	 * @param	summandTwo Second Temperaure to add
 	 * @return 	sum Added Temperature
 	 */
 	public static Temperature add(Temperature summandOne, Temperature summandTwo) {
@@ -84,7 +101,7 @@ public class Temperature implements Serializable{
 	 * @pre 	minuend != null && subtrahend != null
 	 * @post 	-
 	 * @param 	minuend Temperature to subtract from.
-	 * 			subtrahend Temperature to subtract.
+	 * @param	subtrahend Temperature to subtract.
 	 * @return 	difference Subtracted Temperature
 	 */
 	public static Temperature subtract(Temperature minuend, Temperature subtrahend) {
@@ -99,7 +116,7 @@ public class Temperature implements Serializable{
 	 * @pre 	temp != null && tempTwo != null
 	 * @post 	-
 	 * @param	dividend Temperature to divide.
-	 * 			divisor Number to divde by.
+	 * @param	divisor Number to divde by.
 	 * @return	quotient Result of the division.
 	 */
 	public static Temperature divide(Temperature dividend, double divisor) {
