@@ -32,7 +32,12 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 	private ArrayList<TemperatureMeasurement> sliderData = new ArrayList<TemperatureMeasurement>();
 	private final int DAY_IN_MILLISECONDS = 1000*60*60*24;
 	
+	//Constructor for tests
+	public QueryServiceImpl(ArrayList<TemperatureMeasurement> data){
+		this.data = data;
+	}
 	
+	//Constructor that handles possible exceptions
 	public QueryServiceImpl() {
 		try {
 			data = parser.parseCSV(CSVFileName);
@@ -53,7 +58,9 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 	/**
 	 * Filters data with respect to city, startDate, endDate
 	 * @pre 	filteredData != null && city != null && sdate != null && edate != null && data != null
-	 * @param 	city, sdate, edate are the values for which the filter should be applied
+	 * @param 	city	where the asked measurements should be located
+	 * @param 	sdate	first measurement that should be included
+	 * @param	edate	last measurement that should be included
 	 * @post 	filteredData contains (in addition to the previous filtered data) the asked data (city between startDate and endDate)
 	 * 			if the measurements aren't already in the ArrayList
 	 * @return 	ArrayList of temperature measurements with all the previous data plus the asked data (without doubled elements)
@@ -74,7 +81,7 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 	/**
 	 * Filters data with respect to city
 	 * @pre 	filteredData != null && city != null && data != null
-	 * @param 	city is the value for which the filter should be applied
+	 * @param 	city 	where the asked measurements should be located
 	 * @post 	filteredData contains (in addition to the previous filtered data) the asked data (all measurements of one city)
 	 * 			if the measurements aren't already in the ArrayList
 	 * @return 	ArrayList of temperature measurements with all the previous data plus the asked data (without doubled elements)
@@ -92,7 +99,9 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 	/**
 	 * Filters data with respect to country, startDate, endDate
 	 * @pre 	filteredData != null && country != null && sdate != null && edate != null && data != null
-	 * @param 	country, sdate, edate are the values for which the filter should be applied
+	 * @param 	country	where the measurements should be located
+	 * @param	sdate	first measurement that should be included
+	 * @param	edate	last measurement that should be included
 	 * @post 	filteredData contains (in addition to the previous filtered data) the asked data (country between startDate and endDate)
 	 * 			if the measurements aren't already in the ArrayList
 	 * @return 	ArrayList of temperature measurements with all the previous data plus the asked data (without doubled elements)
@@ -112,7 +121,7 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 	/**
 	 * Filters data with respect to country
 	 * @pre 	filteredData != null && country != null && data != null
-	 * @param 	country is the value for which the filter should be applied
+	 * @param 	country	where the asked measurements should be located
 	 * @post 	filteredData contains (in addition to the previous filtered data) the asked data (all measurements of one country)
 	 * 			if the measurements aren't already in the ArrayList
 	 * @return 	ArrayList of temperature measurements with all the previous data plus the asked data (without doubled elements)
@@ -129,7 +138,10 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 	
 	/**Filters data dependent on city and country between sdate and edate
 	 * @pre		filteredData != null && data != null && country != null && city != null && sdate != null && edate != null
-	 * @param	defines data for city in country between sdate and edate
+	 * @param	country	where the asked measurements should be located
+	 * @param	city	more precise definition of the location (city in country)
+	 * @param	sdate	first measurement that should be included
+	 * @param	edate	last measurement that should be included
 	 * @post	filteredData contains data for a specific city in a specific country between startDate and EndDate
 	 * @return	ArrayList filteredData containing the above defined measurements
 	 */
@@ -147,7 +159,8 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 	
 	/**Filters data dependent on city and country
 	 * @pre		filteredData != null && data != null && country != null && city != null
-	 * @param	defines data for city in country
+	 * @param	country	where the asked measurements should be located
+	 * @param	city	more precise definition of the location (city in country)
 	 * @post	filteredData contains data for a specific city in a specific country
 	 * @return	ArrayList filteredData containing the above defined measurements
 	 */
@@ -173,7 +186,7 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 		return this.filteredData;
 	}
 	
-	/**Gives all the names the cities stored in an ArrayList
+	/**Gives all the names of the cities where there are measurements stored in an ArrayList
 	 * @pre		data != null
 	 * @post	ArrayList cities contains all cities from the data as Strings
 	 * @return	ArrayList with all names of the cities (each just once)
@@ -188,7 +201,7 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 		return cities;
 	}
 	
-	/**Gives all the names the countries stored in an ArrayList
+	/**Gives all the names of the countries where there are measurements stored in an ArrayList
 	 * @pre		data != null
 	 * @post	ArrayList countries contains all countries from the data as Strings
 	 * @return	ArrayList with all names of the countries (each just once)
@@ -205,8 +218,7 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 	
 	/**Filters data for all city at a specific time
 	 * @pre 	data != null && filteredData != null && date != null
-	 * @param	cities contains all cities for which the data should be extracted
-	 * 			date is the date for all the measurements
+	 * @param	date	when the measurements of all cities should be returned
 	 * @post	the asked data is stored in an ArrayList
 	 * @return	ArrayList sliderData contains all measurements for all cities at a specific time (and nothing else)
 	 */
@@ -221,6 +233,13 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 		return this.sliderData;
 	}
 	
+	/**Filters data for all city in a specific year
+	 * @pre 	data != null && filteredData != null && date != null
+	 * @param	date	start date when the measurements of all cities over one year should be returned
+	 * @post	the asked data is stored in an ArrayList
+	 * @return	ArrayList sliderData contains all measurements for all cities for a time period of one year
+	 * 			and nothing else
+	 */
 	public ArrayList<TemperatureMeasurement> temperatureMeasurementsOfAllCitiesAtYear(Date date){
 		sliderData.clear();
 		for(TemperatureMeasurement Measurement:this.data){
@@ -235,7 +254,7 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 	
 	/**Removes all measurements of one specific city
 	 * @pre		data != null && filteredData != null && city != null
-	 * @param	city for which the measurements should be removed
+	 * @param	city	for which the measurements should be removed
 	 * @post	filteredData does not contain measurements of the city anymore
 	 * @return	ArrayList filteredData not containing measurements of the city anymore
 	 */
@@ -250,7 +269,7 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
 	
 	/**Removes all measurements of one specific county
 	 * @pre		data != null && filteredData != null && country != null
-	 * @param	country for which the measurements should be removed
+	 * @param 	country for which the measurements should be removed
 	 * @post	filteredData does not contain measurements of the country anymore
 	 * @return	ArrayList filteredData not containing measurements of the country anymore
 	 */
