@@ -23,14 +23,14 @@ body {
 
 /* filter table header row */
 .filterTableHeader {
-  background-color: #D3D3D3;
+  background: url("white.png") !important;
   color: black;
   font-style: italic;
 }
 
 /* filter table */
 .filterTable {
-  background-color: #778899;
+  background-color: #99AABB;
   padding: 2px;
   color: black;
   margin-bottom:6px;
