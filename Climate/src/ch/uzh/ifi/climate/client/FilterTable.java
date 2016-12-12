@@ -58,9 +58,9 @@ public class FilterTable {
 	 * @pre setUpFilterTable is done
 	 * @post -
 	 * @param	country String 
-	 * 			city String 
-	 * 			sdate Date: start date for the new filter
-	 * 			edate Date: end date for the new filter 
+	 * @param	city String 
+	 * @param	sdate Date:	start date for the new filter
+	 * @param	edate Date:	end date for the new filter 
 	 * @return -
 	 */
 	public void addFilterToTable(String country, String city, Date sdate, Date edate){
