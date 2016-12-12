@@ -148,4 +148,12 @@ public class QueryServiceImplTest{
 		testQueryService.temperatureMeasurements("TestCity2");
 		assertEquals(testQueryService.clearMeasurements(), compareData);
 	}
+	
+	@Test
+	public void testSliderDataReferenced(){
+		QueryServiceImpl testQueryService = new QueryServiceImpl(setUpData());
+		testQueryService.temperatureMeasurements("TestCity1");
+		testQueryService.temperatureMeasurements("TestCity2");
+		assert(testQueryService.referencedDataForSliderBar(new Date()).isEmpty());
+	}
 }
