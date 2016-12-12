@@ -52,14 +52,19 @@ public class TablePanel extends VerticalPanel{
 	                           "July","August","September","October","November","December"};
 
 
-	
-	
+
 	public TablePanel() {
 		initialize();
 	}
 	
 
-	
+	/**
+	 * Initializes TablePanel
+	 * 
+	 * @pre -
+	 * @post -
+	 * @return -
+	 */
 	public void initialize() {
 		filterTable.setUpFilterTable();
 		measurementTable.setUpMeasurementTable();
@@ -226,11 +231,17 @@ public class TablePanel extends VerticalPanel{
 	    	}
 		});
 	}
+
 	
 	/**
-	   * Add filter to FlexTable. Executed when the user clicks the addFilterButton or
-	   * presses enter in one of the suggestBoxes.
-	   */
+	 * Add filter to FlexTable. Executed when the user clicks the addFilterButton or
+	 * presses enter in one of the suggestBoxes.
+	 * 
+	 * @pre -
+	 * @post -
+	 * @param -
+	 * @return -
+	 */
 	private void addFilter() {
 		//Get values from boxes and do capitalization for Strings
 		final String country = newSuggestBoxCountry.getText().trim().substring(0, 1).toUpperCase() + newSuggestBoxCountry.getText().trim().substring(1);

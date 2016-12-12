@@ -6,10 +6,25 @@ import java.util.Date;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.ui.FlexTable;
 
+/**
+ * This class manages the filters which are applied on the data.
+ * @author		Pascal Siemon and Carmen Christen
+ * @history 	2016-30-11 PS First version
+ * @version 	2016-08-11 PS 0.1.0
+ * @responsibilities
+ * 				This class manages the filters which are applied on the data.
+ */
 public class FilterTable {
 	private FlexTable filterFlexTable = new FlexTable();
 	private ArrayList<FilterRow> filterRows = new ArrayList<FilterRow>();
 	
+	/**
+	 * Creates an empty filterTable.
+	 * 
+	 * @pre -
+	 * @post -
+	 * @return -
+	 */
 	public void setUpFilterTable(){
 		// Create table for filters.
 		filterFlexTable.setText(0, 0, "Country");
@@ -37,7 +52,17 @@ public class FilterTable {
 		return this.filterFlexTable;
 	}
 	
-    // Add the filter to the table.
+	/**
+	 * Adds a filter to the FilterTable.
+	 * 
+	 * @pre setUpFilterTable is done
+	 * @post -
+	 * @param	country String 
+	 * 			city String 
+	 * 			sdate Date: start date for the new filter
+	 * 			edate Date: end date for the new filter 
+	 * @return -
+	 */
 	public void addFilterToTable(String country, String city, Date sdate, Date edate){
 	      int row = filterFlexTable.getRowCount();
 	      
@@ -76,6 +101,14 @@ public class FilterTable {
 		  currentFilterRow.getGetDataButton().addStyleDependentName("launch search");	 
 	}
 	
+	/**
+	 * Remove a filter from the filterTable.
+	 * 
+	 * @pre -
+	 * @post -
+	 * @param city String
+	 * @return -
+	 */
 	public void removeFilterFromTable(String city){
 		for(FilterRow filterRow : filterRows){
 			if(filterRow.getCity().equals(city)){
@@ -85,6 +118,14 @@ public class FilterTable {
 		}
 	}
 	
+	/**
+	 * Remove a filter from the filterTable.
+	 * 
+	 * @pre -
+	 * @post -
+	 * @param country String
+	 * @return -
+	 */
 	public void removeCountryFilterFromTable(String country){
 		for(FilterRow filterRow : filterRows){
 			if(filterRow.getCountry().equals(country)){

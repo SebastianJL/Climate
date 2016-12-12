@@ -5,9 +5,25 @@ import com.google.gwt.user.client.ui.FlexTable;
 
 import ch.uzh.ifi.climate.shared.TemperatureMeasurement;
 
+/**
+ * This class manages the measurement table in which the measurements chosen in the filter table are showed.
+ * @author		Johannes Lade
+ * @history 	2016-14-11 JL First version
+ * @version 	2016-08-11 JL 0.1.0
+ * @responsibilities
+ * 				This class manages the measurement table in which the measurements are showed.
+ */
 public class MeasurementTable {
     FlexTable measurementFlexTable = new FlexTable();
     
+    /**
+     * Creats an empty MeasurementTable
+     * 
+     * @pre -
+     * @post -
+     * @return -
+     * 
+     */
     public void setUpMeasurementTable(){
 	    // Create table for measurement data.
  		measurementFlexTable.setText(0, 0, "Date");
@@ -26,6 +42,14 @@ public class MeasurementTable {
  		}
     }
     
+    /**
+     * Clears the MeasurementTable
+     * 
+     * @pre -
+     * @post -
+     * @return -
+     * 
+     */
     public void clearMeasurementTable(){
 	      int measurementRowCount = measurementFlexTable.getRowCount()-1;
 	 	  for(int i = 1; i < measurementRowCount; ){
@@ -37,6 +61,15 @@ public class MeasurementTable {
     	return this.measurementFlexTable;
     }
     
+    /**
+     * Adds the temperatureMeasurement from the input to the MeasurementTable.
+     * 
+     * @pre -
+     * @post -
+     * @param temperatureMeasurement TemperatureMeasurement
+     * @return -
+     * 
+     */
     public void fillTable(TemperatureMeasurement temperatureMeasurement){
 		final int measurementNumberOfColumns = 7;
 		int row = measurementFlexTable.getRowCount();

@@ -2,8 +2,24 @@ package ch.uzh.ifi.climate.client;
 
 import java.util.Date;
 
+/**
+ * This class manages a filter row of a filterTable.
+ * @author		Pascal Siemon und Carmen Christen
+ * @history 	2016-30-11 PS First version
+ * @version 	2016-08-11 PS First version
+ * @responsibilities
+ * 				This class manages the filter rows of the filterTable.
+ */
 import com.google.gwt.user.client.ui.Button;
 
+/**
+ * This class manages a filter row of a filterTable.
+ * @author		Pascal Siemon and Carmen Christen
+ * @history 	2016-30-11 PS First version
+ * @version 	2016-30-11 PS 0.1.0
+ * @responsibilities
+ * 				This class manages the filter rows of the filterTable.
+ */
 public class FilterRow {
 	private String country;
 	private String city;
