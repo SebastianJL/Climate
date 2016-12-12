@@ -206,7 +206,6 @@ public class Slider extends Widget
      * Gets the value of a anchor at the specified index
      * 
      * @param index  the index to retreive the value for
-     * 
      * @return the value
      */
     public int getValueAtIndex(int index)
